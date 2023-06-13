@@ -21,9 +21,11 @@ const styles = {
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
-        padding: 10,
         width: "80%",
-        color: "white"
+        color: "white",
+        marginBottom: 10,
+        borderRadius: 15,
+        backgroundColor: "white"
     },
     divIntestazione:{
         display: "flex",
@@ -31,12 +33,13 @@ const styles = {
         alignItems: "center",
         justifyContent: "space-around",
         color: "white",
-        borderStyle: "solid",
-        borderColor: "white",
-        borderWidth: 1,
-        backgroundColor: "blue",
         height: "30%",
-        width: "100%"
+        width: "100%",
+        backgroundColor: "#94092e",
+        borderRadius: 15,
+        borderStyle: "solid",
+        borderColor: "#94092e",
+        borderWidth: 1,
     },
     paragrafoTitolo:{
         fontWeight: "bold",
@@ -52,12 +55,9 @@ const styles = {
         flexDirection: "column",
         alignItems: "flex-start",
         justifyContent: "flex-start",
-        color: "white",
-        borderStyle: "solid",
-        borderColor: "white",
-        borderWidth: 1,
+        color: "black",
         maxHeight: "70%",
-        width: "100%"
+        width: "100%",
     }
 
 }
