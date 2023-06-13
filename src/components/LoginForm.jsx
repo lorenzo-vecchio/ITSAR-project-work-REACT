@@ -69,14 +69,14 @@ const LoginForm = () => {
           <input type="password" id="password" style={styles.input} onChange={handlePasswordInput} />
           {showSignUpForm && (
             <>
+              <label htmlFor="secondPassword" style={styles.label}>
+                Repeat Password
+              </label>
+              <input type="password" id="secondPassword" style={styles.input} />
               <label htmlFor="email" style={styles.label}>
                 Email
               </label>
-              <input type="text" id="email" style={styles.input} />
-              <label htmlFor="name" style={styles.label}>
-                Name
-              </label>
-              <input type="text" id="name" style={styles.input} />
+              <input type="email" id="email" style={styles.input} />
             </>
           )}
         </div>
