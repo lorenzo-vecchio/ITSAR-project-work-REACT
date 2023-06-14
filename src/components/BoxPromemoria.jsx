@@ -24,7 +24,7 @@ const styles = {
         width: "80%",
         color: "white",
         marginBottom: 10,
-        borderRadius: 15,
+        borderRadius: 10,
         backgroundColor: "white"
     },
     divIntestazione:{
@@ -36,7 +36,7 @@ const styles = {
         height: "30%",
         width: "100%",
         backgroundColor: "#94092e",
-        borderRadius: 15,
+        borderRadius: 10,
         borderStyle: "solid",
         borderColor: "#94092e",
         borderWidth: 1,
