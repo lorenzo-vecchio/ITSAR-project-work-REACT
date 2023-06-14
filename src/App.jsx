@@ -5,6 +5,7 @@ import Background from "./components/Background";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import MapPage from "./pages/MapPage";
+import UserPage from "./pages/UserPage";
 
 export default function App() {
   const { loggedIn, login } = useContext(AuthContext);
@@ -21,6 +22,7 @@ export default function App() {
       <Background />
       {
         loggedIn ? <HomePage /> : <LoginPage />
+        
       }
     </div>
   );
