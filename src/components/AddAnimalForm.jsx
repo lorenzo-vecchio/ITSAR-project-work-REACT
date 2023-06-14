@@ -67,10 +67,12 @@ const AddAnimalForm = () => {
                 <label style={style.label}>Peso: </label>
                 <input type="number" style={style.input} placeholder="0 Kg"/>
             </div>
+            {/*
             <div>
                 <label style={style.label}>Vaccinazioni: </label>
                 <textarea type="text" style={style.vaccinazioni} placeholder="Inserire le vaccinazioni"/>
             </div>
+    */}
         </form>
 
     );

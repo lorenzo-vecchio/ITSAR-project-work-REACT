@@ -20,7 +20,10 @@ export default function App() {
   return (
     <div className="App">
       <Background />
-      <AddAnimalPage />
+      {
+        //loggedIn ? <HomePage /> : <LoginPage />
+        <AddAnimalPage />
+      }
     </div>
   );
 }
