@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import MapPage from "./pages/MapPage";
 import AddAnimalPage from "./pages/AddAnimalPage";
+import UserPage from "./pages/UserPage";
 
 export default function App() {
   const { loggedIn, login } = useContext(AuthContext);
@@ -21,8 +22,7 @@ export default function App() {
     <div className="App">
       <Background />
       {
-        //loggedIn ? <HomePage /> : <LoginPage />
-        <AddAnimalPage />
+        loggedIn ? <HomePage /> : <LoginPage />
       }
     </div>
   );
