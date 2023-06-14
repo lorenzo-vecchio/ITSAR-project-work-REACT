@@ -4,25 +4,13 @@ import FotoWidget from "../components/FotoWidget";
 import Image from "../placeholders/dog.jpg";
 import BottoneWidget from "../components/BottoneWidget";
 import MenuWidget from "../components/MenuWidget";
-import { useState } from "react";
 
 const UserPage = () => {
-    const [hover, setHover] = useState(false);
-    function mouseOver() {
-        console.log("mouseOver");
-        setHover(true);
-    }
-    function mouseOut() {
-        console.log("mouseOut");
-        setHover(false);
-    }
     return (
     <div>
         <Title title="Il tuo account" />
         <div style={{ margin: "4rem" }}></div>
-        <div>
-            <FotoWidget image={Image} onMouseOver={mouseOver} onMouseOut={mouseOut} style={hover ? styles.imgProfiloHover : styles.imgProfilo}/>
-        </div>
+        <FotoWidget image={Image}/>
         <div style={styles.testo}>
             <div>
                 <span style={styles.informazoni}>Nome: </span>
