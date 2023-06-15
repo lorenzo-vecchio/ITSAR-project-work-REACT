@@ -1,0 +1,137 @@
+.style{
+    display: grid;
+    grid-template-columns: minmax(auto, 0.5fr) minmax(auto, max-content);
+    row-gap: 1.3rem;
+    color: white;
+}
+
+h1{
+    text-align: center;
+}
+
+.input{
+    margin: auto;
+    min-height: 2.5rem;
+    border-radius: 1.5rem;
+    border: 0;
+    font-size: 20px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    min-width: 5rem;
+    max-width: 77%;
+    text-align: center;
+}
+
+#inputDataList1, #inputDataList2{
+    text-indent: 11%;
+}
+
+
+.inputDate {
+    min-height: 2.5rem;
+    border-radius: 1.5rem;
+    border: 0;
+    font-size: 20px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    min-width: 5rem;
+    max-width: 77%;
+    text-align: center;
+    margin-inline: 3%;
+}
+
+.label{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.checkboxList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vaccinazioni{
+    border-radius: 1.5rem;
+    border: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    height: 30rem;
+    resize:vertical;
+    overflow:auto;
+
+}
+
+input[type=checkbox] {
+    -webkit-appearance: initial;
+    appearance: initial;
+    min-height: 2rem;
+    min-width: 2rem;
+    border-radius: 5px;
+    border: 3px solid lightgray;
+    margin-right: 10px;
+ }
+
+input[type=checkbox]:checked{
+    background-color: #fa9e4a;
+    transition: ease-in-out 0.05s;
+    top: 0;
+    left: 0;
+}
+
+/* input[type=checkbox]:checked:after{
+
+
+}
+*/
+
+@media screen and (max-width: 1024px){
+    .style{
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.6rem;
+        color: white;
+        margin-bottom: 10%;
+
+
+    }
+
+    .label{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input{
+        min-width: 5rem;
+        max-width: 12rem;
+        min-height: 2.3rem;
+        text-align: center;
+    }
+
+    #inputDataList1, #inputDataList2{
+        text-indent: 15%;
+    }
+
+    .inputDate {
+        min-width: 5rem;
+        max-width: 12rem;
+        min-height: 2.3rem;
+        text-align: center;
+        margin:auto;
+    }
+
+    input[type=checkbox] {
+        -webkit-appearance: initial;
+        appearance: initial;
+
+
+     }
+
+}
+
+
+ 

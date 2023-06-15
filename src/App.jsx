@@ -21,9 +21,10 @@ export default function App() {
   return (
     <div className="App">
       <Background />
-      {
+      {/*
         loggedIn ? <HomePage /> : <LoginPage />
-      }
+  */}
+    <AddAnimalPage />
     </div>
   );
 }
