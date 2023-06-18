@@ -19,18 +19,25 @@ const AddAnimalForm = () => {
         setIsHover(false);
     }
     
-    const handleCheckbox1Change = () => {
+    const handleCheckbox1Change = (e) => {
         setCheckbox1Checked(!checkbox1Checked);
         if (checkbox2Checked) {
-        setCheckbox2Checked(false);
+            setCheckbox2Checked(false);
+            setFormData({ ...formData, [e.target.name]: e.target.value });
         }
+
+        
+        //handleChange();
     };
     
-    const handleCheckbox2Change = () => {
+    const handleCheckbox2Change = (e) => {
         setCheckbox2Checked(!checkbox2Checked);
         if (checkbox1Checked) {
-        setCheckbox1Checked(false);
+            setCheckbox1Checked(false);
+            setFormData({ ...formData, [e.target.name]: e.target.value });
         }
+
+        //handleChange();
     };
 
     const [formData, setFormData] = useState({
@@ -79,9 +86,9 @@ const AddAnimalForm = () => {
 
                 <div className="checkboxList">
                     <label>M</label>
-                    <input type="checkbox" id="boxStyle1" checked={checkbox1Checked}/>
+                    <input type="checkbox" id="boxStyle1" name="Genere" onChange={handleCheckbox1Change} checked={checkbox1Checked}/>
                     <label>F</label>
-                    <input type="checkbox" id="boxStyle2" checked={checkbox2Checked}/>
+                    <input type="checkbox" id="boxStyle2" name="Genere" onChange={handleCheckbox2Change} checked={checkbox2Checked}/>
                 </div>
 
                 <label className="label">Data di nascita: </label>
