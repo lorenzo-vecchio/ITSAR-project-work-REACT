@@ -172,8 +172,6 @@ input[type=checkbox]:checked{
         row-gap: 0.6rem;
         color: white;
         margin-bottom: 10%;
-
-
     }
 
     .label{
@@ -210,10 +208,6 @@ input[type=checkbox]:checked{
       display:inline-flex;
       justify-content: center;
      }
-
-
-
-
 }
 
 

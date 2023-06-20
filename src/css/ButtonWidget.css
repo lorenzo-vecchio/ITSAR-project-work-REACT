@@ -67,3 +67,10 @@
   .buttonForm:hover:before {
     width: 100%;
   }
+
+@media screen and (max-width: 1024px){
+  .buttonsBottomForm{
+      display:inline-flex;
+      justify-content: center;
+    }
+}
