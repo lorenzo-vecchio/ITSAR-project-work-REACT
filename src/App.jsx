@@ -5,6 +5,7 @@ import Background from "./components/Background";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import MapPage from "./pages/MapPage";
+import AddAnimalPage from "./pages/AddAnimalPage";
 import UserPage from "./pages/UserPage";
 
 export default function App() {
@@ -22,7 +23,6 @@ export default function App() {
       <Background />
       {
         loggedIn ? <HomePage /> : <UserPage />
-        
       }
     </div>
   );

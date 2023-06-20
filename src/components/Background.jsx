@@ -11,7 +11,7 @@ const style = {
   position: "fixed",
   left: 0,
   top: 0,
-  zIndex: -1000000
+  zIndex: -1000000,
 };
 
 export default Background;
