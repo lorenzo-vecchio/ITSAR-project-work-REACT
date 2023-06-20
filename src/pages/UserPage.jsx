@@ -4,16 +4,22 @@ import FotoWidget from "../components/FotoWidget";
 import Image from "../placeholders/dog.jpg";
 import BottoneWidget from "../components/BottoneWidget";
 import MenuWidget from "../components/MenuWidget";
+import "../css/UserPage.css";
 
 const UserPage = () => {
     return (
     <div>
         <Title title="Il tuo account" />
-        <div style={{ margin: "4rem" }}></div>
-        <FotoWidget image={Image}/>
-        <div style={styles.testo}>
+
+        <div className="imgProfilo-container">
+            <div className="imgProfilo">
+                <FotoWidget image={Image} />
+            </div>
+        </div>
+        <div className="testo">
             <div>
-                <span style={styles.informazoni}>Nome: </span>
+                <span className="informazoni">Nome: </span>
+
                 <span>Giorgio </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -21,7 +27,8 @@ const UserPage = () => {
             </svg>
             </div>
             <div>
-                <span style={styles.informazoni}>Cognome: </span>
+                <span className="informazoni">Cognome: </span>
+
                 <span>Rossi </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -29,7 +36,9 @@ const UserPage = () => {
             </svg>
             </div>
             <div>
-                <span style={styles.informazoni}>Email: </span>
+
+                <span className="informazoni">Email: </span>
+
                 <span>Giorgio.rossi@gmail.com </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -37,7 +46,9 @@ const UserPage = () => {
             </svg>
             </div>
             <div>
-                <span style={styles.informazoni}>Password: </span>
+
+                <span className="informazoni">Password: </span>
+
                 <span>********** </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -45,7 +56,9 @@ const UserPage = () => {
             </svg>
             </div>
         </div>
-                <div style={styles.bottone}>
+
+                <div className="bottone">
+
                     <BottoneWidget testo={"Logout"}/>
                 </div>
         <div>
@@ -54,28 +67,6 @@ const UserPage = () => {
     </div>
     );
   };
-  
-  const styles = {
-    bottone:{
-        marginTop:"7rem"
-    },
-    testo:{
-        marginTop:"1rem",
-        display:"flex",
-        flexDirection: "column",
-        gap: "1rem",
-        fontSize:"24px"
-    },
-    informazoni:{
-        fontWeight:"bold",
-    },
-    imgProfilo:{
-        opacity: "1",
-        transition: "opacity 0.3s ease-in-out"
-    },
-    imgProfiloHover: {
-        opacity: "0.5",
-    }
-  }
+
 
   export default UserPage;
