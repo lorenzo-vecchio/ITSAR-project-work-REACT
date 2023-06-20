@@ -1,12 +1,13 @@
 import React from 'react';
 
-const BoxPromemoria = ({title, descrizione, data, animale, ora}) =>{
+const BoxPromemoria = ({title, descrizione, data, animale, ora, img, lImg, aImg}) =>{
     return(
         <div style={styles.contain}>
             <div style={styles.divIntestazione}>
                 <p style={styles.paragrafoTitolo}>{title}</p>
                 <p style={styles.paragrafoTitolo}>{data}</p>
                 <p style={styles.paragrafoTitolo}>{ora}</p>
+                <img src={img} width={lImg} height={aImg}/>
             </div>
             <div style={styles.divIContenuto}>
                 <span style={styles.paragrafo}><strong>Descrizione:</strong> {descrizione}</span>
@@ -24,7 +25,7 @@ const styles = {
         width: "80%",
         color: "white",
         marginBottom: 10,
-        borderRadius: 15,
+        borderRadius: 10,
         backgroundColor: "white"
     },
     divIntestazione:{
@@ -36,7 +37,7 @@ const styles = {
         height: "30%",
         width: "100%",
         backgroundColor: "#94092e",
-        borderRadius: 15,
+        borderRadius: 10,
         borderStyle: "solid",
         borderColor: "#94092e",
         borderWidth: 1,
