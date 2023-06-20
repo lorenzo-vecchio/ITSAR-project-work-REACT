@@ -13,7 +13,7 @@ export default function App() {
   const requestOptions = {
     credentials: 'include'
   }
-  fetch("http://127.0.0.1:5000/login", requestOptions).then((response) => {
+  fetch("https://itsar-project-work-api.vercel.app/login", requestOptions).then((response) => {
     if (response.status === 200) {
       login();
     }
@@ -22,7 +22,7 @@ export default function App() {
     <div className="App">
       <Background />
       {
-        loggedIn ? <HomePage /> : <UserPage />
+        loggedIn ? <HomePage /> : <LoginPage />
       }
     </div>
   );

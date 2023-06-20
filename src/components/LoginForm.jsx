@@ -40,7 +40,7 @@ const LoginForm = () => {
         }),
         credentials: "include"
       };
-      fetch("http://127.0.0.1:5000/login", requestOptions)
+      fetch("https://itsar-project-work-api.vercel.app/login", requestOptions)
       .then((response) => {
         if (response.status === 200) {
           login();
