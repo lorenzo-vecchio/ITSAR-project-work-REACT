@@ -2,14 +2,23 @@ import React, {useState} from 'react';
 import '../css/AddAnimalForm.css';
 import FotoWidget from "../components/FotoWidget";
 import Image from "../placeholders/dog.jpg";
-import Input from "@mui/material/Input";
-import InputAdornment from "@mui/material/InputAdornment"; //to install it, write the command: npm install @mui/material @emotion/react; npm install @emotion/styled @mui/lab @mui/icons-material
+//import Input from "@mui/material/Input";
+//import InputAdornment from "@mui/material/InputAdornment"; //to install it, write the command: npm install @mui/material @emotion/react; npm install @emotion/styled @mui/lab @mui/icons-material
 
 const AddAnimalForm = () => {
     const buttonSend = document.getElementById('buttonAggiungi');
     const [checkbox1Checked, setCheckbox1Checked] = useState(false);
     const [checkbox2Checked, setCheckbox2Checked] = useState(false);
     const [isHover, setIsHover] = useState(false);
+
+    const [formData, setFormData] = useState({
+        Nome: '',
+        Razza: '',
+        Specie: '',
+        Genere: '',
+        DataDiNascita: '',
+        Peso: '',
+      });
 
     const handleMouseEnter = () => {
         setIsHover(true);
@@ -23,31 +32,22 @@ const AddAnimalForm = () => {
         setCheckbox1Checked(!checkbox1Checked);
         if (checkbox2Checked) {
             setCheckbox2Checked(false);
-            setFormData({ ...formData, [e.target.name]: e.target.value });
+            formData.append('Genere', checkbox1Checked ? 'false' : 'true');
+            setFormData(formData);
         }
-
-        
         //handleChange();
     };
-    
+
     const handleCheckbox2Change = (e) => {
         setCheckbox2Checked(!checkbox2Checked);
         if (checkbox1Checked) {
             setCheckbox1Checked(false);
-            setFormData({ ...formData, [e.target.name]: e.target.value });
+            formData.append('Genere', checkbox2Checked ? 'false' : 'true');
+            setFormData(formData);
         }
 
         //handleChange();
     };
-
-    const [formData, setFormData] = useState({
-        Nome: '',
-        Razza: '',
-        Specie: '',
-        Genere: '',
-        DataDiNascita: '',
-        Peso: '',
-      });
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -86,9 +86,9 @@ const AddAnimalForm = () => {
 
                 <div className="checkboxList">
                     <label>M</label>
-                    <input type="checkbox" id="boxStyle1" name="Genere" onChange={handleCheckbox1Change} checked={checkbox1Checked}/>
+                    <input type="checkbox" id="boxStyle1" name="Genere" value="M" onChange={handleCheckbox1Change} checked={checkbox1Checked}/>
                     <label>F</label>
-                    <input type="checkbox" id="boxStyle2" name="Genere" onChange={handleCheckbox2Change} checked={checkbox2Checked}/>
+                    <input type="checkbox" id="boxStyle2" name="Genere" value="F" onChange={handleCheckbox2Change} checked={checkbox2Checked}/>
                 </div>
 
                 <label className="label">Data di nascita: </label>
