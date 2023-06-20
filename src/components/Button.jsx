@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Button.css";
+import "../css/ButtonWidget.css";
 
 export const ButtonSubmit = (props) => {
     return(
