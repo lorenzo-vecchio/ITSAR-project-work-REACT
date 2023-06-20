@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import '../css/AddAnimalForm.css';
 import FotoWidget from "../components/FotoWidget";
 import Image from "../placeholders/dog.jpg";
+import { ButtonSubmit, ButtonReset } from './Button';
 //import Input from "@mui/material/Input";
 //import InputAdornment from "@mui/material/InputAdornment"; //to install it, write the command: npm install @mui/material @emotion/react; npm install @emotion/styled @mui/lab @mui/icons-material
 
@@ -30,22 +31,15 @@ const AddAnimalForm = () => {
     
     const handleCheckbox1Change = (e) => {
         setCheckbox1Checked(!checkbox1Checked);
-        if (checkbox2Checked) {
-            setCheckbox2Checked(false);
-            formData.append('Genere', checkbox1Checked ? 'false' : 'true');
-            setFormData(formData);
-        }
+        setCheckbox2Checked(false);
+        setFormData({ ...formData, Genere: "M" });
         //handleChange();
     };
 
     const handleCheckbox2Change = (e) => {
         setCheckbox2Checked(!checkbox2Checked);
-        if (checkbox1Checked) {
-            setCheckbox1Checked(false);
-            formData.append('Genere', checkbox2Checked ? 'false' : 'true');
-            setFormData(formData);
-        }
-
+        setCheckbox1Checked(false);
+        setFormData({ ...formData, Genere: "F" });
         //handleChange();
     };
 
@@ -117,8 +111,8 @@ const AddAnimalForm = () => {
                 </div>
 
                 <div className="buttonsBottomForm">
-                    <button type="reset" className="buttonForm" id="buttonAnnulla">Annulla</button>
-                    <button type="submit" className="buttonForm" id="buttonAggiungi" onClick={handleSubmit}>Aggiungi</button>
+                    <ButtonReset text="Aggiungi" />
+                    <ButtonSubmit text="Annulla" />
                 </div>
 
         </form>
