@@ -6,9 +6,13 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import MapPage from "./pages/MapPage";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import AddAnimalPage from "./pages/AddAnimalPage";
 =======
 >>>>>>> master
+=======
+import AddAnimalPage from "./pages/AddAnimalPage";
+>>>>>>> b2aca668513959c87b48dd0b0eded9f7102fb456
 import UserPage from "./pages/UserPage";
 
 export default function App() {
@@ -24,6 +28,7 @@ export default function App() {
   return (
     <div className="App">
       <Background />
+<<<<<<< HEAD
       {/*
         loggedIn ? <HomePage /> : <LoginPage />
 <<<<<<< HEAD
@@ -33,6 +38,11 @@ export default function App() {
         
       }
 >>>>>>> master
+=======
+      {
+        loggedIn ? <HomePage /> : <UserPage />
+      }
+>>>>>>> b2aca668513959c87b48dd0b0eded9f7102fb456
     </div>
   );
 }
