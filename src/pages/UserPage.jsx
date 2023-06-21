@@ -4,16 +4,31 @@ import FotoWidget from "../components/FotoWidget";
 import Image from "../placeholders/dog.jpg";
 import BottoneWidget from "../components/BottoneWidget";
 import MenuWidget from "../components/MenuWidget";
+<<<<<<< HEAD
+=======
+import "../css/UserPage.css";
+>>>>>>> master
 
 const UserPage = () => {
     return (
     <div>
         <Title title="Il tuo account" />
+<<<<<<< HEAD
         <div style={{ margin: "4rem" }}></div>
         <FotoWidget image={Image}/>
         <div style={styles.testo}>
             <div>
                 <span style={styles.informazoni}>Nome: </span>
+=======
+        <div className="imgProfilo-container">
+            <div className="imgProfilo">
+                <FotoWidget image={Image} />
+            </div>
+        </div>
+        <div className="testo">
+            <div>
+                <span className="informazoni">Nome: </span>
+>>>>>>> master
                 <span>Giorgio </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -21,7 +36,11 @@ const UserPage = () => {
             </svg>
             </div>
             <div>
+<<<<<<< HEAD
                 <span style={styles.informazoni}>Cognome: </span>
+=======
+                <span className="informazoni">Cognome: </span>
+>>>>>>> master
                 <span>Rossi </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -29,7 +48,11 @@ const UserPage = () => {
             </svg>
             </div>
             <div>
+<<<<<<< HEAD
                 <span style={styles.informazoni}>Email: </span>
+=======
+                <span className="informazoni">Email: </span>
+>>>>>>> master
                 <span>Giorgio.rossi@gmail.com </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -37,7 +60,11 @@ const UserPage = () => {
             </svg>
             </div>
             <div>
+<<<<<<< HEAD
                 <span style={styles.informazoni}>Password: </span>
+=======
+                <span className="informazoni">Password: </span>
+>>>>>>> master
                 <span>********** </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -45,7 +72,11 @@ const UserPage = () => {
             </svg>
             </div>
         </div>
+<<<<<<< HEAD
                 <div style={styles.bottone}>
+=======
+                <div className="bottone">
+>>>>>>> master
                     <BottoneWidget testo={"Logout"}/>
                 </div>
         <div>
@@ -54,6 +85,7 @@ const UserPage = () => {
     </div>
     );
   };
+<<<<<<< HEAD
   
   const styles = {
     bottone:{
@@ -77,5 +109,7 @@ const UserPage = () => {
         opacity: "0.5",
     }
   }
+=======
+>>>>>>> master
 
   export default UserPage;

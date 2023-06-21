@@ -1,0 +1,32 @@
+.bottone {
+    margin-top: 7rem;
+}
+
+.testo {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 24px
+}
+
+.informazoni {
+    font-weight: bold;
+}
+
+.imgProfilo {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.imgProfilo:hover {
+    opacity: 0.5;
+}
+
+.imgProfilo-container{
+    display: inline-block;
+    background-color: rgb(0, 0, 0);
+    border-radius: 25px;
+    width: 10rem;
+    height: 10rem;
+    margin-top: 1rem;
+}

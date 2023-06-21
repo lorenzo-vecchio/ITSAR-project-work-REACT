@@ -5,7 +5,10 @@ import Background from "./components/Background";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import MapPage from "./pages/MapPage";
+<<<<<<< HEAD
 import AddAnimalPage from "./pages/AddAnimalPage";
+=======
+>>>>>>> master
 import UserPage from "./pages/UserPage";
 
 export default function App() {
@@ -23,8 +26,13 @@ export default function App() {
       <Background />
       {/*
         loggedIn ? <HomePage /> : <LoginPage />
+<<<<<<< HEAD
   */}
     <AddAnimalPage />
+=======
+        
+      }
+>>>>>>> master
     </div>
   );
 }

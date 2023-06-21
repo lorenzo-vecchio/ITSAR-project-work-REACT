@@ -3,7 +3,11 @@ import React from "react";
 const FotoWidget = (props) =>{
     return (
         <div>
+<<<<<<< HEAD
             <img style={styles.immagine} src={props.image} alt=""/>
+=======
+            <img style={styles.immagine} src={props.image} />
+>>>>>>> master
         </div>
     )
 }
