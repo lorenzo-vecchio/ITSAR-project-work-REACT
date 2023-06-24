@@ -7,7 +7,7 @@ const AnimalsWidget = () => {
         credentials: 'include',
     }
     useEffect(() => {
-        fetch("http://127.0.0.1:5000/animals", requestOptions)
+        fetch("https://itsar-project-work-api.vercel.app/animals", requestOptions)
         .then(res => res.json())
         .then(
         (result) => {

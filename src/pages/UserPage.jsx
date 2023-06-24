@@ -63,9 +63,6 @@ const UserPage = () => {
 
                     <BottoneWidget testo={"Logout"}/>
                 </div>
-        <div>
-            <MenuWidget />
-        </div>
     </div>
     );
   };

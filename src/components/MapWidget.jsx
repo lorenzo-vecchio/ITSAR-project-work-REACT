@@ -32,7 +32,7 @@ const MapWidget = (props) => {
     const requestOptions = {
       credentials: "include"
     }
-    fetch("http://127.0.0.1:5000/luoghi", requestOptions)
+    fetch("https://itsar-project-work-api.vercel.app/servizi", requestOptions)
       .then(res => res.json())
       .then(
         (result) => {
