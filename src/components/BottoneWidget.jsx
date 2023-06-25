@@ -2,7 +2,7 @@ import React from "react";
 
 const BottoneWidget = (props) => {
     return(
-        <div>
+        <div onClick={props.onClick}>
             <button style={styles.bottone}>{props.testo}</button>
         </div>
     )
