@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { NavLink} from "react-router-dom";
 
-const Aggiungi = ({descrizione, lunghezza, colore, img, link, callback}) =>{
+const Aggiungi = ({descrizione, lunghezza, colore, img, link}) =>{
 
     const styles = {
         container:{
@@ -18,53 +19,61 @@ const Aggiungi = ({descrizione, lunghezza, colore, img, link, callback}) =>{
             fontSize: 12,
             fontWeight: "bold",
             paddingLeft: 10
+        },
+        removeLinkDefault: {
+            textDecoration: "none",
+            color: "black",
+        },
+    }
+    
+    if(link == "aggiungiAnimale")
+    {
+        if (img) 
+        {
+            return (
+                <div style={styles.container}>
+                    <img src={img} />
+                    <NavLink style={styles.removeLinkDefault} to={"aggiungi"}>
+                        <p style={styles.paragrafo}>{descrizione}</p>
+                    </NavLink>
+                </div>
+            )
+        } 
+        else 
+        {
+            return (
+                <div style={styles.container}>
+                    <NavLink style={styles.removeLinkDefault} to={"aggiungi"}>
+                        <p style={styles.paragrafo}>{descrizione}</p>
+                    </NavLink>
+                </div>
+            )
         }
     }
-
-    const [num, setNum] = useState(1)
-    const [Descrizione, setDescrizione] = useState(descrizione)
-
-    const action = () =>{
-        if(link == "aggiungiAnimale")
+    else if(link == "aggiungiPromemoria")
+    {
+        if (img) 
         {
-            console.log("aggiungi Animale")
-        }
-        else if(link == "aggiungiPromemoria")
+            return (
+                <div style={styles.container}>
+                    <img src={img} />
+                    <NavLink style={styles.removeLinkDefault} to={"aggiungi"}>
+                        <p style={styles.paragrafo}>{descrizione}</p>
+                    </NavLink>
+                </div>
+            )
+        } 
+        else 
         {
-            console.log("aggiungi Promemoria")
-        }
-        else if(link == "eliminaAnimale")
-        {
-            console.log("Elimina animale")
-            if(num%2==1)
-            {
-                callback(true)
-                setDescrizione("Torna Indietro")
-            }
-            else
-            {
-                callback(false)
-                setDescrizione("Elimina Animale")
-            }
-            setNum(v=> v+1)
+            return (
+                <div style={styles.container}>
+                    <NavLink style={styles.removeLinkDefault} to={"aggiungi"}>
+                        <p style={styles.paragrafo}>{descrizione}</p>
+                    </NavLink>
+                </div>
+            )
         }
     }
-
-    if (img) {
-        return (
-            <div style={styles.container} onClick={action}>
-                <img src={img} />
-                <p style={styles.paragrafo}>{Descrizione}</p>
-            </div>
-        )
-      } else 
-      {
-        return (
-            <div style={styles.container} onClick={action}>
-                <p style={styles.paragrafo}>{Descrizione}</p>
-            </div>
-        )
-      }
 }
 
 export default Aggiungi; 

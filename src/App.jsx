@@ -32,6 +32,7 @@ export default function App() {
           <Route path="/" element={loggedIn ? <HomePage /> : <LoginPage />} />
           <Route path="mappa" element={loggedIn ? <MapPage /> : <LoginPage />} />
           <Route path="account" element={loggedIn ? <UserPage /> : <LoginPage />} />
+          <Route path="aggiungi" element={loggedIn ? <AddAnimalPage /> : <LoginPage />}/>
           <Route path="*" element={<NoPage />} />
         </Routes>
       </div>

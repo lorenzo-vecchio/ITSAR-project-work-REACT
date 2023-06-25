@@ -5,6 +5,7 @@ import PreferitiWidget from "../components/PreferitiWidget";
 import AnimalsWidget from "../components/AnimalsWidget";
 import PromemoriaWidget from "../components/PromemoriaWidget";
 import Aggiungi from '../components/Aggiungi';
+import Elimina from '../components/Elimina';
 import ImmagineAdd from '../media/add.svg'
 import ImmagineRemove from "../media/remove.svg"
 
@@ -25,7 +26,7 @@ const HomePage = () => {
           <AnimalsWidget remove={controllo}/>
           <div style={styles.divButton}>
             <Aggiungi descrizione={"aggiungi animale"} lunghezza={45} colore={"green"} link={"aggiungiAnimale"}/>
-            <Aggiungi descrizione={"Elimina Animale"} lunghezza={45} colore={"red"} link={"eliminaAnimale"} callback={controlloValore}/>
+            <Elimina descrizione={"Elimina Animale"} lunghezza={45} colore={"red"} callback={controlloValore}/>
           </div>
         </div>
         <div style={styles.rightContainer}>
