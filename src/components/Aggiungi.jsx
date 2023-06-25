@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Aggiungi = ({descrizione, lunghezza, colore, img}) =>{
+const Aggiungi = ({descrizione, lunghezza, colore, img, link, callback}) =>{
 
     const styles = {
         container:{
@@ -21,12 +21,50 @@ const Aggiungi = ({descrizione, lunghezza, colore, img}) =>{
         }
     }
 
-    return(
-        <div style={styles.container}>
-            <img src={img} />
-            <p style={styles.paragrafo}>{descrizione}</p>
-        </div>
-    );
+    const [num, setNum] = useState(1)
+    const [Descrizione, setDescrizione] = useState(descrizione)
+
+    const action = () =>{
+        if(link == "aggiungiAnimale")
+        {
+            console.log("aggiungi Animale")
+        }
+        else if(link == "aggiungiPromemoria")
+        {
+            console.log("aggiungi Promemoria")
+        }
+        else if(link == "eliminaAnimale")
+        {
+            console.log("Elimina animale")
+            if(num%2==1)
+            {
+                callback(true)
+                setDescrizione("Torna Indietro")
+            }
+            else
+            {
+                callback(false)
+                setDescrizione("Elimina Animale")
+            }
+            setNum(v=> v+1)
+        }
+    }
+
+    if (img) {
+        return (
+            <div style={styles.container} onClick={action}>
+                <img src={img} />
+                <p style={styles.paragrafo}>{Descrizione}</p>
+            </div>
+        )
+      } else 
+      {
+        return (
+            <div style={styles.container} onClick={action}>
+                <p style={styles.paragrafo}>{Descrizione}</p>
+            </div>
+        )
+      }
 }
 
 export default Aggiungi; 

@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Title from "../components/Title";
 import MapWidget from "../components/MapWidget";
 import PreferitiWidget from "../components/PreferitiWidget";
 import AnimalsWidget from "../components/AnimalsWidget";
 import PromemoriaWidget from "../components/PromemoriaWidget";
+import Aggiungi from '../components/Aggiungi';
+import ImmagineAdd from '../media/add.svg'
+import ImmagineRemove from "../media/remove.svg"
 
 const HomePage = () => {
+  const [controllo, setControllo] = useState(false)
+  const controlloValore = (valore) =>{
+    setControllo(valore)
+  }
   return (
     <div>
       <div style={styles.mainContainer}>
@@ -15,7 +22,11 @@ const HomePage = () => {
         </div>
         <div style={styles.centerContainer}>
           <h1>I tuoi animali</h1>
-          <AnimalsWidget />
+          <AnimalsWidget remove={controllo}/>
+          <div style={styles.divButton}>
+            <Aggiungi descrizione={"aggiungi animale"} lunghezza={45} colore={"green"} link={"aggiungiAnimale"}/>
+            <Aggiungi descrizione={"Elimina Animale"} lunghezza={45} colore={"red"} link={"eliminaAnimale"} callback={controlloValore}/>
+          </div>
         </div>
         <div style={styles.rightContainer}>
           <PromemoriaWidget />
@@ -44,6 +55,13 @@ const styles = {
     flexDirection: "column",
     gap: "2rem",
     padding: "1rem"
+  },
+  divButton: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-around",
+    width: "100%",
+    flexDirection: "row"
   },
   rightContainer: {
     width: "30%",
