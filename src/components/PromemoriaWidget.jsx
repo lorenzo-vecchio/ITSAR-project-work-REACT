@@ -1,6 +1,6 @@
 import React from 'react';
 import BoxPromemoria from './BoxPromemoria';
-import Aggiungi from './Aggiungi';
+import {AggiungiPromemoria} from './Aggiungi';
 import ImmagineAggiungi from "../media/add.svg"
 import ImmagineRemove from "../media/remove.svg"
 
@@ -11,7 +11,7 @@ const PromemoriaWidget = () => {
             <BoxPromemoria title={"veterinaio"} descrizione={"devo portare il mio cane dal veterinaio"} data={"14/06/2023"} animale={"Fido"} ora={"8:30"} img={ImmagineRemove} aImg={10} lImg={10}/>
             <BoxPromemoria title={"veterinaio"} descrizione={"devo portare il mio cane dal veterinaio"} data={"14/06/2023"} animale={"Fido"} ora={"8:30"} img={ImmagineRemove} aImg={10} lImg={10}/>
             <BoxPromemoria title={"veterinaio"} descrizione={"devo portare il mio cane dal veterinaio"} data={"14/06/2023"} animale={"Fido"} ora={"8:30"} img={ImmagineRemove} aImg={10} lImg={10}/>
-            <Aggiungi descrizione={"aggiungi promemoria"} lunghezza={"80"} colore={"green"} img={ImmagineAggiungi} link={"aggiungiPromemoria"}/>
+            <AggiungiPromemoria descrizione={"aggiungi promemoria"} lunghezza={"80"} colore={"green"} img={ImmagineAggiungi}/>
         </div>
     );
 }
