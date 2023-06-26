@@ -111,8 +111,8 @@ const AddAnimalForm = () => {
                 </div>
 
                 <div className="buttonsBottomForm">
-                    <ButtonReset text="Aggiungi" />
-                    <ButtonSubmit text="Annulla" />
+                    <ButtonReset text="Anulla" />
+                    <ButtonSubmit text="Aggiungi" />
                 </div>
 
         </form>
