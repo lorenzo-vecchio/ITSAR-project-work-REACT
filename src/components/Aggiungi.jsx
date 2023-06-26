@@ -31,7 +31,7 @@ export const AggiungiAnimale = ({descrizione, lunghezza, colore, img}) =>{
         return (
             <div style={styles.container}>
                 <img src={img} />
-                <NavLink style={styles.removeLinkDefault} to={"aggiungi"}>
+                <NavLink style={styles.removeLinkDefault} to={"aggiungi/animale"}>
                     <p style={styles.paragrafo}>{descrizione}</p>
                 </NavLink>
             </div>
@@ -41,7 +41,7 @@ export const AggiungiAnimale = ({descrizione, lunghezza, colore, img}) =>{
     {
         return (
             <div style={styles.container}>
-                <NavLink style={styles.removeLinkDefault} to={"aggiungi"}>
+                <NavLink style={styles.removeLinkDefault} to={"aggiungi/animale"}>
                     <p style={styles.paragrafo}>{descrizione}</p>
                 </NavLink>
             </div>
@@ -79,7 +79,7 @@ export const AggiungiPromemoria = ({descrizione, lunghezza, colore, img}) =>{
         return (
             <div style={styles.container}>
                 <img src={img} />
-                <NavLink style={styles.removeLinkDefault} to={"aggiungi"}>
+                <NavLink style={styles.removeLinkDefault} to={"aggiungi/promemoria"}>
                     <p style={styles.paragrafo}>{descrizione}</p>
                 </NavLink>
             </div>
@@ -89,7 +89,7 @@ export const AggiungiPromemoria = ({descrizione, lunghezza, colore, img}) =>{
     {
         return (
             <div style={styles.container}>
-                <NavLink style={styles.removeLinkDefault} to={"aggiungi"}>
+                <NavLink style={styles.removeLinkDefault} to={"aggiungi/promemoria"}>
                     <p style={styles.paragrafo}>{descrizione}</p>
                 </NavLink>
             </div>
