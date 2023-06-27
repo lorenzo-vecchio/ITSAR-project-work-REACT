@@ -28,21 +28,9 @@ export default function App() {
   return (
     <div className="App">
       <Background />
-<<<<<<< HEAD
-      {/*
-        loggedIn ? <HomePage /> : <LoginPage />
-<<<<<<< HEAD
-  */}
-    <AddAnimalPage />
-=======
-        
-      }
->>>>>>> master
-=======
       {
         loggedIn ? <HomePage /> : <UserPage />
       }
->>>>>>> b2aca668513959c87b48dd0b0eded9f7102fb456
     </div>
   );
 }
