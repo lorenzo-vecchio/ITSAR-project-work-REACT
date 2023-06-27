@@ -7,7 +7,8 @@ import MenuWidget from "../components/MenuWidget";
 import "../css/UserPage.css";
 import { TextField } from "../components/TextFieldWidget";
 import { ButtonSubmit, ButtonReset } from '../components/Button';
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from '../contexts/AuthContext';
 import "../css/ButtonWidget.css";
 
 /*
@@ -70,6 +71,7 @@ const UserPage = () => {
 */
 
 const UserPage = () => {
+    const { logout } = useContext(AuthContext);
 
     const [editable, setEditable] = useState(false);
     
@@ -84,6 +86,16 @@ const UserPage = () => {
         {name: "Password", value: "********", label: "Password"}
     ]
 
+    function handleLogoutClick() {
+        const requestOptions = {
+            method: 'POST',
+            credentials: "include"
+        };
+        fetch("https://itsar-project-work-api.vercel.app/logout", requestOptions).then(() => {
+            logout();
+        })
+    }
+
     return (
         <div className="body">
             <Title title="Il tuo account" />
@@ -95,8 +107,10 @@ const UserPage = () => {
             
             <TextField fields={fields} onButtonClick={handleButtonClick} editable={editable}/>
 
-                <div className="bottone">
-                    <BottoneWidget class="fixed-button" testo={"Logout"}/>
+                <div className="bottoneContainer">
+                    <div className="bottone">
+                        <BottoneWidget class="fixed-button" testo={"Logout"} onClick={handleLogoutClick}/>
+                    </div>
                 </div>
               
 
