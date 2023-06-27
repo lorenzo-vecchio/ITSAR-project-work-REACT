@@ -55,6 +55,8 @@ const PromemoriaForm = () => {
             if(a.name === n)
             {
                 arrayId.push(a.id)
+                const array = Array.from(new Set(arrayId))
+                setArrayId(array)
             }
         })
     }
@@ -65,7 +67,6 @@ const PromemoriaForm = () => {
             const nome = e.target.value
             console.log(nome)
             aggiungiArray(nome)
-            ciao()
         }
     }
 
@@ -78,8 +79,6 @@ const PromemoriaForm = () => {
     }
 
     const handleSubmit = (e) => {
-        const array = Array.from(new Set(arrayId))
-        setArrayId(array)
         e.preventDefault();
         const json = {titolo, descrizione, data, orario, arrayId}
         setFormData(json)
@@ -89,25 +88,6 @@ const PromemoriaForm = () => {
     useEffect(()=>{
         console.log(formData)
     },[formData])
-
-    const ciao = () =>{
-        const risultati = arrayID.map(id => {
-            const oggettoCorrispondente = animali.find(obj => obj.id === id);
-          
-            // Verifica se l'ID è già stato inserito
-            if (risultati.find(result => result && result.id === id)) {
-              return null; // Ignora l'elemento duplicato
-            }
-          
-            // Restituisci il nuovo oggetto con l'ID e il nome corrispondente
-            return {
-              id: id,
-              nome: oggettoCorrispondente ? oggettoCorrispondente.nome : 'Oggetto non trovato'
-            }
-          }).filter(result => result !== null)
-
-          console.log(risultati)
-    }
 
     return(
         
@@ -134,13 +114,6 @@ const PromemoriaForm = () => {
                     }
                 </select>
                 <div></div>
-                <div id = "divAnimali">
-                    <p id="divContenuto">
-                        <img className='img' src={Remove} width={12} height={12}/>
-                    </p>
-                </div>
-                <div></div>
-
                 <div className="buttonsBottomForm">
                     <ButtonReset text="Anulla" />
                     <ButtonSubmit text="Crea" />
