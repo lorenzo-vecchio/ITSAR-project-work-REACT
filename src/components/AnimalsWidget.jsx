@@ -15,6 +15,29 @@ const AnimalsWidget = ({remove}) => {
             setAnimals(result);
         })
     }, [])
+
+    const calculateTimePassed = (date) => {
+        const birthDate = new Date(date);
+        const currentDate = new Date();
+    
+        const timeDifference = currentDate.getTime() - birthDate.getTime();
+    
+        // Convert time difference to years, months, and days
+        const yearsPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365));
+        const monthsPassed = Math.floor((timeDifference / (1000 * 60 * 60 * 24)) % 12);
+    
+        let result = '';
+    
+        if (yearsPassed > 0) {
+          result += `${yearsPassed} ${yearsPassed === 1 ? 'year' : 'years'}`;
+        }
+        if (monthsPassed > 0) {
+          result += `${result ? ', ' : ''}${monthsPassed} ${monthsPassed === 1 ? 'month' : 'months'}`;
+        }
+    
+        return result;
+      };
+    
     
     return (
         <div style={styles.container}>
@@ -25,7 +48,7 @@ const AnimalsWidget = ({remove}) => {
                             <img src={DogImage} alt="" style={styles.image} />
                             <div style={styles.text}>
                                 <h2 style={styles.h2}>{item.nome_animale}</h2>
-                                <p style={styles.p}>{item.data_di_nascita}</p>
+                                <p style={styles.p}>{calculateTimePassed(item.data_di_nascita)}</p>
                             </div>
                             {remove? <img src={ImmagineRemove} style={styles.remove} width={15} height={15}/>: null}
                         </div>
