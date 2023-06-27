@@ -36,6 +36,8 @@ const PromemoriaWidget = () => {
 const styles = {
     container: {
         backgroundColor: "rgb(0, 0, 0, 0.75)",
+        backdropFilter: "blur(5px)",
+        WebkitBackdropFilter: "blur(5px)",
         borderRadius: "25px",
         color: "white",
         display: "flex",

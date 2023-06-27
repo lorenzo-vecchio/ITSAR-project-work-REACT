@@ -51,7 +51,9 @@ const styles = {
         backgroundColor: "rgb(0, 0, 0, 0.75)",
         borderRadius: "20px",
         gap: "0.5rem",
-        position: "relative"
+        position: "relative",
+        backdropFilter: "blur(5px)",
+        WebkitBackdropFilter: "blur(5px)"
     },
     image: {
         height: "5rem",

@@ -39,6 +39,8 @@ const styles = {
     container: {
         width: "100%",
         backgroundColor: "rgb(0, 0, 0, 0.75)",
+        backdropFilter: "blur(5px)",
+        WebkitBackdropFilter: "blur(5px)",
         display: "flex",
         flexDirection: "column",
         color: "white",
