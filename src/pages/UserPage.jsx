@@ -101,7 +101,6 @@ const UserPage = () => {
 
             <div className="footerContainer">
                 <div className="footer">
-                    <MenuWidget />
                     <button onClick={handleButtonClick} className="buttonForm" id="buttonAnnulla">
                         {editable ? "Save" : "Edit"}
                     </button>
