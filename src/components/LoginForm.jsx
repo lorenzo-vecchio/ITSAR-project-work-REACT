@@ -173,7 +173,7 @@ const styles = {
     flexDirection: "row",
     justifyContent: "center",
     gap: "10px",
-    padding: "50px"
+    padding: "50px 0"
   },
   buttons: {
     border: "0",
