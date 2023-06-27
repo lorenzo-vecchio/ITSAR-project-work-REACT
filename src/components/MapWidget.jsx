@@ -7,11 +7,11 @@ const MapWidget = (props) => {
   const [detInfoId, setDetInfoId] = useState();
   const [postoSelezionato, setPostoSelezionato] = useState()
   let luoghi;
-
+  let map;
   useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoibG9yZW56by12ZWNjaGlvIiwiYSI6ImNsaTNhb2hmMjB6OXIzcG80c3JpdXd3OWUifQ.6rCrnnxEwWoyKx7PLYqt6Q";
-    var map = new mapboxgl.Map({
+    map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [12.496366, 41.902782], // long - lat
@@ -61,6 +61,15 @@ const MapWidget = (props) => {
   function markerClickHandler(luogo) {
     setDisplayDetInfo(true)
     setPostoSelezionato(luogo)
+    // for mapbox to center on selected point
+    var targetCoordinates = [luogo.longitudine, luogo.latitudine];
+    var options = {
+      center: targetCoordinates,
+      zoom: 15,
+      bearing: 0,
+      pitch: 0
+    };
+    map.flyTo(options);
   }
   function detailCloseClickHandler() {
     setDisplayDetInfo(false)
