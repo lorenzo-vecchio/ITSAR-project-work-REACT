@@ -55,7 +55,6 @@ const PromemoriaForm = () => {
             if(a.name === n)
             {
                 arrayId.push(a.id)
-                console.log(arrayId)
             }
         })
     }
@@ -66,7 +65,16 @@ const PromemoriaForm = () => {
             const nome = e.target.value
             console.log(nome)
             aggiungiArray(nome)
+            ciao()
         }
+    }
+
+    const reset = () =>{
+        setTitolo("")
+        setDescrizione("")
+        setData("")
+        setOrario("")
+        setArrayId([])
     }
 
     const handleSubmit = (e) => {
@@ -75,26 +83,46 @@ const PromemoriaForm = () => {
         e.preventDefault();
         const json = {titolo, descrizione, data, orario, arrayId}
         setFormData(json)
+        reset()
     };
 
     useEffect(()=>{
         console.log(formData)
     },[formData])
 
+    const ciao = () =>{
+        const risultati = arrayID.map(id => {
+            const oggettoCorrispondente = animali.find(obj => obj.id === id);
+          
+            // Verifica se l'ID è già stato inserito
+            if (risultati.find(result => result && result.id === id)) {
+              return null; // Ignora l'elemento duplicato
+            }
+          
+            // Restituisci il nuovo oggetto con l'ID e il nome corrispondente
+            return {
+              id: id,
+              nome: oggettoCorrispondente ? oggettoCorrispondente.nome : 'Oggetto non trovato'
+            }
+          }).filter(result => result !== null)
+
+          console.log(risultati)
+    }
+
     return(
         
         <form className="style" onSubmit={handleSubmit}>
                 <label className="label">Titolo: </label>
-                <input type="text" className="input" name="titolo" onChange={onModificaTitolo} required/> 
+                <input type="text" className="input" name="titolo" value={titolo} onChange={onModificaTitolo} required/> 
 
                 <label className="label">Descrizione: </label>   
-                <input type="text" name="descrizione" className="input"  onChange={onModificaDescrizione} />
+                <input type="text" name="descrizione" className="input" value={descrizione}  onChange={onModificaDescrizione} />
 
                 <label className="label">Data: </label>
-                <input type="date" min={today} name="data" className="inputDate" onChange={onModificaData} required />
+                <input type="date" min={today} name="data" className="inputDate" value={data}  onChange={onModificaData} required />
 
                 <label className="label">Orario: </label>
-                <input type="time" min={currentTime} name="orario" className="inputDate" onChange={onModificaOrario} required />
+                <input type="time" min={currentTime} name="orario" className="inputDate"value={orario}  onChange={onModificaOrario} required />
 
                 <label className="label">Animale: </label>
                 <select id="select" onChange={onAggiungiAnimale}>
@@ -107,15 +135,7 @@ const PromemoriaForm = () => {
                 </select>
                 <div></div>
                 <div id = "divAnimali">
-                    {
-                        arrayId.map((id)=>{
-                            animali.map(()=>{
-
-                            })
-                        })
-                    }
                     <p id="divContenuto">
-                        Animale 1
                         <img className='img' src={Remove} width={12} height={12}/>
                     </p>
                 </div>
