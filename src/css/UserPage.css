@@ -1,7 +1,9 @@
 .bottone {
     margin-top: 7rem;
-    position: fixed center;
+}
 
+.body{
+    position: relative;
 }
 
 .testo {
@@ -49,5 +51,5 @@
 }
 
 .bottoneContainer{
-    position: fixed;
+    position: absolute;
 }
