@@ -55,7 +55,6 @@ const PromemoriaForm = () => {
             if(a.name === n)
             {
                 arrayId.push(a.id)
-                console.log(arrayId)
             }
         })
     }
@@ -66,6 +65,7 @@ const PromemoriaForm = () => {
             const nome = e.target.value
             console.log(nome)
             aggiungiArray(nome)
+            ciao()
         }
     }
 
@@ -89,6 +89,25 @@ const PromemoriaForm = () => {
     useEffect(()=>{
         console.log(formData)
     },[formData])
+
+    const ciao = () =>{
+        const risultati = arrayID.map(id => {
+            const oggettoCorrispondente = animali.find(obj => obj.id === id);
+          
+            // Verifica se l'ID è già stato inserito
+            if (risultati.find(result => result && result.id === id)) {
+              return null; // Ignora l'elemento duplicato
+            }
+          
+            // Restituisci il nuovo oggetto con l'ID e il nome corrispondente
+            return {
+              id: id,
+              nome: oggettoCorrispondente ? oggettoCorrispondente.nome : 'Oggetto non trovato'
+            }
+          }).filter(result => result !== null)
+
+          console.log(risultati)
+    }
 
     return(
         
@@ -117,7 +136,6 @@ const PromemoriaForm = () => {
                 <div></div>
                 <div id = "divAnimali">
                     <p id="divContenuto">
-                        Animale 1
                         <img className='img' src={Remove} width={12} height={12}/>
                     </p>
                 </div>
