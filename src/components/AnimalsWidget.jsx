@@ -25,6 +25,7 @@ const AnimalsWidget = ({remove}) => {
         // Convert time difference to years, months, and days
         const yearsPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365));
         const monthsPassed = Math.floor((timeDifference / (1000 * 60 * 60 * 24)) % 12);
+        const daysPassed = Math.floor((timeDifference / (1000 * 60 * 60 * 24)) % 30);
     
         let result = '';
     
@@ -34,7 +35,9 @@ const AnimalsWidget = ({remove}) => {
         if (monthsPassed > 0) {
           result += `${result ? ', ' : ''}${monthsPassed} ${monthsPassed === 1 ? 'month' : 'months'}`;
         }
-    
+        if (monthsPassed <= 0) {
+            result += `${result ? ', ' : ''}${daysPassed} ${daysPassed === 1 ? 'day' : 'days'}`;
+        }
         return result;
       };
     
@@ -43,6 +46,7 @@ const AnimalsWidget = ({remove}) => {
         <div style={styles.container}>
             {
                 animals?.map((item) => {
+                    console.log(item.nome_animale)
                     return (
                         <div style={styles.item} key={item.id}>
                             <img src={DogImage} alt="" style={styles.image} />
