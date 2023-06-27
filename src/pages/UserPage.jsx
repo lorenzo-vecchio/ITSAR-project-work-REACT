@@ -109,7 +109,7 @@ const UserPage = () => {
 
                 <div className="bottoneContainer">
                     <div className="bottone">
-                        <BottoneWidget class="fixed-button" testo={"Logout"}/>
+                        <BottoneWidget class="fixed-button" testo={"Logout"} onClick={handleLogoutClick}/>
                     </div>
                 </div>
               
