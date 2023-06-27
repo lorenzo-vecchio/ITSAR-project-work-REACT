@@ -21,21 +21,27 @@ export function TextField({
         };
 
         return (    
-            <div className="testo">
-                {fields.map((field) => (
-                    <div key={field.name}>
-                        <span className="informazoni">{field.label}: </span>
-                        {editable ? (
-                        <input className="input"
-                        type="text"
-                        value={fieldValues[field.name]}
-                        onChange={handleFieldChange(field.name)}
-                        />
-                        ) : (
-                        <span>{fieldValues[field.name]}</span>
-                        )}
-                    </div>
-                ))}
+            <div className="centerRow">
+                <div className="testo">
+                    {fields.map((field) => (
+                        <div key={field.name} className="row">
+                            <div>
+                                <span className="informazoni">{field.label}: </span>
+                            </div>
+                            <div>
+                                {editable ? (
+                                <input className="input"
+                                type="text"
+                                value={fieldValues[field.name]}
+                                onChange={handleFieldChange(field.name)}
+                                />
+                                ) : (
+                                <span>{fieldValues[field.name]}</span>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         );
     }
