@@ -22,7 +22,8 @@ export default function App() {
     <div className="App">
       <Background />
       {
-        loggedIn ? <HomePage /> : <LoginPage />
+        //loggedIn ? <HomePage /> : <LoginPage />
+        <UserPage />
       }
     </div>
   );
