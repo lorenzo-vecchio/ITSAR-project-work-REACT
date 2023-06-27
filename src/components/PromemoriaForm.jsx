@@ -55,6 +55,8 @@ const PromemoriaForm = () => {
             if(a.name === n)
             {
                 arrayId.push(a.id)
+                const array = Array.from(new Set(arrayId))
+                setArrayId(array)
             }
         })
     }
@@ -77,8 +79,6 @@ const PromemoriaForm = () => {
     }
 
     const handleSubmit = (e) => {
-        const array = Array.from(new Set(arrayId))
-        setArrayId(array)
         e.preventDefault();
         const json = {titolo, descrizione, data, orario, arrayId}
         setFormData(json)
@@ -114,13 +114,6 @@ const PromemoriaForm = () => {
                     }
                 </select>
                 <div></div>
-                <div id = "divAnimali">
-                    <p id="divContenuto">
-                        <img className='img' src={Remove} width={12} height={12}/>
-                    </p>
-                </div>
-                <div></div>
-
                 <div className="buttonsBottomForm">
                     <ButtonReset text="Anulla" />
                     <ButtonSubmit text="Crea" />
