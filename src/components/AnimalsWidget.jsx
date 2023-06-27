@@ -66,6 +66,8 @@ const AnimalsWidget = ({remove}) => {
 const styles = {
     container: {
         width: "100%",
+        height: "20rem",
+        overflowY: "scroll",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

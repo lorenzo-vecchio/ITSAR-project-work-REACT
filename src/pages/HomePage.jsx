@@ -48,14 +48,14 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gap: "2rem",
-    padding: "1rem",
+    padding: "0.5rem",
   },
   centerContainer: {
     width: "50%",
     display: "flex",
     flexDirection: "column",
     gap: "2rem",
-    padding: "1rem"
+    padding: "1rem",
   },
   divButton: {
     display: "flex",
