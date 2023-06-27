@@ -1,42 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import { ButtonSubmit, ButtonReset } from './Button';
 import Remove from "../media/remove.svg"
+import "../css/AddPromemoriaForm.css"
 //import Input from "@mui/material/Input";
 //import InputAdornment from "@mui/material/InputAdornment"; //to install it, write the command: npm install @mui/material @emotion/react; npm install @emotion/styled @mui/lab @mui/icons-material
 
 const PromemoriaForm = () => {
-    const buttonSend = document.getElementById('buttonAggiungi');
-    const [checkbox1Checked, setCheckbox1Checked] = useState(false);
-    const [checkbox2Checked, setCheckbox2Checked] = useState(false);
-    const [isHover, setIsHover] = useState(false);
-
+    
     const [animali, setAnimali] = useState([
         {id: "1", name:"Fido"},
         {id: "2", name:"Pippo"},
         {id: "3", name:"Siiumm"},
     ])
 
-    const [formData, setFormData] = useState({
-        Titolo: '',
-        Descrizione: '',
-        Data: '',
-        Orario: '',
-        arrayId: [""]
-      });
-
-    const handleMouseEnter = () => {
-        setIsHover(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsHover(false);
-    }
-
+    const [formData, setFormData] = useState({})
     const [today, setToday] = useState("");
     const [currentTime, setCurrentTime] = useState("");
-    const [titolo, setTitolo] = useState("")
-    const [descrizione, setDescrizione] = useState("")
-    const [animale, setAnimale] = useState([""])
 
     useEffect(() => {
         const currentDate = new Date().toISOString().split("T")[0];
@@ -45,139 +24,105 @@ const PromemoriaForm = () => {
         setCurrentTime(currentTime);
     }, []);
 
+    const [titolo, setTitolo] = useState("")
+    const [descrizione, setDescrizione] = useState("")
+    const [data, setData] = useState("")
+    const [orario, setOrario] = useState("")
+    const [arrayId, setArrayId] = useState([])
 
-    const handleChange = (e) => {
-        /*if(e.target.name === "titolo")
-        {
-            setTitolo(e.target.value)
-        }
-        else if(e.target.name === "descrizione")
-        {
-            setDescrizione(e.target.value)
-        }
-        else if(e.target.name === "animale")
-        {
-            setAnimale(e.target.value)
-            const trovaId = animali.findIndex((a)=> a.name===animale)
-            const nuovoArray = [...nuovoArray, trovaId]
-        }
-        setFormData({
-            titolo,
-            descrizione,
-            today,
-            currentTime,
-            nuovoArray
-        })*/
+    const onModificaTitolo = (e) =>{
+        const valore = e.target.value
+        setTitolo(valore)
+    }
 
-        setTitolo(e.target.value)
-    };
-
-    const handleChange2 = (e) =>{
+    const onModificaDescrizione = (e) =>{
         const valore = e.target.value
         setDescrizione(valore)
     }
 
-    const handleChange3 = (e) =>{
-        const trovaId = animali.findIndex((a)=> a.name===e.target.value)
-        const nuovoArray = [...nuovoArray, trovaId]
-        setAnimale(nuovoArray)
+    const onModificaData = (e) =>{
+        const valore = e.target.value
+        setData(valore)
+    }
+
+    const onModificaOrario = (e) =>{
+        const valore = e.target.value
+        setOrario(valore)
+    }
+
+    const aggiungiArray = (n) =>{
+        animali.map((a)=>{
+            if(a.name === n)
+            {
+                arrayId.push(a.id)
+                console.log(arrayId)
+            }
+        })
+    }
+
+    const onAggiungiAnimale = (e) =>{
+        if(e.target.value !== "null")
+        {
+            const nome = e.target.value
+            console.log(nome)
+            aggiungiArray(nome)
+        }
     }
 
     const handleSubmit = (e) => {
+        const array = arrayId
+        setArrayId(Array.from(new Set(array)))
         e.preventDefault();
-        setFormData({
-            titolo,
-            descrizione,
-            today,
-            currentTime,
-            animale
-        })
-        convertiJSON()
-        };
+        const json = {titolo, descrizione, data, orario, arrayId}
+        setFormData(json)
+    };
 
-    const convertiJSON = () =>{
-        const jsonData = JSON.stringify(formData);
-        console.log(jsonData);
-    }
-      
+    useEffect(()=>{
+        console.log(formData)
+    },[formData])
+
     return(
         
         <form className="style" onSubmit={handleSubmit}>
                 <label className="label">Titolo: </label>
-                <input type="text" className="input" name="titolo" onChange={handleChange} required/> 
+                <input type="text" className="input" name="titolo" onChange={onModificaTitolo} required/> 
+
                 <label className="label">Descrizione: </label>   
-                <input type="text" name="descrizione" className="input" onChange={handleChange2} />
+                <input type="text" name="descrizione" className="input"  onChange={onModificaDescrizione} />
 
                 <label className="label">Data: </label>
-                <input type="date" min={today} name="data" className="inputDate"/>
+                <input type="date" min={today} name="data" className="inputDate" onChange={onModificaData} required />
 
                 <label className="label">Orario: </label>
-                <input type="time" min={currentTime} name="orario" className="inputDate"/>
+                <input type="time" min={currentTime} name="orario" className="inputDate" onChange={onModificaOrario} required />
 
                 <label className="label">Animale: </label>
-                <input type="text" list="animali" name="animale" className="input" onChange={handleChange3}/>
-                <datalist id="animali">
+                <select id="select" onChange={onAggiungiAnimale}>
+                    <option value="null">Seleziona Animale</option>
                     {
                         animali.map((animale)=>(
                             <option key={animale.id} value={animale.name}>{animale.name}</option>
                         ))
                     }
-                </datalist>
+                </select>
                 <div></div>
-                <div style={styles.divAnimali}>
-                    <p style={styles.divContenuto}>
+                <div id = "divAnimali">
+                    <p id="divContenuto">
                         Animale 1
-                        <img style={styles.img} src={Remove} width={12} height={12}/>
-                    </p>
-                    <p style={styles.divContenuto}>
-                        Animale 2
-                        <img style={styles.img} src={Remove} width={12} height={12}/>
-                    </p>
-                    <p style={styles.divContenuto}>
-                        Animale 3
-                        <img style={styles.img} src={Remove} width={12} height={12}/>
+                        <img src={Remove} width={12} height={12}/>
                     </p>
                 </div>
                 <div></div>
 
                 <div className="buttonsBottomForm">
                     <ButtonReset text="Anulla" />
-                    <ButtonSubmit text="Aggiungi" />
+                    <ButtonSubmit text="Crea" />
                 </div>
 
         </form>
 
 
     );
-}
-
-const styles  = {
-    divAnimali:{
-        backgroundColor: "white",
-        borderWidth: "1",
-        borderStyle: "solid",
-        borderColor: "black",
-        padding: 10,
-        borderRadius: 20,
-        display: "flex",
-        justifyContent: "flex-start",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        maxWidth: "77%",
-    },
-    divContenuto:{
-        backgroundColor: "green",
-        borderRadius: 10,
-        maxWidth: "50%",
-        padding: 5,
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "row",
-        margin: 5
-    },
-    img:{
-        paddingLeft: 10
-    }
 }
 
 export default PromemoriaForm;
