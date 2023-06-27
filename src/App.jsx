@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { AuthContext } from './contexts/AuthContext';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles.css";
 import Background from "./components/Background";
 import LoginPage from "./pages/LoginPage";
@@ -7,6 +8,9 @@ import HomePage from "./pages/HomePage";
 import MapPage from "./pages/MapPage";
 import AddAnimalPage from "./pages/AddAnimalPage";
 import UserPage from "./pages/UserPage";
+import NoPage from './pages/NoPage';
+import MenuWidget from './components/MenuWidget';
+import AddPromemoriaPage from './pages/AddPromemoriaPage';
 
 export default function App() {
   const { loggedIn, login } = useContext(AuthContext);
@@ -19,12 +23,21 @@ export default function App() {
     }
   })
   return (
-    <div className="App">
-      <Background />
-      {
-        //loggedIn ? <HomePage /> : <LoginPage />
-        <UserPage />
-      }
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Background />
+        {
+          loggedIn ? <MenuWidget /> : null
+        }
+        <Routes>
+          <Route path="/" element={loggedIn ? <HomePage /> : <LoginPage />} />
+          <Route path="mappa" element={loggedIn ? <MapPage /> : <LoginPage />} />
+          <Route path="account" element={loggedIn ? <UserPage /> : <LoginPage />} />
+          <Route path="aggiungi/animale" element={loggedIn ? <AddAnimalPage /> : <LoginPage />}/>
+          <Route path="aggiungi/promemoria" element={loggedIn ? <AddPromemoriaPage /> : <LoginPage />}/>
+          <Route path="*" element={<NoPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }

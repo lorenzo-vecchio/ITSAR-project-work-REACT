@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import DogImage from '../placeholders/dog.jpg'
+import ImmagineRemove from '../media/remove.svg'
 
-const AnimalsWidget = () => {
+const AnimalsWidget = ({remove}) => {
     const [animals, setAnimals] = useState();
     const requestOptions = {
         credentials: 'include',
     }
     useEffect(() => {
-        fetch("http://127.0.0.1:5000/animals", requestOptions)
+        fetch("https://itsar-project-work-api.vercel.app/animals", requestOptions)
         .then(res => res.json())
         .then(
         (result) => {
@@ -20,12 +21,13 @@ const AnimalsWidget = () => {
             {
                 animals?.map((item) => {
                     return (
-                        <div style={styles.item}>
+                        <div style={styles.item} key={item.id}>
                             <img src={DogImage} alt="" style={styles.image} />
                             <div style={styles.text}>
-                                <h2 style={styles.h2}>{item.nomeAnimale}</h2>
+                                <h2 style={styles.h2}>{item.nome_animale}</h2>
                                 <p style={styles.p}>{item.data_di_nascita}</p>
                             </div>
+                            {remove? <img src={ImmagineRemove} style={styles.remove} width={15} height={15}/>: null}
                         </div>
                     )
                 })
@@ -48,7 +50,10 @@ const styles = {
         padding: "0.5rem",
         backgroundColor: "rgb(0, 0, 0, 0.75)",
         borderRadius: "20px",
-        gap: "0.5rem"
+        gap: "0.5rem",
+        position: "relative",
+        backdropFilter: "blur(5px)",
+        WebkitBackdropFilter: "blur(5px)"
     },
     image: {
         height: "5rem",
@@ -69,6 +74,11 @@ const styles = {
     p: {
         margin: 0,
         color: "rgb(158, 158, 158)",
+    },
+    remove: {
+        position: "absolute",
+        top: "10px",
+        right: "10px"
     }
 }
 

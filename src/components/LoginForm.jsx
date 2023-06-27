@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 
@@ -7,6 +7,9 @@ const LoginForm = () => {
   const [showSignUpForm, setShowSignUpForm] = useState(false);
   const [usernameInput, setUsernameInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
+  const [secondPasswordInput, setSecondPasswordInput] = useState('');
+  const [emailInput, setEmailInput] = useState('');
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
   const { login } = useContext(AuthContext);
 
   
@@ -16,6 +19,20 @@ const LoginForm = () => {
   const handlePasswordInput = (event) => {
     setPasswordInput(event.target.value);
   }
+  const handleSecondPasswordInput = (event) => {
+    setSecondPasswordInput(event.target.value);
+  }
+  const handleEmailInput = (event) => {
+    setEmailInput(event.target.value);
+  }
+
+  useEffect(() => {
+    if (passwordInput !== secondPasswordInput) {
+      setPasswordsMatch(false);
+    } else {
+      setPasswordsMatch(true);
+    }
+  }, [secondPasswordInput]);
 
   const handleSignUpClick = () => {
     if (!showSignUpForm) {
@@ -23,6 +40,25 @@ const LoginForm = () => {
     }
     if (showSignUpForm) {
       // funzione di sign-up
+      if (passwordsMatch) {
+        // funzione di login
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: usernameInput,
+            password: passwordInput,
+            mail: emailInput
+          }),
+          credentials: "include"
+        };
+        fetch("https://itsar-project-work-api.vercel.app/register", requestOptions)
+        .then((response) => {
+          if (response.status === 200) {
+            login();
+          }
+        });
+      }
     }
   };
   const handleLogInClick = () => {
@@ -72,11 +108,14 @@ const LoginForm = () => {
               <label htmlFor="secondPassword" style={styles.label}>
                 Repeat Password
               </label>
-              <input type="password" id="secondPassword" style={styles.input} />
+              {
+                passwordsMatch ? null : <p style={styles.passwordsMatch}>The passwords don't match</p>
+              }
+              <input type="password" id="secondPassword" style={styles.input} onChange={handleSecondPasswordInput} />
               <label htmlFor="email" style={styles.label}>
                 Email
               </label>
-              <input type="email" id="email" style={styles.input} />
+              <input type="email" id="email" style={styles.input} onChange={handleEmailInput}/>
             </>
           )}
         </div>
@@ -144,6 +183,11 @@ const styles = {
     borderRadius: "100px",
     fontWeight: "bold",
     fontSize: "1.01rem"
+  },
+  passwordsMatch: {
+    fontSize: '0.8rem',
+    color: 'red',
+    margin: 0,
   }
 };
 

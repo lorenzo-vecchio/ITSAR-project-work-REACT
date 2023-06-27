@@ -12,6 +12,18 @@ import "../css/ButtonWidget.css";
 
 /*
 const UserPage = () => {
+    const { logout } = useContext(AuthContext);
+
+    function handleLogoutClick() {
+        const requestOptions = {
+            method: 'POST',
+            credentials: "include"
+        };
+        fetch("https://itsar-project-work-api.vercel.app/logout", requestOptions).then(() => {
+            logout();
+        })
+    }
+
     return (
         <div>
             <Title title="Il tuo account" />
