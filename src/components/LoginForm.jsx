@@ -115,7 +115,7 @@ const LoginForm = () => {
               <label htmlFor="email" style={styles.label}>
                 Email
               </label>
-              <input type="email" id="email" style={styles.input} />
+              <input type="email" id="email" style={styles.input} onChange={handleEmailInput}/>
             </>
           )}
         </div>
