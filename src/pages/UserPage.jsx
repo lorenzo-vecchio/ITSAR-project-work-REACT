@@ -97,7 +97,7 @@ const UserPage = () => {
     }
 
     return (
-        <div>
+        <div className="body">
             <Title title="Il tuo account" />
             <div className="imgProfilo-container">
                 <div className="imgProfilo">
@@ -107,16 +107,17 @@ const UserPage = () => {
             
             <TextField fields={fields} onButtonClick={handleButtonClick} editable={editable}/>
 
-                <div className="bottone">
-                    <BottoneWidget testo={"Logout"} onClick={handleLogoutClick} />
+                <div className="bottoneContainer">
+                    <div className="bottone">
+                        <BottoneWidget class="fixed-button" testo={"Logout"}/>
+                    </div>
                 </div>
+              
 
             <div className="footerContainer">
-                <div className="footer">
                     <button onClick={handleButtonClick} className="buttonForm" id="buttonAnnulla">
                         {editable ? "Save" : "Edit"}
                     </button>
-                </div>
             </div>
         </div>
     );
