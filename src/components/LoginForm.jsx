@@ -10,6 +10,7 @@ const LoginForm = () => {
   const [secondPasswordInput, setSecondPasswordInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { login } = useContext(AuthContext);
 
   
@@ -41,6 +42,7 @@ const LoginForm = () => {
     if (showSignUpForm) {
       // funzione di sign-up
       if (passwordsMatch) {
+        setLoading(true);
         // funzione di login
         const requestOptions = {
           method: 'POST',
@@ -56,6 +58,7 @@ const LoginForm = () => {
         .then((response) => {
           if (response.status === 200) {
             login();
+            setLoading(false);
           }
         });
       }
@@ -66,6 +69,7 @@ const LoginForm = () => {
       setShowSignUpForm(false);
     }
     if (!showSignUpForm) {
+      setLoading(true)
       // funzione di login
       const requestOptions = {
         method: 'POST',
@@ -80,6 +84,7 @@ const LoginForm = () => {
       .then((response) => {
         if (response.status === 200) {
           login();
+          setLoading(false);
         }
       });
     }
@@ -121,12 +126,20 @@ const LoginForm = () => {
         </div>
       </div>
       <div style={styles.thirdContainer}>
-        <button style={styles.buttons} onClick={handleLogInClick}>
-          {showSignUpForm ? "Cancel" : "Log In"}
-        </button>
-        <button style={styles.buttons} onClick={handleSignUpClick}>
-          Sign Up
-        </button>
+        {
+          loading ?
+          <div id="loading"></div>
+          :
+          <>
+            <button style={styles.buttons} onClick={handleLogInClick}>
+              {showSignUpForm ? "Cancel" : "Log In"}
+            </button>
+            <button style={styles.buttons} onClick={handleSignUpClick}>
+              Sign Up
+            </button>
+          </>
+        }        
+        
       </div>
     </form>
   );
