@@ -24,7 +24,7 @@ const PromemoriaWidget = () => {
             {
                 promemoria?.map((item) => {
                     return (
-                        <BoxPromemoria title={item.titolo} descrizione={item.descrizione} data={item.data_ora.split('T')[0]} animale={item.animali} ora={item.data_ora.split('T')[1]} img={ImmagineRemove} aImg={10} lImg={10}/>
+                        <BoxPromemoria key={item.id} title={item.titolo} descrizione={item.descrizione} data={item.data_ora.split('T')[0]} animale={item.animali} ora={item.data_ora.split('T')[1]} img={ImmagineRemove} aImg={10} lImg={10}/>
                     )
                 })
             }
