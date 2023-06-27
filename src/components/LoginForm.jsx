@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 
@@ -21,16 +21,18 @@ const LoginForm = () => {
   }
   const handleSecondPasswordInput = (event) => {
     setSecondPasswordInput(event.target.value);
-    if (passwordInput !== secondPasswordInput) {
-      setPasswordsMatch(false)
-    }
-    if (passwordInput === secondPasswordInput) {
-      setPasswordsMatch(true)
-    }
   }
   const handleEmailInput = (event) => {
     setEmailInput(event.target.value);
   }
+
+  useEffect(() => {
+    if (passwordInput !== secondPasswordInput) {
+      setPasswordsMatch(false);
+    } else {
+      setPasswordsMatch(true);
+    }
+  }, [secondPasswordInput]);
 
   const handleSignUpClick = () => {
     if (!showSignUpForm) {
@@ -38,6 +40,25 @@ const LoginForm = () => {
     }
     if (showSignUpForm) {
       // funzione di sign-up
+      if (passwordsMatch) {
+        // funzione di login
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: usernameInput,
+            password: passwordInput,
+            mail: emailInput
+          }),
+          credentials: "include"
+        };
+        fetch("https://itsar-project-work-api.vercel.app/register", requestOptions)
+        .then((response) => {
+          if (response.status === 200) {
+            login();
+          }
+        });
+      }
     }
   };
   const handleLogInClick = () => {
@@ -94,7 +115,7 @@ const LoginForm = () => {
               <label htmlFor="email" style={styles.label}>
                 Email
               </label>
-              <input type="email" id="email" style={styles.input} />
+              <input type="email" id="email" style={styles.input} onChange={handleEmailInput}/>
             </>
           )}
         </div>

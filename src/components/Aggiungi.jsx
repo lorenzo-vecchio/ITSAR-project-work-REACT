@@ -11,7 +11,6 @@ export const AggiungiAnimale = ({descrizione, lunghezza, colore, img}) =>{
             alignItmes: "center",
             justifyContent: "center",
             flexDirection: "row",
-            width: `${lunghezza}%`,
             padding: 2
         },
         paragrafo:{
@@ -23,28 +22,29 @@ export const AggiungiAnimale = ({descrizione, lunghezza, colore, img}) =>{
         removeLinkDefault: {
             textDecoration: "none",
             color: "black",
+            width: `${lunghezza}%`
         },
     }
     
     if (img) 
     {
         return (
-            <div style={styles.container}>
-                <img src={img} />
-                <NavLink style={styles.removeLinkDefault} to={"aggiungi/animale"}>
+            <NavLink style={styles.removeLinkDefault} to={"aggiungi/animale"}>
+                <div style={styles.container}>
+                    <img src={img} />
                     <p style={styles.paragrafo}>{descrizione}</p>
-                </NavLink>
-            </div>
+                </div>
+            </NavLink>
         )
     } 
     else 
     {
         return (
-            <div style={styles.container}>
-                <NavLink style={styles.removeLinkDefault} to={"aggiungi/animale"}>
+            <NavLink style={styles.removeLinkDefault} to={"aggiungi/animale"}>
+                <div style={styles.container}>
                     <p style={styles.paragrafo}>{descrizione}</p>
-                </NavLink>
-            </div>
+                </div>
+            </NavLink>
         )
     }
 }
@@ -59,7 +59,6 @@ export const AggiungiPromemoria = ({descrizione, lunghezza, colore, img}) =>{
             alignItmes: "center",
             justifyContent: "center",
             flexDirection: "row",
-            width: `${lunghezza}%`,
             padding: 2
         },
         paragrafo:{
@@ -71,28 +70,29 @@ export const AggiungiPromemoria = ({descrizione, lunghezza, colore, img}) =>{
         removeLinkDefault: {
             textDecoration: "none",
             color: "black",
+            width: `${lunghezza}%`,
         },
     }
     
     if (img) 
     {
         return (
-            <div style={styles.container}>
-                <img src={img} />
-                <NavLink style={styles.removeLinkDefault} to={"aggiungi/promemoria"}>
+            <NavLink style={styles.removeLinkDefault} to={"aggiungi/promemoria"}>
+                <div style={styles.container}>
+                    <img src={img} />
                     <p style={styles.paragrafo}>{descrizione}</p>
-                </NavLink>
-            </div>
+                </div>
+            </NavLink>
         )
     } 
     else 
     {
         return (
-            <div style={styles.container}>
-                <NavLink style={styles.removeLinkDefault} to={"aggiungi/promemoria"}>
-                    <p style={styles.paragrafo}>{descrizione}</p>
-                </NavLink>
-            </div>
+            <NavLink style={styles.removeLinkDefault} to={"aggiungi/promemoria"}>
+                <div style={styles.container}>
+                        <p style={styles.paragrafo}>{descrizione}</p>
+                </div>
+            </NavLink>
         )
     }
 }
