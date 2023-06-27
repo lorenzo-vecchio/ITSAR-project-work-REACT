@@ -1,9 +1,12 @@
 import mapboxgl from '!mapbox-gl';
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import PlaceWidget from './PlaceWidget';
 
 const MapWidget = (props) => {
+  const [displayDetInfo, setDisplayDetInfo] = useState(false);
+  const [detInfoId, setDetInfoId] = useState();
+  const [postoSelezionato, setPostoSelezionato] = useState()
   let luoghi;
-
 
   useEffect(() => {
     mapboxgl.accessToken =
@@ -38,24 +41,38 @@ const MapWidget = (props) => {
         (result) => {
           luoghi = result;
           luoghi.forEach((luogo) => {
+            console.log(luogo)
             const marker = new mapboxgl.Marker()
             .setLngLat([luogo.longitudine, luogo.latitudine])
             .addTo(map);
-          });
+
+            marker.getElement().addEventListener('click', () => {
+              markerClickHandler(luogo);
+            });
+          });         
         },
-        // Nota: è importante gestire gli errori qui
-        // invece di un blocco catch() in modo da non fare passare
-        // eccezioni da bug reali nei componenti.
         (error) => {
-          
-          // gestisci errori
-          
+          console.log('sta un errore man')
         }
       )
   }, []);
+
+
+  function markerClickHandler(luogo) {
+    setDisplayDetInfo(true)
+    setPostoSelezionato(luogo)
+  }
+  function detailCloseClickHandler() {
+    setDisplayDetInfo(false)
+  }
+
+
   return (
     <div>
       <div id="map" style={{width: props.width, height: props.height, borderRadius: props.borderRadius}}></div>
+      {
+        displayDetInfo ? <PlaceWidget onClose={detailCloseClickHandler} posto={postoSelezionato} /> : null
+      }
     </div>
   );
 };
