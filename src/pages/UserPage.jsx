@@ -102,13 +102,11 @@ const UserPage = () => {
                 </div>
               
 
-            
-                <div className="footer">
+            <div className="footerContainer">
                     <button onClick={handleButtonClick} className="buttonForm" id="buttonAnnulla">
                         {editable ? "Save" : "Edit"}
                     </button>
-                </div>
-            
+            </div>
         </div>
     );
 };

@@ -45,11 +45,6 @@
     min-width: 0%;
 }
 
-.footer{
-    display: flex;
-    justify-content: end;
-}
-
 .bottoneContainer{
     position: absolute;
 }
