@@ -62,8 +62,8 @@ button:hover{
     border-radius: 100px;
     gap: 0.5rem;
     position: fixed;
-    left: 15px;
-    bottom: 15px;
+    left: 0.9vw;
+    bottom:0.5vw;
     padding: 0.5rem;
     padding-left: 0.7rem;
     padding-right: 0.7rem;
