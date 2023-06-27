@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Elimina = ({descrizione, lunghezza, colore, img, link, callback}) =>{
+const Elimina = ({descrizione, lunghezza, colore, img, callback}) =>{
 
     const styles = {
         container:{
