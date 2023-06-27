@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { redirect } from "react-router-dom";
 import '../css/AddAnimalForm.css';
 import FotoWidget from "../components/FotoWidget";
 import Image from "../placeholders/dog.jpg";
@@ -58,7 +59,8 @@ const AddAnimalForm = () => {
           fetch("https://itsar-project-work-api.vercel.app/animals", requestOptions)
           .then((response) => {
             if (response.status === 200) {
-                // dai ok
+                // animale aggiunto:
+                return redirect("/");
                 setLoading(false)
             }
           });
