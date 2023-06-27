@@ -106,13 +106,10 @@ const UserPage = () => {
             </div>
             
             <TextField fields={fields} onButtonClick={handleButtonClick} editable={editable}/>
-
-                <div className="bottoneContainer">
-                    <div className="bottone">
-                        <BottoneWidget class="fixed-button" testo={"Logout"} onClick={handleLogoutClick}/>
-                    </div>
+                
+                <div className="bottone">
+                    <BottoneWidget class="fixed-button" testo={"Logout"} onClick={handleLogoutClick}/>
                 </div>
-              
 
             <div className="footerContainer">
                 <button onClick={handleButtonClick} className="buttonForm" id="buttonAnnulla">
