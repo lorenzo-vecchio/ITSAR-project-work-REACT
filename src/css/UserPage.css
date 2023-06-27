@@ -23,6 +23,7 @@
     gap: 1rem;
     font-size: 24px;
     width: fit-content;
+    margin-top: 1rem;
 }
 
 .informazoni {
@@ -64,4 +65,8 @@
 .centerRow{
     display: flex;
     justify-content: center;
+}
+
+#inputTextField{
+    min-height: 1.5rem;
 }

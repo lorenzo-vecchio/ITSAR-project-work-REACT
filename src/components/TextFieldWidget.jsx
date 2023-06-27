@@ -30,7 +30,7 @@ export function TextField({
                             </div>
                             <div>
                                 {editable ? (
-                                <input className="input"
+                                <input className="input" id="inputTextField"
                                 type="text"
                                 value={fieldValues[field.name]}
                                 onChange={handleFieldChange(field.name)}
