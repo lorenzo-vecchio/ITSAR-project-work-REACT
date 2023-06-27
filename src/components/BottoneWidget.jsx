@@ -12,6 +12,7 @@ const styles = {
     bottone:{
         border: "0",
         backgroundColor: "white",
+        color: "black",
         height: "2.5rem",
         width: "6rem",
         borderRadius: "100px",
