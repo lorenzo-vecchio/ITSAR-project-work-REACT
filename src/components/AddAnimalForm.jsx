@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import '../css/AddAnimalForm.css';
 import FotoWidget from "../components/FotoWidget";
 import Image from "../placeholders/dog.jpg";
@@ -20,6 +20,7 @@ const AddAnimalForm = () => {
         DataDiNascita: '',
         Peso: '',
       });
+    const navigate = useNavigate();
     
     const handleCheckbox1Change = (e) => {
         setCheckbox1Checked(!checkbox1Checked);
@@ -60,7 +61,7 @@ const AddAnimalForm = () => {
           .then((response) => {
             if (response.status === 200) {
                 // animale aggiunto:
-                return redirect("/");
+                navigate("/");
                 setLoading(false)
             }
           });
