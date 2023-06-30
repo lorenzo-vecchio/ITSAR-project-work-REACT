@@ -1,5 +1,6 @@
 .boxProm {
-    display: flex;
+    display: grid;
+    grid-template-rows: 1.25fr 1fr 0.75fr;
     flex-direction: column;
     align-items: flex-start;
     width: 80%;
@@ -7,13 +8,8 @@
     border-radius: 10px;
     background-color: white;
     margin-bottom: 8%;
-    max-height: min-content;
 }
 .barraTitolo{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     color: white;
     height: 30%;
     min-width: 100%;
@@ -23,14 +19,11 @@
 }
 .tdoProm{
     font-weight: bold;
-    margin-inline: 14%;
 }
 
 .descrizioneProm{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
     color: black;
     min-width: 100%;
     max-height: min-content;
@@ -38,7 +31,7 @@
 }
 
 .paragDescProm{
-    padding: 5%;
+    padding: 5% 5% 0% 5%;
     text-align: left;
 }
 #firstLine{
