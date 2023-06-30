@@ -1,0 +1,44 @@
+.boxProm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+    color: white;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: white
+}
+.barraTitolo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    height: 30%;
+    width: 100%;
+    background-color: #94092e;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #94092e;
+    border-width: 1px;
+}
+.tdoProm{
+    font-weight: bold;
+    padding-left: 5%;
+}
+
+.descrizioneProm{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: black;
+    max-height: 70%;
+    width: 100%;
+}
+
+.paragDescProm{
+    padding: 5%;
+    font-size: 1rem;
+    text-align: left;
+}
