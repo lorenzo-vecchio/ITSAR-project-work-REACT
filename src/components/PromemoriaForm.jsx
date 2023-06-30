@@ -43,6 +43,11 @@ const PromemoriaForm = () => {
     const onModificaData = (e) =>{
         const valore = e.target.value
         setData(valore)
+        /*if(data>currentTime)
+        {
+            const mixTime = new Date().setHours(0,0,0,0)
+            setCurrentTime(mixTime)
+        }*/
     }
 
     const onModificaOrario = (e) =>{

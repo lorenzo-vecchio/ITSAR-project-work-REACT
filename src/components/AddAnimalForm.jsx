@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 import '../css/AddAnimalForm.css';
 import FotoWidget from "../components/FotoWidget";
@@ -20,6 +20,14 @@ const AddAnimalForm = () => {
         DataDiNascita: '',
         Peso: '',
       });
+    
+    const [today, setToday] = useState() 
+
+    useEffect(() => {
+        const currentDate = new Date().toISOString().split("T")[0];
+        setToday(currentDate);
+    }, []);
+    
     const navigate = useNavigate();
     
     const handleCheckbox1Change = (e) => {
@@ -100,7 +108,7 @@ const AddAnimalForm = () => {
                 </div>
 
                 <label className="label">Data di nascita: </label>
-                <input type="date" name="DataDiNascita" onChange={handleChange} className="inputDate"/>
+                <input type="date" name="DataDiNascita" max={today} onChange={handleChange} className="inputDate"/>
 
                 <label className="label">Peso: </label>
                 <input
