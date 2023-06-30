@@ -14,11 +14,38 @@ const AnimalsWidget = () => {
             setAnimals(result);
         })
     }, [])
+
+    const calculateTimePassed = (date) => {
+        const birthDate = new Date(date);
+        const currentDate = new Date();
+    
+        const timeDifference = currentDate.getTime() - birthDate.getTime();
+    
+        // Convert time difference to years, months, and days
+        const yearsPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365));
+        const monthsPassed = Math.floor((timeDifference / (1000 * 60 * 60 * 24)) % 12);
+        const daysPassed = Math.floor((timeDifference / (1000 * 60 * 60 * 24)) % 30);
+    
+        let result = '';
+    
+        if (yearsPassed > 0) {
+          result += `${yearsPassed} ${yearsPassed === 1 ? 'year' : 'years'}`;
+        }
+        if (monthsPassed > 0) {
+          result += `${result ? ', ' : ''}${monthsPassed} ${monthsPassed === 1 ? 'month' : 'months'}`;
+        }
+        if (monthsPassed <= 0) {
+            result += `${result ? ', ' : ''}${daysPassed} ${daysPassed === 1 ? 'day' : 'days'}`;
+        }
+        return result;
+      };
+    
     
     return (
         <div style={styles.container}>
             {
                 animals?.map((item) => {
+                    console.log(item.nome_animale)
                     return (
                         <div style={styles.item}>
                             <img src={DogImage} alt="" style={styles.image} />
@@ -37,6 +64,8 @@ const AnimalsWidget = () => {
 const styles = {
     container: {
         width: "100%",
+        height: "20rem",
+        overflowY: "scroll",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

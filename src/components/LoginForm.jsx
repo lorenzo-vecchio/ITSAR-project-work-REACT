@@ -7,6 +7,10 @@ const LoginForm = () => {
   const [showSignUpForm, setShowSignUpForm] = useState(false);
   const [usernameInput, setUsernameInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
+  const [secondPasswordInput, setSecondPasswordInput] = useState('');
+  const [emailInput, setEmailInput] = useState('');
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { login } = useContext(AuthContext);
 
   
@@ -23,6 +27,27 @@ const LoginForm = () => {
     }
     if (showSignUpForm) {
       // funzione di sign-up
+      if (passwordsMatch) {
+        setLoading(true);
+        // funzione di login
+        const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: usernameInput,
+            password: passwordInput,
+            mail: emailInput
+          }),
+          credentials: "include"
+        };
+        fetch("https://itsar-project-work-api.vercel.app/register", requestOptions)
+        .then((response) => {
+          if (response.status === 200) {
+            login();
+            setLoading(false);
+          }
+        });
+      }
     }
   };
   const handleLogInClick = () => {
@@ -30,6 +55,7 @@ const LoginForm = () => {
       setShowSignUpForm(false);
     }
     if (!showSignUpForm) {
+      setLoading(true)
       // funzione di login
       const requestOptions = {
         method: 'POST',
@@ -44,6 +70,7 @@ const LoginForm = () => {
       .then((response) => {
         if (response.status === 200) {
           login();
+          setLoading(false);
         }
       });
     }
@@ -82,12 +109,20 @@ const LoginForm = () => {
         </div>
       </div>
       <div style={styles.thirdContainer}>
-        <button style={styles.buttons} onClick={handleLogInClick}>
-          {showSignUpForm ? "Cancel" : "Log In"}
-        </button>
-        <button style={styles.buttons} onClick={handleSignUpClick}>
-          Sign Up
-        </button>
+        {
+          loading ?
+          <div id="loading"></div>
+          :
+          <>
+            <button className='buttonForm' id='loginBtn' onClick={handleLogInClick}>
+              {showSignUpForm ? "Cancel" : "Log In"}
+            </button>
+            <button className='buttonForm' id='signUpBtn' onClick={handleSignUpClick}>
+              Sign Up
+            </button>
+          </>
+        }        
+        
       </div>
     </form>
   );
@@ -134,7 +169,7 @@ const styles = {
     flexDirection: "row",
     justifyContent: "center",
     gap: "10px",
-    padding: "50px"
+    padding: "50px 0"
   },
   buttons: {
     border: "0",

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useNavigate } from "react-router-dom";
 import '../css/AddAnimalForm.css';
 import FotoWidget from "../components/FotoWidget";
 import Image from "../placeholders/dog.jpg";
@@ -10,8 +11,7 @@ const AddAnimalForm = () => {
     const buttonSend = document.getElementById('buttonAggiungi');
     const [checkbox1Checked, setCheckbox1Checked] = useState(false);
     const [checkbox2Checked, setCheckbox2Checked] = useState(false);
-    const [isHover, setIsHover] = useState(false);
-
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         Nome: '',
         Razza: '',
@@ -20,14 +20,7 @@ const AddAnimalForm = () => {
         DataDiNascita: '',
         Peso: '',
       });
-
-    const handleMouseEnter = () => {
-        setIsHover(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsHover(false);
-    }
+    const navigate = useNavigate();
     
     const handleCheckbox1Change = (e) => {
         setCheckbox1Checked(!checkbox1Checked);
@@ -49,8 +42,29 @@ const AddAnimalForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const jsonData = JSON.stringify(formData);
-        console.log(jsonData);
+        setLoading(true);
+        const request_body = {
+            nome_animale: formData.Nome,
+            sesso: formData.Genere,
+            data_di_nascita: formData.DataDiNascita,
+            razza: formData.Razza,
+            peso: formData.Peso
+        }
+        const jsonData = JSON.stringify(request_body);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: jsonData,
+            credentials: "include"
+          };
+          fetch("https://itsar-project-work-api.vercel.app/animals", requestOptions)
+          .then((response) => {
+            if (response.status === 200) {
+                // animale aggiunto:
+                navigate("/");
+                setLoading(false)
+            }
+          });
         };
       
     return(
@@ -111,8 +125,16 @@ const AddAnimalForm = () => {
                 </div>
 
                 <div className="buttonsBottomForm">
-                    <ButtonReset text="Aggiungi" />
-                    <ButtonSubmit text="Annulla" />
+                    {
+                        loading ?
+                        <div id="loading"></div>
+                        :
+                        <>
+                            <ButtonReset text="Anulla" />
+                            <ButtonSubmit text="Aggiungi" />
+                        </>
+                    }
+                    
                 </div>
 
         </form>

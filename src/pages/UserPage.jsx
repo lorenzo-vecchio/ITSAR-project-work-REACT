@@ -5,13 +5,18 @@ import Image from "../placeholders/dog.jpg";
 import BottoneWidget from "../components/BottoneWidget";
 import MenuWidget from "../components/MenuWidget";
 import "../css/UserPage.css";
-import EditableWidget from "../components/EditableWidget";
+import { TextField } from "../components/TextFieldWidget";
+import { ButtonSubmit, ButtonReset } from '../components/Button';
+import React, { useState, useContext } from "react";
+import { AuthContext } from '../contexts/AuthContext';
+import "../css/ButtonWidget.css";
 
+/*
 const UserPage = () => {
+
     return (
     <div>
         <Title title="Il tuo account" />
-<<<<<<<<< Temporary merge branch 1
         <div className="imgProfilo-container">
             <div className="imgProfilo">
                 <FotoWidget image={Image} />
@@ -20,13 +25,11 @@ const UserPage = () => {
         <div className="testo">
             <div>
                 <span className="informazoni">Nome: </span>
-=========
         <div style={{ margin: "4rem" }}></div>
         <FotoWidget image={Image}/>
         <div style={styles.testo}>
             <div>
                 <span style={styles.informazoni}>Nome: </span>
->>>>>>>>> Temporary merge branch 2
                 <span>Giorgio </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -34,11 +37,10 @@ const UserPage = () => {
             </svg>
             </div>
             <div>
-<<<<<<<<< Temporary merge branch 1
                 <span className="informazoni">Cognome: </span>
-=========
+
+
                 <span style={styles.informazoni}>Cognome: </span>
->>>>>>>>> Temporary merge branch 2
                 <span>Rossi </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -46,11 +48,12 @@ const UserPage = () => {
             </svg>
             </div>
             <div>
-<<<<<<<<< Temporary merge branch 1
+
+
                 <span className="informazoni">Email: </span>
-=========
+
+
                 <span style={styles.informazoni}>Email: </span>
->>>>>>>>> Temporary merge branch 2
                 <span>Giorgio.rossi@gmail.com </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -58,11 +61,10 @@ const UserPage = () => {
             </svg>
             </div>
             <div>
-<<<<<<<<< Temporary merge branch 1
                 <span className="informazoni">Password: </span>
-=========
+
                 <span style={styles.informazoni}>Password: </span>
->>>>>>>>> Temporary merge branch 2
+
                 <span>********** </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -70,23 +72,64 @@ const UserPage = () => {
             </svg>
             </div>
         </div>
-<<<<<<<<< Temporary merge branch 1
-                <div className="bottone">
-=========
-                <div style={styles.bottone}>
->>>>>>>>> Temporary merge branch 2
-                    <BottoneWidget testo={"Logout"}/>
-                </div>
-        <div>
-            <MenuWidget />
-        </div>
     </div>
     );
+};
+*/
+
+const UserPage = () => {
+    const { logout } = useContext(AuthContext);
+
+    const [editable, setEditable] = useState(false);
+    
+    const handleButtonClick = () => {
+        setEditable(!editable)
+    }
+
+    const fields = [
+        {name: "Nome", value: "Giorgio", label: "Nome"},
+        {name: "Cognome", value: "Rossi", label: "Cognome"},
+        {name: "Email", value: "Giorgio.rossi@gmail.com", label: "Email"},
+        {name: "Password", value: "********", label: "Password"}
+    ]
+
+    function handleLogoutClick() {
+        const requestOptions = {
+            method: 'POST',
+            credentials: "include"
+        };
+        fetch("https://itsar-project-work-api.vercel.app/logout", requestOptions).then(() => {
+            logout();
+        })
+    }
+
+    return (
+        <div className="body">
+            <Title title="Il tuo account" />
+            <div className="imgProfilo-container">
+                <div className="imgProfilo">
+                    <FotoWidget image={Image} />
+                </div>
+            </div>
+            
+            <TextField fields={fields} onButtonClick={handleButtonClick} editable={editable}/>
+                
+                <div className="bottone">
+                    <BottoneWidget class="fixed-button" testo={"Logout"} onClick={handleLogoutClick}/>
+                </div>
+
+            <div className="footerContainer">
+                <button onClick={handleButtonClick} className="buttonForm" id="buttonAnnulla">
+                    {editable ? "Save" : "Edit"}
+                </button>
+            </div>
+        </div>
+    );
   };
-<<<<<<<<< Temporary merge branch 1
-=========
+
+
   
-  const styles = {
+const styles = {
     bottone:{
         marginTop:"7rem"
     },
@@ -107,7 +150,7 @@ const UserPage = () => {
     imgProfiloHover: {
         opacity: "0.5",
     }
-  }
->>>>>>>>> Temporary merge branch 2
+}
 
-  export default UserPage;
+
+export default UserPage;
