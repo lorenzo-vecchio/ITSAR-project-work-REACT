@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
+import "../css/LoginForm.css"
 
 const LoginForm = () => {
   const [showSignUpForm, setShowSignUpForm] = useState(false);
@@ -98,43 +99,43 @@ const LoginForm = () => {
       style={{ ...styles.form, ...{ marginTop: "5rem" } }}
       onSubmit={submitForm}
     >
-      <div style={styles.container}>
-        <div style={styles.secondContainer}>
-          <label htmlFor="username" style={styles.label}>
+      <div className='container'>
+        <div className='secondContainer'>
+          <label htmlFor="username" className='label'>
             Username
           </label>
-          <input type="text" id="username" style={styles.input} onChange={handleUsernameInput} />
-          <label htmlFor="password" style={styles.label}>
+          <input type="text" id="username" className='inputLogin' onChange={handleUsernameInput} />
+          <label htmlFor="password" className='label'>
             Password
           </label>
-          <input type="password" id="password" style={styles.input} onChange={handlePasswordInput} />
+          <input type="password" id="password" className='inputLogin' onChange={handlePasswordInput} />
           {showSignUpForm && (
             <>
-              <label htmlFor="secondPassword" style={styles.label}>
+              <label htmlFor="secondPassword" className='label'>
                 Repeat Password
               </label>
               {
                 passwordsMatch ? null : <p style={styles.passwordsMatch}>The passwords don't match</p>
               }
-              <input type="password" id="secondPassword" style={styles.input} onChange={handleSecondPasswordInput} />
-              <label htmlFor="email" style={styles.label}>
+              <input type="password" id="secondPassword" className='inputLogin' onChange={handleSecondPasswordInput} />
+              <label htmlFor="email" className='label'>
                 Email
               </label>
-              <input type="email" id="email" style={styles.input} onChange={handleEmailInput}/>
+              <input type="email" id="email" className='inputLogin' onChange={handleEmailInput}/>
             </>
           )}
         </div>
       </div>
-      <div style={styles.thirdContainer}>
+      <div className='thirdContainer'>
         {
           loading ?
           <div id="loading"></div>
           :
           <>
-            <button style={styles.buttons} onClick={handleLogInClick}>
+            <button className='btnLoginPage' id='loginBtn' onClick={handleLogInClick}>
               {showSignUpForm ? "Cancel" : "Log In"}
             </button>
-            <button style={styles.buttons} onClick={handleSignUpClick}>
+            <button className='btnLoginPage' id='signUpBtn' onClick={handleSignUpClick}>
               Sign Up
             </button>
           </>
@@ -178,7 +179,8 @@ const styles = {
     borderRadius: "100px",
     border: "0",
     width: "100%",
-    marginBottom: "20px"
+    marginBottom: "20px",
+    paddingLeft: "1.5rem",
   },
   thirdContainer: {
     width: "100%",
