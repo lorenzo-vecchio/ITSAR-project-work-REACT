@@ -42,7 +42,7 @@ const PromemoriaWidget = () => {
     return (
         <div style={styles.container}>
             <div style={styles.divIntestazione}>
-                <h1>I tuoi Promemoria</h1> 
+                <h1>Promemoria</h1> 
                 <img src={src} onClick={action} width={13} height={13}/>
             </div>
             {
