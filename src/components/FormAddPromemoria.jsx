@@ -68,6 +68,10 @@ const FormAddPromemoria = () => {
         return animal ? animal.nome_animale : "";
     };
 
+    const removeAnimal = (idToRemove) => {
+        setSelectedCheckboxes(selectedCheckboxes.filter((id) => id !== idToRemove));
+      };
+      
     function handleSubmit (e) {
         e.preventDefault();
         const promemoria = {
@@ -121,9 +125,17 @@ const FormAddPromemoria = () => {
                     </div>
                 </div>
 
-
-
-
+                <div></div>
+                <div style={styles.selAnimalsContainer}>
+                    {selectedCheckboxes.map((item) => {
+                    const name = getAnimalNameById(item);
+                    return (
+                        <div style={styles.item} key={item}>
+                            <p style={{margin: 0}}>{name}</p>
+                            <svg onClick={() => removeAnimal(item)} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                        </div>)
+                    })}
+                </div>
 
 
 
@@ -153,6 +165,8 @@ const styles = {
       border: "1px solid rgb(156, 148, 148)",
       borderRadius: "50px",
       width: "100%",
+      minWidth: '5rem',
+      maxWidth: '95%',
       height: "2.5rem",
       display: "flex",
       flexDirection: "column",
@@ -163,8 +177,6 @@ const styles = {
       userSelect: "none",
       backgroundColor: 'white',
       color: 'black',
-      minWidth: '5rem',
-      maxWidth: '77%',
       zIndex: 3,
     },
     items: {
@@ -189,23 +201,32 @@ const styles = {
     },
     item: {
         color: 'white',
+        padding: '0.5rem',
+        border: '1px solid black',
+        borderRadius: '10px',
+        height: '1rem',
+        backgroundColor: 'green',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    selAnimalsContainer: {
+        marginTop: '5rem',
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        gap: '10px',
+        width: "100%",
+        minWidth: '5rem',
+        maxWidth: '12rem',
+        minHeight: '2rem',
+        border: '1px solid black',
+        borderRadius: '20px',
+        padding: '30px',
+        backgroundColor: 'white',
     }
   };
 
 
 export default FormAddPromemoria;
-
-
-
-
-
-
-/*
-<ul>
-    {selectedCheckboxes.map((item) => {
-    const name = getAnimalNameById(item);
-    return <li style={styles.item} key={item} >{name}</li>;
-    })}
-</ul>
-
-*/
