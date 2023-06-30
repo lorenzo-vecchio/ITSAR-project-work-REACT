@@ -1,14 +1,19 @@
 .boxProm {
     display: grid;
-    grid-template-rows: 0.25fr 1fr 1.25fr;
+    grid-template-rows: 0.25fr 0.25fr 0.4fr 0.1fr 1.5fr;
     flex-direction: column;
-    align-items: flex-start;
     width: 80%;
     color: white;
     border-radius: 10px;
     background-color: white;
     margin-bottom: 8%;
+    min-height: min-content;
+    max-height: fit-content;
 }
+.spazioRiga{
+    height: 1rem;
+}
+
 .barraTitolo{
     display: flex;
     flex-direction: row;
@@ -35,15 +40,16 @@
 }
 
 .paragDescProm{
-    padding: 5% 7% 0% 7%;
+    padding: 0% 7% 0% 7%;
     text-align: left;
     height: 100%;
+    color: #000;
+
 }
 #firstLine{
     font-size: 1.1rem;
     min-height: fit-content;
     min-height: -moz-fit-content;
-    margin-bottom: 0%;
 }
 
 #secondtLine{
