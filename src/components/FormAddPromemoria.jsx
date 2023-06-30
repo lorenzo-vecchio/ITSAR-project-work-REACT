@@ -120,7 +120,7 @@ const FormAddPromemoria = () => {
                     </div>
                 </div>
 
-                <div></div>
+                <label className="label">Animali selezionati: </label>
                 <div style={styles.selAnimalsContainer}>
                     {selectedCheckboxes.map((item) => {
                     const name = getAnimalNameById(item);
@@ -159,9 +159,9 @@ const styles = {
     button: {
       border: "1px solid rgb(156, 148, 148)",
       borderRadius: "50px",
-      width: "100%",
+      width: "95%",
       minWidth: '5rem',
-      maxWidth: '95%',
+      maxWidth: '12rem',
       height: "2.5rem",
       display: "flex",
       flexDirection: "column",
@@ -179,6 +179,8 @@ const styles = {
       top: "2.5rem",
       left: 0,
       width: "100%",
+      minWidth: '5rem',
+      maxWidth: '12rem',
       borderRadius: '0 0 20px 20px',    
       backgroundColor: 'white',
       display: "flex",
