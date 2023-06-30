@@ -12,6 +12,7 @@ const FormAddPromemoria = () => {
     const [today, setToday] = useState("");
     const [currentTime, setCurrentTime] = useState("");
     const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
+    const [minDate, setMinDate] = useState()
 
     useEffect(() => {
         const currentDate = new Date().toISOString().split("T")[0];
@@ -42,6 +43,14 @@ const FormAddPromemoria = () => {
 
     function onModificaData (e) {
         setData(e.target.value);
+        if(data!==today)
+        {
+            setMinDate("00:00")
+        }
+        else
+        {
+            setMinDate(currentTime)
+        }
     }
 
     function onModificaOrario (e) {
@@ -102,7 +111,7 @@ const FormAddPromemoria = () => {
                 <input type="date" min={today} name="data" className="inputDate" value={data}  onChange={onModificaData} required />
 
                 <label className="label">Orario: </label>
-                <input type="time" min={currentTime} name="orario" className="inputDate" value={orario}  onChange={onModificaOrario} required />
+                <input type="time" min={minDate} name="orario" className="inputDate" value={orario}  onChange={onModificaOrario} required />
 
                 <label className="label">Animale: </label>
                 
