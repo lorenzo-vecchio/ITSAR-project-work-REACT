@@ -3,6 +3,7 @@ import BoxPromemoria from './BoxPromemoria';
 import {AggiungiPromemoria} from './Aggiungi';
 import ImmagineAggiungi from "../media/add.svg"
 import ImmagineRemove from "../media/remove.svg"
+import ImmagineTornaIndietro from "../media/torna_indietro.svg"
 import { useState, useEffect } from 'react';
 
 const PromemoriaWidget = () => {
@@ -22,15 +23,18 @@ const PromemoriaWidget = () => {
 
     const [num, setNum] = useState(1)
     const [elimina, setElimina] = useState()
+    const [src, setSrc] = useState(ImmagineRemove)
 
     const action = () =>{
         if(num%2==1)
         {
             setElimina(true)
+            setSrc(ImmagineTornaIndietro)
         }
         else
         {
             setElimina(false)
+            setSrc(ImmagineRemove)
         }
         setNum(v=> v+1)
     }
@@ -39,7 +43,7 @@ const PromemoriaWidget = () => {
         <div style={styles.container}>
             <div style={styles.divIntestazione}>
                 <h1>I tuoi Promemoria</h1> 
-                <img src={ImmagineRemove} onClick={action}/>
+                <img src={src} onClick={action} width={13} height={13}/>
             </div>
             {
                 promemoria?.map((item) => {
