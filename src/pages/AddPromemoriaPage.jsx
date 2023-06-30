@@ -1,13 +1,13 @@
 import React from 'react';
 import Title from "../components/Title";
-import PromemoriaForm from '../components/PromemoriaForm';
+import FormAddPromemoria from '../components/FormAddPromemoria';
 
 const AddPromemoriaPage= () => {
   return (
     <div>
       <Title title="Aggiungi Promemoria"/>
       <div style={{ margin: "4rem"}}></div>
-      <PromemoriaForm />
+      <FormAddPromemoria />
     </div>
   );
 };
