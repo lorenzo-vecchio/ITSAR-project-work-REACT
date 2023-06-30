@@ -32,10 +32,6 @@ const FormAddPromemoria = () => {
         })
     }, [])
 
-    useEffect(() => {
-        console.log(animals)
-    }, [animals]);
-
     function onModificaTitolo (e) {
         setTitolo(e.target.value);
     }
@@ -77,8 +73,7 @@ const FormAddPromemoria = () => {
         const promemoria = {
             titolo: titolo,
             descrizione: descrizione,
-            data: data,
-            orario: orario,
+            data_ora: `${data}T${orario}:00`,
             animali: selectedCheckboxes
         }
         console.log(promemoria)
