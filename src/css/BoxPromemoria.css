@@ -5,7 +5,7 @@
     width: 80%;
     color: white;
     border-radius: 10px;
-    background-color: white
+    background-color: white;
 }
 .barraTitolo{
     display: flex;
@@ -20,9 +20,8 @@
     border-color: #94092e;
 }
 .tdoProm{
-    
     font-weight: bold;
-    
+    margin-inline: 10%;
 }
 
 .descrizioneProm{
@@ -31,12 +30,14 @@
     align-items: flex-start;
     justify-content: flex-start;
     color: black;
-    min-height: border-box;
+    min-width: 100%;
+    min-height: max-content;
 
 }
 
 .paragDescProm{
     padding: 5%;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: left;
+    
 }
