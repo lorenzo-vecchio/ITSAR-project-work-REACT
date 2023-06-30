@@ -76,7 +76,18 @@ const FormAddPromemoria = () => {
             data_ora: `${data}T${orario}:00`,
             animali: selectedCheckboxes
         }
-        console.log(promemoria)
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(promemoria),
+            credentials: "include"
+          };
+          fetch("https://itsar-project-work-api.vercel.app/promemoria", requestOptions)
+          .then((response) => {
+            if (response.status === 200) {
+              // metti spunta di successo
+            }
+          });
     }
 
     return (
