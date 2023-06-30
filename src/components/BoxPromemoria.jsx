@@ -7,9 +7,19 @@ const BoxPromemoria = ({title, descrizione, data, animale, ora, img, lImg, aImg,
 
     useEffect(()=>{
         const dataInglese = new Date(data)
-        const opzioni = { day: 'numeric', month: 'long', year: 'numeric' };
-        const nuovaData = new Intl.DateTimeFormat('it-IT', opzioni).format(dataInglese);
-        setDataItaliano(nuovaData)
+        const anno = dataInglese.getFullYear();
+        if(anno !== 2023)
+        {
+            const opzioni = { day: 'numeric', month: 'long', year: 'numeric' };
+            const nuovaData = new Intl.DateTimeFormat('it-IT', opzioni).format(dataInglese);
+            setDataItaliano(nuovaData)
+        }
+        else
+        {
+            const opzioni = { day: 'numeric', month: 'long'};
+            const nuovaData = new Intl.DateTimeFormat('it-IT', opzioni).format(dataInglese);
+            setDataItaliano(nuovaData)
+        }
     },[])
 
     return(
