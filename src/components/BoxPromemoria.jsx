@@ -10,8 +10,8 @@ const BoxPromemoria = ({title, descrizione, data, animale, ora, img, lImg, aImg}
                 <img src={img} width={lImg} height={aImg}/>
             </div>
             <div className='descrizioneProm'>
-            <span className='paragDescProm'><strong>Animale:</strong> {animale}</span>
-                <span className='paragDescProm'><strong>Descrizione:</strong> {descrizione}</span>
+                <span className='paragDescProm'><strong>{animale}</strong></span>
+                <span className='paragDescProm' id='secondLine'>{descrizione}</span>
             </div>
         </div>
     )
