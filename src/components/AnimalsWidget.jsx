@@ -46,7 +46,6 @@ const AnimalsWidget = ({remove}) => {
         <div style={styles.container}>
             {
                 animals?.map((item) => {
-                    console.log(item.nome_animale)
                     return (
                         <div style={styles.item} key={item.id}>
                             <img src={DogImage} alt="" style={styles.image} />
