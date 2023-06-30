@@ -4,7 +4,6 @@
     align-items: flex-start;
     width: 80%;
     color: white;
-    margin-bottom: 10px;
     border-radius: 10px;
     background-color: white
 }
@@ -12,7 +11,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     color: white;
     height: 30%;
     min-width: 100%;
@@ -21,8 +20,9 @@
     border-color: #94092e;
 }
 .tdoProm{
+    
     font-weight: bold;
-    padding-left: 5%;
+    
 }
 
 .descrizioneProm{
@@ -31,8 +31,8 @@
     align-items: flex-start;
     justify-content: flex-start;
     color: black;
-    max-height: 70%;
-    width: 100%;
+    min-height: border-box;
+
 }
 
 .paragDescProm{
