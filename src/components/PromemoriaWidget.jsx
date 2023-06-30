@@ -20,7 +20,10 @@ const PromemoriaWidget = () => {
     }, [])
     return (
         <div style={styles.container}>
-            <h1>I tuoi Promemoria</h1>
+            <div style={styles.divIntestazione}>
+                <h1>I tuoi Promemoria</h1> 
+                <img src={ImmagineRemove}/>
+            </div>
             {
                 promemoria?.map((item) => {
                     return (
@@ -47,6 +50,14 @@ const styles = {
         paddingRight: 10,
         paddingTop: 10,
         paddingBottom: 40
+    },
+    divIntestazione:{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
+        padding: 5
     }
 }
 
