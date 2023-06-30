@@ -6,6 +6,8 @@
     color: white;
     border-radius: 10px;
     background-color: white;
+    margin-bottom: 8%;
+    max-height: min-content;
 }
 .barraTitolo{
     display: flex;
@@ -21,7 +23,7 @@
 }
 .tdoProm{
     font-weight: bold;
-    margin-inline: 10%;
+    margin-inline: 14%;
 }
 
 .descrizioneProm{
@@ -31,13 +33,28 @@
     justify-content: flex-start;
     color: black;
     min-width: 100%;
-    min-height: max-content;
+    max-height: min-content;
 
 }
 
 .paragDescProm{
     padding: 5%;
-    font-size: 0.9rem;
     text-align: left;
-    
+}
+#firstLine{
+    font-size: 1.1rem;
+    min-height: fit-content;
+    min-height: -moz-fit-content;
+    margin-bottom: 0%;
+}
+
+#secondtLine{
+    font-size: 0.9rem;
+    min-height: fit-content;
+    min-height: -moz-fit-content;
+    margin-top: 0%;
+}
+
+#binProm{
+    margin-right: 3%;
 }

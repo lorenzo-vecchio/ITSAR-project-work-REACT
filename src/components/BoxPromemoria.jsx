@@ -7,7 +7,7 @@ const BoxPromemoria = ({title, descrizione, data, animale, ora, img, lImg, aImg,
             <div className='barraTitolo'>
                 <p className='tdoProm'>{data}</p>
                 <p className='tdoProm'>{ora}</p>
-                {remove? <img src={img} width={lImg} height={aImg}/>: null}
+                {remove? <img src={img} width={lImg} height={aImg} id="binProm"/>: null}
             </div>
             <div className='descrizioneProm'>
                 <span className='paragDescProm'><strong>{animale}</strong></span>
