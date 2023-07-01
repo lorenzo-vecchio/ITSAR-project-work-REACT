@@ -1,0 +1,52 @@
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    padding-top: 3rem;
+    gap: 10%;
+  }
+
+  .leftContainer {
+    width: 20%;
+    min-width: 17rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5%;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    min-height: 100%;
+  }
+
+  .centerContainer {
+    width: 50%;
+    min-width: 25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .divButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .rightContainer {
+    width: 25%;
+    min-width: 17rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    padding-right: 2rem;
+  }
+
+  .mapWidget {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .preferitiWidget {
+    width: 20vw;
+  }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink} from "react-router-dom";
+import "../css/AggiungiPromemoria.css"
 
 export const AggiungiAnimale = ({descrizione, lunghezza, colore, img}) =>{
 
@@ -49,12 +50,11 @@ export const AggiungiAnimale = ({descrizione, lunghezza, colore, img}) =>{
     }
 }
 
-export const AggiungiPromemoria = ({descrizione, lunghezza, colore, img}) =>{
+export const AggiungiPromemoria = ({descrizione, img}) =>{
 
     const styles = {
         container:{
             borderRadius: 15,
-            backgroundColor: `${colore}`,
             display: "flex",
             alignItmes: "center",
             justifyContent: "center",
@@ -70,7 +70,6 @@ export const AggiungiPromemoria = ({descrizione, lunghezza, colore, img}) =>{
         removeLinkDefault: {
             textDecoration: "none",
             color: "black",
-            width: `${lunghezza}%`,
         },
     }
     
@@ -78,7 +77,7 @@ export const AggiungiPromemoria = ({descrizione, lunghezza, colore, img}) =>{
     {
         return (
             <NavLink style={styles.removeLinkDefault} to={"aggiungi/promemoria"}>
-                <div style={styles.container}>
+                <div id="aggiungiProm">
                     <img src={img} />
                     <p style={styles.paragrafo}>{descrizione}</p>
                 </div>
@@ -89,7 +88,7 @@ export const AggiungiPromemoria = ({descrizione, lunghezza, colore, img}) =>{
     {
         return (
             <NavLink style={styles.removeLinkDefault} to={"aggiungi/promemoria"}>
-                <div style={styles.container}>
+                <div id="aggiungiProm">
                         <p style={styles.paragrafo}>{descrizione}</p>
                 </div>
             </NavLink>

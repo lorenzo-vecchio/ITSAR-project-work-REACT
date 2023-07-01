@@ -5,6 +5,7 @@ import ImmagineAggiungi from "../media/add.svg"
 import ImmagineRemove from "../media/remove.svg"
 import ImmagineTornaIndietro from "../media/torna_indietro.svg"
 import { useState, useEffect } from 'react';
+import "../css/PromemoriaWidget.css"
 
 const PromemoriaWidget = () => {
     const [promemoria, setPromemoria] = useState([]);
@@ -40,46 +41,24 @@ const PromemoriaWidget = () => {
     }
 
     return (
-        <div style={styles.container}>
-            <div style={styles.divIntestazione}>
-                <h1>Promemoria</h1> 
-                <img src={src} onClick={action} width={13} height={13}/>
+        <div>
+            <div className='containerProm'>
+                <div className='titoloProm'>
+                    <h1>Promemoria</h1> 
+                    <img src={src} onClick={action} width={13} height={13}/>
+                </div>
+                {
+                    promemoria?.map((item) => {
+                        return (
+                            <BoxPromemoria key={item.id} title={item.titolo} descrizione={item.descrizione} data={item.data_ora.split('T')[0]} animale={item.animali} ora={item.data_ora.split('T')[1]} img={ImmagineRemove} aImg={10} lImg={10} remove={elimina}/>
+                        )
+                    })
+                }
             </div>
-            {
-                promemoria?.map((item) => {
-                    return (
-                        <BoxPromemoria key={item.id} title={item.titolo} descrizione={item.descrizione} data={item.data_ora.split('T')[0]} animale={item.animali} ora={item.data_ora.split('T')[1]} img={ImmagineRemove} aImg={10} lImg={10} remove={elimina}/>
-                    )
-                })
-            }
-            <AggiungiPromemoria descrizione={"aggiungi promemoria"} lunghezza={"80"} colore={"green"} img={ImmagineAggiungi}/>
+            <AggiungiPromemoria descrizione={"Promemoria"} lunghezza={"80"} colore={"green"} img={ImmagineAggiungi}/>
         </div>
-    );
-}
 
-const styles = {
-    container: {
-        backgroundColor: "rgb(0, 0, 0, 0.75)",
-        backdropFilter: "blur(5px)",
-        WebkitBackdropFilter: "blur(5px)",
-        borderRadius: "25px",
-        color: "white",
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingTop: 10,
-        paddingBottom: 40
-    },
-    divIntestazione:{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-around",
-        width: "100%",
-        padding: 5
-    }
+    );
 }
 
 export default PromemoriaWidget;

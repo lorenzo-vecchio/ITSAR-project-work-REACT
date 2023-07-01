@@ -1,0 +1,166 @@
+.buttonsBottomForm{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+}
+
+#aggiungiProm {
+    display: inline-block;
+    min-height: 2.7rem;
+    min-width: 8rem;
+    text-align: center;
+    margin-inline: 5%;
+    border-radius: 10rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border-style: none;
+  }
+
+  #aggiungiProm:active{
+    transition:ease-in-out;
+    border-style: groove;
+    border-color: #fff;
+  }
+
+  #aggiungiProm:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10rem;
+    z-index: -2;
+  }
+  #aggiungiProm:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    transition: all 0.3s;
+    border-radius: 10rem;
+    z-index: -1;
+  }
+
+  #aggiungiProm:after{
+    background-color: rgb(0, 182, 228);
+  }
+
+  #aggiungiProm:before{
+    background-color: #008fb3;
+  }
+
+  #aggiungiProm:hover {
+    color: #fff;
+  }
+
+  #aggiungiProm:hover:before {
+    width: 100%;
+  }
+
+@media screen and (max-width: 1024px){
+    .style{
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.6rem;
+        color: white;
+        margin-bottom: 10%;
+    }
+
+     .buttonsBottomForm{
+      display:inline-flex;
+      justify-content: center;
+     }
+}#aggiungiProm {
+    display: inline-block;
+    min-height: 2.7rem;
+    min-width: 8rem;
+    text-align: center;
+    margin-inline: 5%;
+    border-radius: 10rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border-style: none;
+  }
+
+  #aggiungiProm:active{
+    transition:ease-in-out;
+    border-style: groove;
+    border-color: #fff;
+  }
+
+  #aggiungiProm:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10rem;
+    z-index: -2;
+  }
+  #aggiungiProm:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    transition: all 0.3s;
+    border-radius: 10rem;
+    z-index: -1;
+  }
+
+  #buttonAggiungi:after{
+    background-color: rgb(0, 182, 228);
+  }
+
+  #buttonAggiungi:before{
+    background-color: #008fb3;
+  }
+
+  #buttonAnnulla:after{
+    background-color: #f74d65;
+  }
+
+  #buttonAnnulla:before{
+    background-color: #9c2f3d;
+  }
+
+  #aggiungiProm:hover {
+    color: #fff;
+  }
+
+  #aggiungiProm:hover:before {
+    width: 100%;
+  }
+
+@media screen and (max-width: 1024px){
+    .style{
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.6rem;
+        color: white;
+        margin-bottom: 10%;
+    }
+
+     .buttonsBottomForm{
+      display:inline-flex;
+      justify-content: center;
+     }
+}
