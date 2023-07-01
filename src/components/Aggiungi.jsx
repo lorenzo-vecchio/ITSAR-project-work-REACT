@@ -23,7 +23,7 @@ export const AggiungiAnimale = ({descrizione, lunghezza, colore, img}) =>{
         removeLinkDefault: {
             textDecoration: "none",
             color: "black",
-            width: `${lunghezza}%`
+
         },
     }
     
@@ -77,8 +77,7 @@ export const AggiungiPromemoria = ({descrizione, img}) =>{
     {
         return (
             <NavLink style={styles.removeLinkDefault} to={"aggiungi/promemoria"}>
-                <div id="aggiungiProm">
-                    <img src={img} />
+                <div className="aggiungiProm">
                     <p style={styles.paragrafo}>{descrizione}</p>
                 </div>
             </NavLink>
@@ -88,7 +87,7 @@ export const AggiungiPromemoria = ({descrizione, img}) =>{
     {
         return (
             <NavLink style={styles.removeLinkDefault} to={"aggiungi/promemoria"}>
-                <div id="aggiungiProm">
+                <div className="aggiungiProm">
                         <p style={styles.paragrafo}>{descrizione}</p>
                 </div>
             </NavLink>

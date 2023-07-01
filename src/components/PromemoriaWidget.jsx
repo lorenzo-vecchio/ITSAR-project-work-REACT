@@ -6,6 +6,7 @@ import ImmagineRemove from "../media/remove.svg"
 import ImmagineTornaIndietro from "../media/torna_indietro.svg"
 import { useState, useEffect } from 'react';
 import "../css/PromemoriaWidget.css"
+import "../media/add.svg"
 
 const PromemoriaWidget = () => {
     const [promemoria, setPromemoria] = useState([]);
@@ -55,7 +56,7 @@ const PromemoriaWidget = () => {
                     })
                 }
             </div>
-            <AggiungiPromemoria descrizione={"Promemoria"} lunghezza={"80"} colore={"green"} img={ImmagineAggiungi}/>
+            <AggiungiPromemoria descrizione={"Aggiungi Promemoria"} lunghezza={"80"} colore={"green"} img={ImmagineAggiungi}/>
         </div>
 
     );

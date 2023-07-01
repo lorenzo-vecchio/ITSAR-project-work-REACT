@@ -10,7 +10,9 @@
     padding: 2%;
     max-width: 25rem;
     overflow-y: scroll;
-    max-height: 85vh;
+    overflow-x:hidden;
+    max-height: 50vh;
+    min-height: fit-content;
 }
 
 .titoloProm {
