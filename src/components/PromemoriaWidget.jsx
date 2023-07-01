@@ -3,6 +3,7 @@ import BoxPromemoria from './BoxPromemoria';
 import {AggiungiPromemoria} from './Aggiungi';
 import ImmagineAggiungi from "../media/add.svg"
 import ImmagineRemove from "../media/remove.svg"
+import ImmagineTornaIndietro from "../media/torna_indietro.svg"
 import { useState, useEffect } from 'react';
 
 const PromemoriaWidget = () => {
@@ -18,16 +19,36 @@ const PromemoriaWidget = () => {
             setPromemoria(result);
         })
     }, [])
+
+
+    const [num, setNum] = useState(1)
+    const [elimina, setElimina] = useState()
+    const [src, setSrc] = useState(ImmagineRemove)
+
+    const action = () =>{
+        if(num%2==1)
+        {
+            setElimina(true)
+            setSrc(ImmagineTornaIndietro)
+        }
+        else
+        {
+            setElimina(false)
+            setSrc(ImmagineRemove)
+        }
+        setNum(v=> v+1)
+    }
+
     return (
         <div style={styles.container}>
             <div style={styles.divIntestazione}>
-                <h1>I tuoi Promemoria</h1> 
-                <img src={ImmagineRemove}/>
+                <h1>Promemoria</h1> 
+                <img src={src} onClick={action} width={13} height={13}/>
             </div>
             {
                 promemoria?.map((item) => {
                     return (
-                        <BoxPromemoria key={item.id} title={item.titolo} descrizione={item.descrizione} data={item.data_ora.split('T')[0]} animale={item.animali} ora={item.data_ora.split('T')[1]} img={ImmagineRemove} aImg={10} lImg={10}/>
+                        <BoxPromemoria key={item.id} title={item.titolo} descrizione={item.descrizione} data={item.data_ora.split('T')[0]} animale={item.animali} ora={item.data_ora.split('T')[1]} img={ImmagineRemove} aImg={10} lImg={10} remove={elimina}/>
                     )
                 })
             }
@@ -55,7 +76,7 @@ const styles = {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         width: "100%",
         padding: 5
     }

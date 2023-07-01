@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { ButtonSubmit, ButtonReset } from './Button';
+import { useNavigate, NavLink } from "react-router-dom";
 import "../css/AddPromemoriaForm.css"
 
 const FormAddPromemoria = () => {
@@ -157,7 +158,7 @@ const FormAddPromemoria = () => {
 
                 <div></div>
                 <div className="buttonsBottomForm">
-                    <ButtonReset text="Anulla" />
+                    <NavLink to={"/"}><ButtonReset text="Anulla" /></NavLink>
                     <ButtonSubmit text="Crea" />
                 </div>
 

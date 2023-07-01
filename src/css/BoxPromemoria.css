@@ -1,42 +1,64 @@
 .boxProm {
-    display: flex;
+    display: grid;
+    grid-template-rows: 0.25fr 0.25fr 0.4fr 0.1fr 1.5fr;
     flex-direction: column;
-    align-items: flex-start;
     width: 80%;
     color: white;
     border-radius: 10px;
-    background-color: white
+    background-color: white;
+    margin-bottom: 8%;
+    min-height: min-content;
+    max-height: fit-content;
 }
+.spazioRiga{
+    height: 1rem;
+}
+
 .barraTitolo{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     color: white;
-    height: 30%;
-    min-width: 100%;
+    height: 100%;
+    min-width: calc(100% - (padding-left + padding-right));
     background-color: #94092e;
     border-radius: 10px 10px 0px 0px;
     border-color: #94092e;
+    padding: 0% 7% 0% 7%;
 }
 .tdoProm{
-    
     font-weight: bold;
-    
 }
 
 .descrizioneProm{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
     color: black;
-    min-height: border-box;
+    min-width: 100%;
+    max-height: min-content;
 
 }
 
 .paragDescProm{
-    padding: 5%;
-    font-size: 1rem;
+    padding: 0% 7% 0% 7%;
     text-align: left;
+    height: 100%;
+    color: #000;
+
+}
+#firstLine{
+    font-size: 1.1rem;
+    min-height: fit-content;
+    min-height: -moz-fit-content;
+}
+
+#secondtLine{
+    font-size: 0.9rem;
+    min-height: fit-content;
+    min-height: -moz-fit-content;
+    margin-top: 0%;
+}
+
+#binProm{
+    margin-right: 3%;
 }

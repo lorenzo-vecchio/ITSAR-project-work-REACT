@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import '../css/AddAnimalForm.css';
 import FotoWidget from "../components/FotoWidget";
 import Image from "../placeholders/dog.jpg";
@@ -138,7 +138,7 @@ const AddAnimalForm = () => {
                         <div id="loading"></div>
                         :
                         <>
-                            <ButtonReset text="Anulla" />
+                            <NavLink to={"/"}><ButtonReset text="Anulla" /></NavLink>
                             <ButtonSubmit text="Aggiungi" />
                         </>
                     }
