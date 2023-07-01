@@ -6,6 +6,7 @@ const PlaceWidget = (props) => {
             <h1 style={styles.titolo}>{props.posto.nome}</h1>
             <p style={styles.locReg}>{props.posto.localita}, {props.posto.regione} - {props.posto.tipo}</p>
             <img src={ImmagineRemove} style={styles.iconaClose} width={15} height={15} onClick={props.onClose} />
+            <button style={styles.button} onClick={props.onVaiClick}>Vai</button>
         </div>
     )
 }
@@ -43,6 +44,15 @@ const styles = {
         justifyContent: 'center',
         textAlign: 'left',
         margin: 0
+    },
+    button: {
+        width: '5rem',
+        height: '2rem',
+        borderRadius: '20px',
+        backgroundColor: 'green',
+        color: 'white',
+        border: '1px solid white',
+        marginTop: '2rem'
     }
 }
 
