@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "../css/PreferitiWidget.css";
 
 const PreferitiWidget = (props) => {
     const [postiPreferiti, setPostiPreferiti] = useState([])
@@ -13,6 +14,8 @@ const PreferitiWidget = (props) => {
             setPostiPreferiti(result);
         })
     }, [])
+
+    
     
     
     
@@ -24,8 +27,8 @@ const PreferitiWidget = (props) => {
                 postiPreferiti.map((item) => {
                     return (
                         <li key={item.id}>
-                            <p style={styles.nome}>{item.nome_luogo}</p>
-                            <p style={styles.via}>{item.nome_localita}</p>
+                            <p id="nomeLuogo">{item.nome_luogo}</p>
+                            <p id="via" >{item.nome_localita}</p>
                         </li>                        
                     );
                 })
@@ -44,16 +47,8 @@ const styles = {
         display: "flex",
         flexDirection: "column",
         color: "white",
-        borderRadius: "25px"
-    },
-    nome: {
-        marginBottom: 0,        
-    },
-    via: {
-        fontSize: "0.8rem",
-        margin: 0,
-        color: "rgb(158, 158, 158)"
-    },
+        borderRadius: "25px",
+    }
 }
 
 export default PreferitiWidget;
