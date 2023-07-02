@@ -4,17 +4,18 @@
     justify-content: center;
     padding-top: 3rem;
     gap: 6%;
+
   }
 
   .leftContainer {
-    width: auto;
+    width: 25%;
     min-width: 17rem;
     display: flex;
     flex-direction: column;
     padding: 0.5rem;
     padding-left: 2rem;
     min-height: 100%;
-    gap: 7rem;
+    gap: 4rem;
   }
 
   .centerContainer {
@@ -41,17 +42,23 @@
     flex-direction: column;
     padding: 0.5rem;
     padding-right: 2rem;
+    align-items: center;
+  }
+
+  #map{
+    min-height: 35vh;
   }
 
   @media screen and (max-width: 1280px){
     .mainContainer{
       display: grid;
       grid-template-columns: 1fr;
-      overflow-x: scroll;
       overflow-y: hidden;
+      overflow-x: hidden;
       height: 100%;
       justify-items: center;
       grid-gap: 0%;
+      margin-bottom: 10vh;
     }
 
     .centerContainer{
@@ -85,7 +92,7 @@
       border-bottom: 1px solid;
       border-color: #fff;
       padding-bottom: 7%;
-      width:fit-content
+      width:fit-content;
     }
 
     .hide-scrollbar{
@@ -94,22 +101,22 @@
 
   }
 
-  @media screen and (min-width: 1920px) {
-    .mainContainer {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 5rem 8rem 0rem 8rem;
-      gap: 17%;
-    }
-
+  @media screen and (min-width: 1921px) {
     .centerContainer {
-      width: 50%;
-      min-width: 50rem;
+      max-width: 50rem;
       display: flex;
       flex-direction: column;
       gap: 2rem;
       padding: 1rem;
+    }
+
+    .rightContainer{
+      min-width: min-content;
+    }
+
+    .leftContainer{
+      min-width: min-content;
+      max-width: 80%;
     }
     
   }

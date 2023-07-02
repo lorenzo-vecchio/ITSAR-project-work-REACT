@@ -17,12 +17,12 @@ const PreferitiWidget = (props) => {
     
     return (
         <div style={{...styles.container, ...props.customCss}}>
-            <h3>I tuoi posti preferiti</h3>
+            <h2 className="titoloPreferitiWidget">Luoghi Salvati</h2>
             <ul>
                 {
                 postiPreferiti.map((item) => {
                     return (
-                        <li key={item.id}>
+                        <li key={item.id} className="tabellaPreferitiWidget">
                             <p id="nomeLuogo">{item.nome_luogo}</p>
                             <p id="via" >{item.nome_localita}</p>
                         </li>                        
@@ -40,10 +40,9 @@ const styles = {
         backgroundColor: "rgb(0, 0, 0, 0.75)",
         backdropFilter: "blur(5px)",
         WebkitBackdropFilter: "blur(5px)",
-        display: "flex",
-        flexDirection: "column",
         color: "white",
         borderRadius: "25px",
+        paddingBottom: "1rem",
     }
 }
 

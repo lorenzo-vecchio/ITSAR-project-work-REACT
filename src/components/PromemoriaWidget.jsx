@@ -45,8 +45,8 @@ const PromemoriaWidget = () => {
         <div class='superContainerProm'>
             <div className='containerProm'>
                 <div className='titoloProm'>
-                    <h1>Promemoria</h1> 
-                    <img src={src} onClick={action} width={13} height={13}/>
+                    <h2 id='titoloPromTesto'>Promemoria</h2> 
+                    <img src={src} onClick={action} width={13} height={13} id="cancella"/>
                 </div>
                 {
                     promemoria?.map((item) => {

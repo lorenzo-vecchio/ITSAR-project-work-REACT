@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { NavLink} from "react-router-dom";
 import "../css/AggiungiPromemoria.css"
+import "../css/Elimina.css"
 
-export const AggiungiAnimale = ({descrizione, lunghezza, colore, img}) =>{
+export const AggiungiAnimale = ({descrizione, img}) =>{
 
     const styles = {
         container:{
             borderRadius: 15,
-            backgroundColor: `${colore}`,
             display: "flex",
             alignItmes: "center",
             justifyContent: "center",
@@ -31,7 +31,7 @@ export const AggiungiAnimale = ({descrizione, lunghezza, colore, img}) =>{
     {
         return (
             <NavLink style={styles.removeLinkDefault} to={"aggiungi/animale"}>
-                <div style={styles.container}>
+                <div className="buttonAnimali" id="buttonAggiungiAnimale">
                     <img src={img} />
                     <p style={styles.paragrafo}>{descrizione}</p>
                 </div>
@@ -42,7 +42,7 @@ export const AggiungiAnimale = ({descrizione, lunghezza, colore, img}) =>{
     {
         return (
             <NavLink style={styles.removeLinkDefault} to={"aggiungi/animale"}>
-                <div style={styles.container}>
+                <div className="buttonAnimali" id="buttonAggiungiAnimale">
                     <p style={styles.paragrafo}>{descrizione}</p>
                 </div>
             </NavLink>
