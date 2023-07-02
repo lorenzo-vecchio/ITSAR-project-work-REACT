@@ -19,11 +19,13 @@ const HomePage = () => {
     <div>
       <div className='mainContainer'>
         <div className='leftContainer'>
-          <MapWidget  width={"100%"} height={"35vh"} borderRadius={"25px"}/>
+          <div className='mapWidget'>
+            <MapWidget height={"30vh"} borderRadius={"25px"} />
+          </div>
           <PreferitiWidget className="preferitiWidget" />
         </div>
         <div className='centerContainer'>
-          <h1>I tuoi animali</h1>
+          <h1>I Tuoi Animali</h1>
           <AnimalsWidget remove={controllo}/>
           <div className='divButton'>
             <AggiungiAnimale descrizione={"aggiungi animale"} lunghezza={45} colore={"green"}/>
