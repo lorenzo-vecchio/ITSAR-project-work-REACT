@@ -12,15 +12,18 @@ import "../css/HomePage.css"
 
 const HomePage = () => {
   const [controllo, setControllo] = useState(false)
+
   const controlloValore = (valore) =>{
     setControllo(valore)
   }
+
+
   return (
     <div>
-      <div className='mainContainer'>
+      <div className='mainContainer' >
         <div className='leftContainer'>
           <div className='mapWidget'>
-            <MapWidget height={"30vh"} borderRadius={"25px"} />
+            <MapWidget height={"30vh"} borderRadius={"25px"} id='map'/>
           </div>
           <PreferitiWidget className="preferitiWidget" />
         </div>

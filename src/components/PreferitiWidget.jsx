@@ -14,10 +14,6 @@ const PreferitiWidget = (props) => {
             setPostiPreferiti(result);
         })
     }, [])
-
-    
-    
-    
     
     return (
         <div style={{...styles.container, ...props.customCss}}>
