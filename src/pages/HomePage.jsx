@@ -28,7 +28,7 @@ const HomePage = () => {
           <PreferitiWidget className="preferitiWidget" />
         </div>
         <div className='centerContainer'>
-          <h1>I Tuoi Animali</h1>
+          <h1>I TUOI ANIMALI</h1>
           <AnimalsWidget remove={controllo}/>
           <div className='divButton'>
             <AggiungiAnimale descrizione={"aggiungi animale"} lunghezza={45} colore={"green"}/>
