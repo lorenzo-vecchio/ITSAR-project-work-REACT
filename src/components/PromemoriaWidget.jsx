@@ -42,7 +42,7 @@ const PromemoriaWidget = () => {
     }
 
     return (
-        <div>
+        <div class='superContainerProm'>
             <div className='containerProm'>
                 <div className='titoloProm'>
                     <h1>Promemoria</h1> 
