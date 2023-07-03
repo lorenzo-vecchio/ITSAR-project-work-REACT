@@ -64,16 +64,16 @@ const AddAnimalForm = () => {
             headers: { 'Content-Type': 'application/json' },
             body: jsonData,
             credentials: "include"
-          };
-          fetch("https://itsar-project-work-api.vercel.app/animals", requestOptions)
-          .then((response) => {
+        };
+        fetch("https://itsar-project-work-api.vercel.app/animals", requestOptions)
+            .then((response) => {
             if (response.status === 200) {
                 // animale aggiunto:
                 navigate("/");
                 setLoading(false)
             }
-          });
-        };
+        });
+    };
       
     return(
         
