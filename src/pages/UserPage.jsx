@@ -23,9 +23,11 @@ const UserPage = () => {
     const fields = [
         {name: "Nome", value: "Giorgio", label: "Nome"},
         {name: "Cognome", value: "Rossi", label: "Cognome"},
-        {name: "Email", value: "Giorgio.rossi@gmail.com", label: "Email"},
+        {name: "Email", value: "GRossi@gmail.com", label: "Email"},
         {name: "Password", value: "********", label: "Password"}
     ]
+
+    const dati = {fields.value}
 
     const FieldJSON = JSON.stringify(fields)
 
@@ -40,6 +42,9 @@ const UserPage = () => {
     }
 
     return (
+
+        console.log(FieldJSON),
+
         <div className="body">
             <Title title="Il tuo account" />
             <div className="imgProfilo-container">
