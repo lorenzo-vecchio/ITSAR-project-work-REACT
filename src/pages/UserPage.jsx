@@ -55,9 +55,6 @@ const UserPage = () => {
     }
 
     return (
-
-        console.log(FieldJSON),
-
         <div className="body">
             <Title title="Il tuo account" />
             <div className="imgProfilo-container">
