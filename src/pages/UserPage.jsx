@@ -48,6 +48,8 @@ const UserPage = () => {
        const data = {
         nome: fields[0].value,
         cognome: fields[1].value,
+        email: fields[2].value,
+        password: fields[3].value
        }
        return data;
     }
