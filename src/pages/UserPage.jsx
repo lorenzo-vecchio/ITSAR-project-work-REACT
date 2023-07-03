@@ -11,65 +11,6 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from '../contexts/AuthContext';
 import "../css/ButtonWidget.css";
 
-/*
-const UserPage = () => {
-    const { logout } = useContext(AuthContext);
-
-    function handleLogoutClick() {
-        const requestOptions = {
-            method: 'POST',
-            credentials: "include"
-        };
-        fetch("https://itsar-project-work-api.vercel.app/logout", requestOptions).then(() => {
-            logout();
-        })
-    }
-
-    return (
-        <div>
-            <Title title="Il tuo account" />
-            <div className="imgProfilo-container">
-                <div className="imgProfilo">
-                    <FotoWidget image={Image} />
-                </div>
-            </div>
-            <div className="testo">
-                <div>
-                    <span className="informazoni">Nome: </span>
-                    <span> Giorgio </span>
-                </div>
-                <div>
-                    <span className="informazoni">Cognome: </span>
-                    <span>Rossi </span>
-                </div>
-                <div>
-
-                    <span className="informazoni">Email: </span>
-
-                    <span>Giorgio.rossi@gmail.com </span>
-
-                </div>
-                <div>
-
-                    <span className="informazoni">Password: </span>
-
-                    <span>********** </span>
-
-                </div>
-            </div>
-
-                    <div className="bottone">
-                        <BottoneWidget testo={"Logout"}/>
-                    </div>
-            <div className="footer">
-                <MenuWidget />
-                <ButtonReset text="Modifica" />
-            </div>
-        </div>
-    );
-};
-*/
-
 const UserPage = () => {
     const { logout } = useContext(AuthContext);
 
@@ -85,6 +26,8 @@ const UserPage = () => {
         {name: "Email", value: "Giorgio.rossi@gmail.com", label: "Email"},
         {name: "Password", value: "********", label: "Password"}
     ]
+
+    const FieldJSON = JSON.stringify(fields)
 
     function handleLogoutClick() {
         const requestOptions = {
