@@ -4,11 +4,13 @@ import {AggiungiPromemoria} from './Aggiungi';
 import ImmagineAggiungi from "../media/add.svg"
 import ImmagineRemove from "../media/remove.svg"
 import ImmagineTornaIndietro from "../media/torna_indietro.svg"
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import "../css/PromemoriaWidget.css"
 import "../media/add.svg"
+import { ContextId } from '../contexts/ContextProvider';
 
 const PromemoriaWidget = () => {
+    const {idPromemoria, modificaId2} = useContext(ContextId)
     const [promemoria, setPromemoria] = useState([]);
     const requestOptions = {
         credentials: 'include',
@@ -51,7 +53,7 @@ const PromemoriaWidget = () => {
                 {
                     promemoria?.map((item) => {
                         return (
-                            <BoxPromemoria key={item.id} title={item.titolo} descrizione={item.descrizione} data={item.data_ora.split('T')[0]} animale={item.animali} ora={item.data_ora.split('T')[1]} img={ImmagineRemove} aImg={10} lImg={10} remove={elimina}/>
+                            <BoxPromemoria key={item.id} title={item.titolo} descrizione={item.descrizione} data={item.data_ora.split('T')[0]} animale={item.animali} ora={item.data_ora.split('T')[1]} img={ImmagineRemove} aImg={10} lImg={10} remove={elimina} id_promemoria={idPromemoria}/>
                         )
                     })
                 }

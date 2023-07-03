@@ -1,0 +1,124 @@
+.pagina
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contenuto
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 30%;
+    padding: 3px;
+    border: solid 3px black;
+    border-radius: 20px;
+    background-color: white;
+    margin-top: 0.3rem;
+}
+
+.informazioni
+{
+    padding: 5px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin: 1px
+}
+
+.dati
+{
+    padding: 5px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input2
+{
+    border: solid 2px black;
+    padding: 5px;
+    font-size: 1em;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.input2::placeholder
+{
+    padding: 5px;
+    text-align: center;
+}
+
+#Divcheckbox
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+#data
+{
+    width: 100%;
+    padding: 7px;
+}
+
+.buttonEdit
+{
+    position: fixed;
+    bottom: 15px;
+    right: 10px;
+    padding: 10px;
+    width: 10%;
+    border-radius: 20px;
+    background-color: #9c2f3d;
+    border-color: white;
+    color: white;
+    font-weight: 500;
+    font-size: 1.5em
+}
+
+.buttonEdit:hover{
+    background-color: #f74d65;
+}
+
+@media screen and (min-width: 750px) and (max-width: 1150px){
+    .contenuto{
+        width: 50%;
+    }
+}
+
+@media screen and (min-width:561px ) and (max-width: 749px){
+    .contenuto{
+        width: 70%;
+    }
+}
+
+
+@media screen and (min-width: 451px) and (max-width: 560px){
+    .contenuto{
+        width: 80%;
+    }
+
+    .buttonEdit{
+        width:20%
+    }
+}
+
+@media screen and (max-width: 450px){
+    .contenuto{
+        width: 90%;
+    }
+
+    .buttonEdit{
+        width:30%
+    }
+}
+
+

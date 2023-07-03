@@ -16,7 +16,7 @@ const styles = {
   title: {
     textTransform: "uppercase",
     color: "white",
-    marginTop: "5.3rem"
+    //marginTop: "5.3rem"
   }
 };
 

@@ -1,9 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import DogImage from '../placeholders/dog.jpg'
 import ImmagineRemove from '../media/remove.svg'
+import ImmagineDettagli from "../media/dettagli.svg"
+import { NavLink } from 'react-router-dom';
+import { ContextId } from '../contexts/ContextProvider';
 
 const AnimalsWidget = ({remove}) => {
-    const [animals, setAnimals] = useState();
+    const {id, modificaId} = useContext(ContextId)
+    const [animals, setAnimals] = useState([]);
     const requestOptions = {
         credentials: 'include',
     }
@@ -41,6 +45,14 @@ const AnimalsWidget = ({remove}) => {
         return result;
       };
     
+      const memorizza = (ID) =>{
+        modificaId(ID)
+      }
+
+      useEffect(()=>{
+        const array = animals.filter((a)=> a.id !== id)
+        setAnimals(array)
+      }, [id])
     
     return (
         <div style={styles.container}>
@@ -53,7 +65,8 @@ const AnimalsWidget = ({remove}) => {
                                 <h2 style={styles.h2}>{item.nome_animale}</h2>
                                 <p style={styles.p}>{calculateTimePassed(item.data_di_nascita)}</p>
                             </div>
-                            {remove? <img src={ImmagineRemove} style={styles.remove} width={15} height={15}/>: null}
+                            {remove? <img src={ImmagineRemove} style={styles.remove} width={15} height={15} onClick={() => memorizza(item.id)}/> : null}
+                            {remove? null: <NavLink to={"animal"}><button style={styles.dettagli} onClick={() => memorizza(item.id)}>Dettagli  <img src={ImmagineDettagli} style={styles.img}/> </button></NavLink>}
                         </div>
                     )
                 })
@@ -111,6 +124,29 @@ const styles = {
         position: "absolute",
         top: "10px",
         right: "10px"
+    },
+    dettagli:{
+        position: "absolute",
+        bottom: "10px",
+        right: "20px" ,
+        width: "20%",
+        backgroundColor: "green",
+        color: "white",
+        borderRadius: "20px",
+        padding: 5,
+        fontWeight: "500",
+        fontSize: "1em",
+        borderStyle: "solid",
+        borderColor: "white",
+        borderWidth: "2px"
+    },
+    id:{
+        color: "white"
+    },
+    img:{
+        position: "absolute",
+        right: "10px",
+        bottom: "8px"
     }
 }
 

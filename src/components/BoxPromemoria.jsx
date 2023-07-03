@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import "../css/BoxPromemoria.css";
+import { ContextId } from '../contexts/ContextProvider';
 
-const BoxPromemoria = ({title, descrizione, data, animale, ora, img, lImg, aImg, remove}) =>{
-
+const BoxPromemoria = ({title, descrizione, data, animale, ora, img, lImg, aImg, remove, id_promemoria}) =>{
+    const {idPromemoria, modificaId2} = useContext(ContextId)
     const [dataItaliano, setDataItaliano] = useState()
 
     useEffect(()=>{
@@ -27,7 +28,7 @@ const BoxPromemoria = ({title, descrizione, data, animale, ora, img, lImg, aImg,
             <div className='barraTitolo'>
                 <p className='tdoProm'>{dataItaliano}</p>
                 <p className='tdoProm'>{ora}</p>
-                {remove? <img src={img} width={lImg} height={aImg} id="binProm"/>: null}
+                {remove? <img src={img} width={lImg} height={aImg} id="binProm" onClick={() => modificaId2(id_promemoria)}/>: null}
             </div>
             <span className='spazioRiga'></span>
             <span className='paragDescProm' id='firstLine'><strong>{animale}</strong></span>
