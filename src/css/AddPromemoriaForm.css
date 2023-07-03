@@ -5,10 +5,6 @@
     color: white;
 }
 
-h1{
-    text-align: center;
-}
-
 .input{
     margin: auto;
     min-height: 2.5rem;
@@ -257,6 +253,5 @@ input[type=checkbox]:checked{
       justify-content: center;
      }
 }
-
 
  

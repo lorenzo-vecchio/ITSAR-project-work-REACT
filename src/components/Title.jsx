@@ -14,7 +14,9 @@ const styles = {
     height: "3em"
   },
   title: {
-    textTransform: "uppercase"
+    textTransform: "uppercase",
+    color: "white",
+    marginTop: "5.3rem"
   }
 };
 

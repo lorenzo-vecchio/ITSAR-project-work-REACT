@@ -1,104 +1,88 @@
-.style{
-    display: grid;
-    grid-template-columns: minmax(auto, 0.5fr) minmax(auto, max-content);
-    row-gap: 1.3rem;
-    color: white;
-}
-
-.input{
-    margin: auto;
-    min-height: 2.5rem;
-    border-radius: 1.5rem;
-    border: 0;
-    font-size: 20px;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    min-width: 5rem;
-    max-width: 77%;
-    text-align: center;
-    background-color: #fff;
-}
-
-#inputDataList1, #inputDataList2{
-    text-indent: 11%;
-}
-
-
-.inputDate {
-    min-height: 2.5rem;
-    border-radius: 1.5rem;
-    border: 0;
-    font-size: 20px;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    min-width: 5rem;
-    max-width: 77%;
-    text-align: center;
-    margin-inline: 3%;
-}
-
-.label{
+  .form {
     display: flex;
-    justify-content: right;
+    flex-direction: column;
     align-items: center;
-}
+    width: 100%;
+    color: white
+  }
 
-.checkboxList {
+  .container {
+    background-color: rgb(0, 0, 0, 0.75);
+    padding: 3rem;
+    border-radius: 25px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px
+  }
+
+  .secondContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%
+  }
+  
+  .label {
+    display: block;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .inputLogin {
+    height: 3rem;
+    border-radius: 100px;
+    border: 0;
+    min-width: calc(100% - 3rem);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+  
+  .thirdContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
-}
+    gap: 10px;
+    padding: 50px 0
+  }
 
-.vaccinazioni{
-    border-radius: 1.5rem;
+  .buttons {
     border: 0;
-    margin-bottom: 20px;
-    font-size: 20px;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    height: 30rem;
-    resize:vertical;
-    overflow:auto;
+    background-color: white;
+    height: 2.5rem;
+    width: 6rem;
+    border-radius: 100px;
+    font-weight: bold;
+    font-size: 1.01rem
+  }
 
-}
+  .passwordsMatch {
+    font-size: 0.8rem;
+    color: 'red';
+    margin: 0;
+  }
 
-input[type=checkbox] {
-    -webkit-appearance: initial;
-    appearance: initial;
-    min-height: 2rem;
-    min-width: 2rem;
-    border-radius: 5px;
-    border: 3px solid lightgray;
-    margin-right: 10px;
- }
-
-input[type=checkbox]:checked{
-    background-color: #F7D9C4;
-    transition: ease-in-out 0.05s;
-    top: 0;
-    left: 0;
-}
-
-/* input[type=checkbox]:checked:after{
-
-
-}
-*/
-.buttonsBottomForm{
+  .buttonsBottomForm{
     display: flex;
     justify-content: space-evenly;
     margin-top: 3rem;
     margin-bottom: 4rem;
 }
 
-.buttonForm {
+.btnLoginPage {
     display: inline-block;
     min-height: 2.7rem;
     min-width: 8rem;
     text-align: center;
     margin-inline: 5%;
     border-radius: 10rem;
-    color: #fff;
+    color: #000;
     text-transform: uppercase;
     font-size: 0.95rem;
     letter-spacing: 0.15rem;
@@ -109,13 +93,13 @@ input[type=checkbox]:checked{
     border-style: none;
   }
 
-  .buttonForm:active{
+  .btnLoginPage:active{
     transition:ease-in-out;
     border-style: groove;
-    border-color: #fff;
+    border-color: #000;
   }
 
-  .buttonForm:after {
+  .btnLoginPage:after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -125,7 +109,7 @@ input[type=checkbox]:checked{
     border-radius: 10rem;
     z-index: -2;
   }
-  .buttonForm:before {
+  .btnLoginPage:before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -137,27 +121,27 @@ input[type=checkbox]:checked{
     z-index: -1;
   }
 
-  #buttonAggiungi:after{
+  #loginBtn:after{
+    background-color: #fff;
+  }
+
+  #loginBtn:before{
+    background-color: #b1b1b1;
+  }
+
+  #signUpBtn:after{
     background-color: rgb(0, 182, 228);
   }
 
-  #buttonAggiungi:before{
+  #signUpBtn:before{
     background-color: #008fb3;
   }
 
-  #buttonAnnulla:after{
-    background-color: #f74d65;
+  .btnLoginPage:hover {
+    color: #000;
   }
 
-  #buttonAnnulla:before{
-    background-color: #9c2f3d;
-  }
-
-  .buttonForm:hover {
-    color: #fff;
-  }
-
-  .buttonForm:hover:before {
+  .btnLoginPage:hover:before {
     width: 100%;
   }
 
@@ -205,6 +189,3 @@ input[type=checkbox]:checked{
       justify-content: center;
      }
 }
-
-
- 

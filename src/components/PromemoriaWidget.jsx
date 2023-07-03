@@ -3,7 +3,10 @@ import BoxPromemoria from './BoxPromemoria';
 import {AggiungiPromemoria} from './Aggiungi';
 import ImmagineAggiungi from "../media/add.svg"
 import ImmagineRemove from "../media/remove.svg"
+import ImmagineTornaIndietro from "../media/torna_indietro.svg"
 import { useState, useEffect } from 'react';
+import "../css/PromemoriaWidget.css"
+import "../media/add.svg"
 
 const PromemoriaWidget = () => {
     const [promemoria, setPromemoria] = useState([]);
@@ -18,36 +21,45 @@ const PromemoriaWidget = () => {
             setPromemoria(result);
         })
     }, [])
-    return (
-        <div style={styles.container}>
-            <h1>I tuoi Promemoria</h1>
-            {
-                promemoria?.map((item) => {
-                    return (
-                        <BoxPromemoria key={item.id} title={item.titolo} descrizione={item.descrizione} data={item.data_ora.split('T')[0]} animale={item.animali} ora={item.data_ora.split('T')[1]} img={ImmagineRemove} aImg={10} lImg={10}/>
-                    )
-                })
-            }
-            <AggiungiPromemoria descrizione={"aggiungi promemoria"} lunghezza={"80"} colore={"green"} img={ImmagineAggiungi}/>
-        </div>
-    );
-}
 
-const styles = {
-    container: {
-        backgroundColor: "rgb(0, 0, 0, 0.75)",
-        backdropFilter: "blur(5px)",
-        WebkitBackdropFilter: "blur(5px)",
-        borderRadius: "25px",
-        color: "white",
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingTop: 10,
-        paddingBottom: 40
+
+    const [num, setNum] = useState(1)
+    const [elimina, setElimina] = useState()
+    const [src, setSrc] = useState(ImmagineRemove)
+
+    const action = () =>{
+        if(num%2==1)
+        {
+            setElimina(true)
+            setSrc(ImmagineTornaIndietro)
+        }
+        else
+        {
+            setElimina(false)
+            setSrc(ImmagineRemove)
+        }
+        setNum(v=> v+1)
     }
+
+    return (
+        <div class='superContainerProm'>
+            <div className='containerProm'>
+                <div className='titoloProm'>
+                    <h2 id='titoloPromTesto'>Promemoria</h2> 
+                    <img src={src} onClick={action} width={13} height={13} id="cancella"/>
+                </div>
+                {
+                    promemoria?.map((item) => {
+                        return (
+                            <BoxPromemoria key={item.id} title={item.titolo} descrizione={item.descrizione} data={item.data_ora.split('T')[0]} animale={item.animali} ora={item.data_ora.split('T')[1]} img={ImmagineRemove} aImg={10} lImg={10} remove={elimina}/>
+                        )
+                    })
+                }
+            </div>
+            <AggiungiPromemoria descrizione={"Aggiungi Promemoria"} lunghezza={"80"} colore={"green"} img={ImmagineAggiungi}/>
+        </div>
+
+    );
 }
 
 export default PromemoriaWidget;

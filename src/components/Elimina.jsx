@@ -1,16 +1,15 @@
 import React, { useState } from "react";
+import "../css/Elimina.css"
 
-const Elimina = ({descrizione, lunghezza, colore, img, callback}) =>{
+const Elimina = ({descrizione, img, callback}) =>{
 
     const styles = {
         container:{
             borderRadius: 15,
-            backgroundColor: `${colore}`,
             display: "flex",
             alignItmes: "center",
             justifyContent: "center",
             flexDirection: "row",
-            width: `${lunghezza}%`,
             padding: 2,
             cursor: 'pointer'
         },
@@ -29,7 +28,7 @@ const Elimina = ({descrizione, lunghezza, colore, img, callback}) =>{
         if(num%2==1)
         {
             callback(true)
-            setDescrizione("Torna Indietro")
+            setDescrizione("Annulla")
         }
         else
         {
@@ -42,7 +41,7 @@ const Elimina = ({descrizione, lunghezza, colore, img, callback}) =>{
     if (img) 
     {
         return (
-            <div style={styles.container} onClick={action}>
+            <div className="buttonAnimali" id="buttonElimina" onClick={action}>
                 <img src={img} />
                 <p style={styles.paragrafo}>{Descrizione}</p>
             </div>
@@ -51,7 +50,7 @@ const Elimina = ({descrizione, lunghezza, colore, img, callback}) =>{
     else 
     {
         return (
-            <div style={styles.container} onClick={action}>
+            <div className="buttonAnimali" id="buttonElimina" onClick={action}>
                 <p style={styles.paragrafo}>{Descrizione}</p>
             </div>
         )

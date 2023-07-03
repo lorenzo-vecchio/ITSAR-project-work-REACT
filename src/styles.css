@@ -28,3 +28,33 @@ body {
       transform: rotate(360deg);
   }
 }
+
+
+
+
+
+
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  .promemoriaListaAnimali {
+    scrollbar-width: auto;
+    scrollbar-color: #000000 #ffffff00;
+  }
+
+  /* Chrome, Edge, and Safari */
+  .promemoriaListaAnimali::-webkit-scrollbar {
+    width: 40px;
+  }
+
+  .promemoriaListaAnimali::-webkit-scrollbar-track {
+    background: #ffffff00;
+    border-radius: 40px;
+  }
+
+  .promemoriaListaAnimali::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 36px;
+    width: 2px;
+    border: 19px solid #ffffff;
+  }

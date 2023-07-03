@@ -17,6 +17,7 @@
     background-color: #00000008;
     border-style: groove;
     border-color: #00000008;
+    cursor: pointer;
 }
 
 .bottone-singolo:active{

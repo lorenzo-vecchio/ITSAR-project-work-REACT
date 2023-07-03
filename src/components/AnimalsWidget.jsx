@@ -46,7 +46,6 @@ const AnimalsWidget = ({remove}) => {
         <div style={styles.container}>
             {
                 animals?.map((item) => {
-                    console.log(item.nome_animale)
                     return (
                         <div style={styles.item} key={item.id}>
                             <img src={DogImage} alt="" style={styles.image} />
@@ -65,13 +64,16 @@ const AnimalsWidget = ({remove}) => {
 
 const styles = {
     container: {
-        width: "100%",
+        minWidth: "100%",
         height: "20rem",
         overflowY: "scroll",
+        overflowX: "hidden",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        gap: "1rem"
+        gap: "1rem",
+        minWidth: "20rem",
+        
     },
     item: {
         display: "flex",
@@ -82,7 +84,8 @@ const styles = {
         gap: "0.5rem",
         position: "relative",
         backdropFilter: "blur(5px)",
-        WebkitBackdropFilter: "blur(5px)"
+        WebkitBackdropFilter: "blur(5px)",
+        minWidth: "50%",
     },
     image: {
         height: "5rem",
