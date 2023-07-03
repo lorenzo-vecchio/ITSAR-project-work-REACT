@@ -87,6 +87,12 @@ const LoginForm = () => {
           login();
           setLoading(false);
         }
+        else{
+          alert("The password is invalid!");
+          setLoading(false);
+          setUsernameInput("");
+          setPasswordInput("");
+        }
       });
     }
   };
@@ -104,11 +110,11 @@ const LoginForm = () => {
           <label htmlFor="username" className='label'>
             Username
           </label>
-          <input type="text" id="username" className='inputLogin' onChange={handleUsernameInput} />
+          <input type="text" id="username" className='inputLogin' onChange={handleUsernameInput} required/>
           <label htmlFor="password" className='label'>
             Password
           </label>
-          <input type="password" id="password" className='inputLogin' onChange={handlePasswordInput} />
+          <input type="password" id="password" className='inputLogin' onChange={handlePasswordInput} required/>
           {showSignUpForm && (
             <>
               <label htmlFor="secondPassword" className='label'>
@@ -140,7 +146,6 @@ const LoginForm = () => {
             </button>
           </>
         }        
-        
       </div>
     </form>
   );

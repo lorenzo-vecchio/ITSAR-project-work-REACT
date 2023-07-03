@@ -27,8 +27,6 @@ const UserPage = () => {
         {name: "Password", value: "********", label: "Password"}
     ]
 
-    const dati = {fields.value}
-
     const FieldJSON = JSON.stringify(fields)
 
     function handleLogoutClick() {
