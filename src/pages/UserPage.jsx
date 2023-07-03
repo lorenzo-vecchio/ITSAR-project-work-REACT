@@ -1,4 +1,3 @@
-
 import Title from "../components/Title";
 import FotoWidget from "../components/FotoWidget";
 import Image from "../placeholders/dog.jpg";
@@ -28,6 +27,7 @@ const UserPage = () => {
         {name: "Nome", value: "Giorgio", label: "Nome"},
         {name: "Cognome", value: "Rossi", label: "Cognome"},
         {name: "Email", value: "GRossi@gmail.com", label: "Email"},
+        {name: "Username", value: "Giogi", label: "Username"},
         {name: "Password", value: "********", label: "Password"}
     ]
 
@@ -49,7 +49,8 @@ const UserPage = () => {
         nome: fields[0].value,
         cognome: fields[1].value,
         email: fields[2].value,
-        password: fields[3].value
+        username: fields[3].value,
+        password: fields[4].value
        }
        return data;
     }
@@ -77,6 +78,4 @@ const UserPage = () => {
         </div>
     );
 };
-
-
-  export default UserPage;
+export default UserPage;
