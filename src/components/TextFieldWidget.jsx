@@ -7,17 +7,17 @@ export function TextField({
     editable
 }) {
         const [fieldValues, setFieldValues] = useState(
-        fields.reduce((acc, field) => {
-        acc[field.name] = field.value;
-        return acc;
-        }, {})
+            fields.reduce((acc, field) => {
+                acc[field.name] = field.value;
+                return acc;
+            }, {})
         );
 
         const handleFieldChange = (fieldName) => (event) => {
-        setFieldValues((prevValues) => ({
-        ...prevValues,
-        [fieldName]: event.target.value
-        }));
+            setFieldValues((prevValues) => ({
+                ...prevValues,
+                [fieldName]: event.target.value
+            }));
         };
 
         return (    

@@ -17,6 +17,10 @@ const UserPage = () => {
     const [editable, setEditable] = useState(false);
     
     const handleButtonClick = () => {
+        if (editable) {
+            const ciao = save()
+            console.log(ciao)
+        }
         setEditable(!editable)
     }
 
@@ -38,6 +42,14 @@ const UserPage = () => {
         fetch("https://itsar-project-work-api.vercel.app/logout", requestOptions).then(() => {
             logout();
         })
+    }
+
+    const save = () => {
+       const data = {
+        nome: fields[0].value,
+        cognome: fields[1].value,
+       }
+       return data;
     }
 
     return (
