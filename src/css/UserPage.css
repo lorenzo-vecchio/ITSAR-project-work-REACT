@@ -17,18 +17,9 @@
     position: relative;
 }
 
-.testo {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    font-size: 24px;
-    width: fit-content;
-    margin-top: 1rem;
-}
 
-.informazoni {
-    font-weight: bold;
-}
+
+
 
 .imgProfilo {
     transition: opacity 0.5s ease-in-out;
@@ -56,15 +47,30 @@
     min-width: 0%;
 }
 
+
+
+.centerRow{
+    display: flex;
+    justify-content: center;
+}
+
+.testo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 24px;
+    width: fit-content;
+    margin-top: 1rem;
+}
+
 .row{
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-.centerRow{
-    display: flex;
-    justify-content: center;
+.informazoni {
+    font-weight: bold;
 }
 
 #inputTextField{
