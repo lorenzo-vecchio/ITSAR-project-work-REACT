@@ -10,10 +10,8 @@ const root = createRoot(rootElement);
 
 root.render(
   <AuthProvider>
-    <StrictMode>
-      <ContextProvider>
-        <App />
-      </ContextProvider>
-    </StrictMode>
+    <ContextProvider>
+      <App />
+    </ContextProvider>
   </AuthProvider>
 );
