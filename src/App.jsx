@@ -36,7 +36,7 @@ export default function App() {
           <Route path="account" element={loggedIn ? <UserPage /> : <LoginPage />} />
           <Route path="aggiungi/animale" element={loggedIn ? <AddAnimalPage /> : <LoginPage />}/>
           <Route path="aggiungi/promemoria" element={loggedIn ? <AddPromemoriaPage /> : <LoginPage />}/>
-          <Route path="animal" element={loggedIn ? <Animal /> : <LoginPage />}/>
+          <Route path="animal/:id" element={loggedIn ? <Animal /> : <LoginPage />}/>
           <Route path="*" element={<NoPage />} />
         </Routes>
       </div>
