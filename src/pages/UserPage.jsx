@@ -136,11 +136,13 @@ const UserPage = () => {
                         <p className="pInformazione">*********</p>
                     }
                 </div>
-                
-                <div className="bottone">
-                    <BottoneWidget class="fixed-button" testo={"Logout"} onClick={handleLogoutClick}/>
-                </div>
             </div>
+
+                <div className="bottone">
+                    <button className="btnLogoutUser" onClick={handleLogoutClick}>
+                        Logout
+                    </button> 
+                </div>
 
             <div className="footerContainer">
                 <button onClick={handleButtonClick} className="buttonForm" id="buttonAnnulla">
