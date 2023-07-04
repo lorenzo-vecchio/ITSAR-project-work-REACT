@@ -6,33 +6,62 @@ import MenuWidget from "../components/MenuWidget";
 import "../css/UserPage.css";
 import { TextField } from "../components/TextFieldWidget";
 import { ButtonSubmit, ButtonReset } from '../components/Button';
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from '../contexts/AuthContext';
 import "../css/ButtonWidget.css";
 
 const UserPage = () => {
     const { logout } = useContext(AuthContext);
+    const[editable, setEditable] = useState(false);
 
-    const [editable, setEditable] = useState(false);
+    const [nome, setNome] = useState("");
+    const [cognome, setCognome] = useState("");
+    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    useEffect(() => {
+        const requestOptions = {
+            credentials: 'include',
+        }
+        fetch("https://itsar-project-work-api.vercel.app/user", requestOptions)
+        .then(res => res.json())
+        .then(
+        (result) => {
+            setNome(result.nome)
+            setCognome(result.cognome)
+            setEmail(result.email)
+            setUsername(result.username)
+            setEmail(result.email)
+        })
+    }, [])
     
     const handleButtonClick = () => {
         if (editable) {
-            const ciao = save()
-            console.log(ciao)
+            const data = {
+                nome: nome,
+                cognome: cognome,
+                username: username,
+                email: email,
+                password: password
+            }
+            const jsonData = JSON.stringify(data);
+            
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: jsonData,
+                credentials: "include"
+                };
+            fetch("https://itsar-project-work-api.vercel.app/user", requestOptions)
+                .then((response) => {
+                if (response.status === 200) {
+                    console.log(jsonData)
+                }
+            });
         }
         setEditable(!editable)
     }
-
-    const fields = [
-        {name: "Nome", value: "Giorgio", label: "Nome"},
-        {name: "Cognome", value: "Rossi", label: "Cognome"},
-        {name: "Email", value: "GRossi@gmail.com", label: "Email"},
-        {name: "Username", value: "Giogi", label: "Username"},
-        {name: "Password", value: "********", label: "Password"}
-    ]
-
-
-    const FieldJSON = JSON.stringify(fields)
 
     function handleLogoutClick() {
         const requestOptions = {
@@ -42,17 +71,23 @@ const UserPage = () => {
         fetch("https://itsar-project-work-api.vercel.app/logout", requestOptions).then(() => {
             logout();
         })
+
     }
 
-    const save = () => {
-       const data = {
-        nome: fields[0].value,
-        cognome: fields[1].value,
-        email: fields[2].value,
-        username: fields[3].value,
-        password: fields[4].value
-       }
-       return data;
+    const handleChangeNome = (e) => {
+        setNome(e.target.value)
+    }
+    const handleChangeCognome = (e) => {
+        setCognome(e.target.value)
+    }
+    const handleChangeEmail = (e) => {
+        setEmail(e.target.value)
+    }
+    const handleChangePassword = (e) => {
+        setPassword(e.target.value)
+    }
+    const handleChangeUsername = (e) => {
+        setUsername(e.target.value)
     }
 
     return (
@@ -64,11 +99,49 @@ const UserPage = () => {
                 </div>
             </div>
             
-            <TextField fields={fields} onButtonClick={handleButtonClick} editable={editable}/>
+            <div class="centerRow">
+                <div class="testo">
+                    <h3>Nome: </h3>
+                    {
+                        editable ?
+                        <input class="input" type="text" value={nome} onChange={handleChangeNome}></input>
+                        :
+                        <p>{nome}</p>
+                    }
+                    <h3>Cognome: </h3>
+                    {
+                        editable ?
+                        <input class="input" type="text" value={cognome} onChange={handleChangeCognome}></input>
+                        :
+                        <p>{cognome}</p>
+                    }
+                    <h3>Email: </h3>
+                    {
+                        editable ?
+                        <input class="input" type="text" value={email} onChange={handleChangeEmail}></input>
+                        :
+                        <p>{email}</p>
+                    }
+                    <h3>Username: </h3>
+                    {
+                        editable ?
+                        <input class="input" type="text" value={username} onChange={handleChangeUsername}></input>
+                        :
+                        <p>{username}</p>
+                    }
+                    <h3>Password: </h3>
+                    {
+                        editable ?
+                        <input class="input" type="password" value={password} onChange={handleChangePassword}></input>
+                        :
+                        <p>*********</p>
+                    }
+                </div>
                 
                 <div className="bottone">
                     <BottoneWidget class="fixed-button" testo={"Logout"} onClick={handleLogoutClick}/>
                 </div>
+            </div>
 
             <div className="footerContainer">
                 <button onClick={handleButtonClick} className="buttonForm" id="buttonAnnulla">
