@@ -115,38 +115,38 @@ const Animal= () => {
       {
         risultato?.map((r)=>(
           <div className="contenuto" key={r.id}>
-            <h3>DATI ANAGRAFICI</h3>
+            <h2>DATI ANAGRAFICI</h2>
             <div className='informazioni'>
               <div className='dati'>
-                <span>Nome</span>
+                <span className='span'>Nome</span>
               </div>
               <div className='dati'>
-                {edit?<strong>{r.nome_animale}</strong>: <input type="text" value={nome} className='input2' placeholder='inserisci nome' onChange={changeNome}/>}
+                {edit?<strong className='strong'>{r.nome_animale}</strong>: <input type="text" value={nome} className='input2' placeholder='inserisci nome' onChange={changeNome}/>}
               </div>
             </div>
             <div className='informazioni'>
               <div className='dati'>
-                <span>Specie</span>
+                <span className='span'>Specie</span>
               </div>
               <div className='dati'>
-                {edit?<strong>{r.nome_specie}</strong>: <input type="text" value={specie} className='input2' placeholder='inserisci specie' onChange={changeSpecie}/>}
-              </div>
-            </div>
-            <div className='informazioni'>
-              <div className='dati'>
-                <span>Razza</span>
-              </div>
-              <div className='dati'>
-                {edit?<strong>{r.nome_razza}</strong>: <input type="text" value={razza} className='input2' placeholder='inserisci razza' onChange={changeRazza}/>}
+                {edit?<strong className='strong'>{r.nome_specie}</strong>: <input type="text" value={specie} className='input2' placeholder='inserisci specie' onChange={changeSpecie}/>}
               </div>
             </div>
             <div className='informazioni'>
               <div className='dati'>
-                <span>Sesso</span>
+                <span className='span'>Razza</span>
+              </div>
+              <div className='dati'>
+                {edit?<strong className='strong'>{r.nome_razza}</strong>: <input type="text" value={razza} className='input2' placeholder='inserisci razza' onChange={changeRazza}/>}
+              </div>
+            </div>
+            <div className='informazioni'>
+              <div className='dati'>
+                <span className='span'>Sesso</span>
               </div>
               <div className='dati'>
                 {
-                edit?<strong>{r.sesso==="M"? "Maschio": "Femmina"}</strong>
+                edit?<strong className='strong'>{r.sesso==="M"? "Maschio": "Femmina"}</strong>
                 : 
                 <div id='Divcheckbox'>
                   <label htmlFor="maschio">M</label>
@@ -159,18 +159,18 @@ const Animal= () => {
             </div>
             <div className='informazioni'>
               <div className='dati'>
-                <span>Data di Nascita</span>
+                <span className='span'>Data di Nascita</span>
               </div>
               <div className='dati'>
-                {edit?<strong>{r.data_di_nascita}</strong>: <input type="date" max={today}  value={dataDiNascita} className='input2' id='data' onChange={changeDataDiNascita}/>}
+                {edit?<strong className='strong'>{r.data_di_nascita}</strong>: <input type="date" max={today}  value={dataDiNascita} className='input2' id='data' onChange={changeDataDiNascita}/>}
               </div>
             </div>
             <div className='informazioni'>
               <div className='dati'>
-                <span>Peso</span>
+                <span className='span'>Peso</span>
               </div>
               <div className='dati'>
-                {edit?<strong>{r.peso!==null? r.peso: 0} kg</strong>: <input type="number" value={peso} min="0" step="0.1" className='input2' placeholder='inserisci peso' onChange={changePeso}/>}
+                {edit?<strong className='strong'>{r.peso!==null? r.peso: 0} kg</strong>: <input type="number" value={peso} min="0" step="0.1" className='input2' placeholder='inserisci peso' onChange={changePeso}/>}
               </div>
             </div>
           </div>
