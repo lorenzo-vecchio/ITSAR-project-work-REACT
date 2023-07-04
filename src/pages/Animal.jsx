@@ -149,10 +149,10 @@ const Animal= () => {
                 edit?<strong>{r.sesso==="M"? "Maschio": "Femmina"}</strong>
                 : 
                 <div id='Divcheckbox'>
-                  <label for="maschio">M</label>
-                  <input  style={{ backgroundColor: checbox1 ? 'cyan' : 'transparent' }} id="maschio" type="checkbox" className='input2' checked={checbox1} onChange={changeSessoM}/>
-                  <label for="femmina">F</label>
-                  <input  style={{ backgroundColor: checbox2 ? 'pink' : 'transparent' }} id="femmina" type="checkbox" className='input2' checked={checbox2} onChange={changeSessoF}/>
+                  <label htmlFor="maschio">M</label>
+                  <input  style={{ backgroundColor: checbox1 ? '#F7D9C4' : 'transparent' }} id="maschio" type="checkbox" className='input2' checked={checbox1} onChange={changeSessoM}/>
+                  <label htmlFor="femmina">F</label>
+                  <input  style={{ backgroundColor: checbox2 ? '#F7D9C4' : 'transparent' }} id="femmina" type="checkbox" className='input2' checked={checbox2} onChange={changeSessoF}/>
                 </div>
                 }
               </div>
