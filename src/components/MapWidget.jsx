@@ -1,114 +1,119 @@
 import mapboxgl from '!mapbox-gl';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import PlaceWidget from './PlaceWidget';
-import ChooseTravelMethod from './ChooseTravelMethod';
 
 const MapWidget = (props) => {
   const [displayDetInfo, setDisplayDetInfo] = useState(false);
   const [detInfoId, setDetInfoId] = useState();
   const [postoSelezionato, setPostoSelezionato] = useState();
-  const [showVaiMetodo, setShowVaiMetodo] = useState(false);
   const [localizzazioneAttivata, setLocalizzazioneAttivata] = useState(false);
-  let luoghi;
-  let map;
+  const [posti, setPosti] = useState();
+  const [markers, setMarkers] = useState([]);
+  const mapContainerRef = useRef(null); // Ref to hold the map container element
+  const mapRef = useRef(null); // Ref to hold the map object
+
   useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoibG9yZW56by12ZWNjaGlvIiwiYSI6ImNsaTNhb2hmMjB6OXIzcG80c3JpdXd3OWUifQ.6rCrnnxEwWoyKx7PLYqt6Q";
-    map = new mapboxgl.Map({
-      container: "map",
+    mapRef.current = new mapboxgl.Map({
+      container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v12",
       center: [12.496366, 41.902782], // long - lat
       zoom: 4
     });
-    var nav = new mapboxgl.NavigationControl();
-    map.addControl(nav, "bottom-right");
-    let geoLocateControl = new mapboxgl.GeolocateControl({
+
+    const nav = new mapboxgl.NavigationControl();
+    mapRef.current.addControl(nav, "bottom-right");
+
+    const geoLocateControl = new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true
       },
-      // When active the map will receive updates to the device's location as it changes.
       trackUserLocation: true,
-      // Draw an arrow next to the location dot to indicate which direction the device is heading.
       showUserHeading: true
-    })
-    map.addControl(geoLocateControl, "bottom-right");
-    // listens for localization activation
+    });
+    mapRef.current.addControl(geoLocateControl, "bottom-right");
+
     geoLocateControl.on('geolocate', function(event) {
-      // User has activated localization
-      // Handle the event or perform any necessary actions here
-      console.log('Localization activated:', event);
       setLocalizzazioneAttivata(true);
     });
 
     const requestOptions = {
       credentials: "include"
-    }
+    };
+
     fetch("https://itsar-project-work-api.vercel.app/servizi", requestOptions)
       .then(res => res.json())
       .then(
         (result) => {
-          luoghi = result;
-          luoghi.forEach((luogo) => {
-            console.log(luogo)
-            const marker = new mapboxgl.Marker()
-            .setLngLat([luogo.longitudine, luogo.latitudine])
-            .addTo(map);
-
-            marker.getElement().addEventListener('click', () => {
-              markerClickHandler(luogo);
-            });
-          });         
+          setPosti(result);
         },
         (error) => {
           console.log('sta un errore man')
         }
-      )
+      );
   }, []);
 
+  useEffect(() => {
+    if (posti && mapRef.current) {
+      const newMarkers = posti.map((luogo) => {
+        const marker = new mapboxgl.Marker()
+          .setLngLat([luogo.longitudine, luogo.latitudine])
+          .addTo(mapRef.current);
+
+        marker.getElement().addEventListener('click', () => {
+          markerClickHandler(luogo);
+        });
+
+        return marker;
+      });
+
+      setMarkers(newMarkers);
+    }
+  }, [posti]);
 
   function markerClickHandler(luogo) {
     setDisplayDetInfo(true)
     setPostoSelezionato(luogo)
-    // for mapbox to center on selected point
-    var targetCoordinates = [luogo.longitudine, luogo.latitudine];
-    var options = {
+    const targetCoordinates = [luogo.longitudine, luogo.latitudine];
+    const options = {
       center: targetCoordinates,
       zoom: 15,
       bearing: 0,
       pitch: 0
     };
-    map.flyTo(options);
+    mapRef.current.flyTo(options);
   }
 
   function detailCloseClickHandler() {
     setDisplayDetInfo(false)
   }
 
-  function onVai () {
-    setDisplayDetInfo(false);
-    setShowVaiMetodo(true);
+  function eliminaMarkers() {
+    for (let i = markers.length - 1; i >= 0; i--) {
+      markers[i].remove();
+    }
   }
 
   return (
     <div>
-      <div id="map" style={{width: props.width, height: props.height, borderRadius: props.borderRadius}}></div>
-      {
-        showVaiMetodo ?
-        <ChooseTravelMethod />
-        :
-        null
-      }
-      {
-        displayDetInfo ? <PlaceWidget 
-                          onClose={detailCloseClickHandler}
-                          posto={postoSelezionato}
-                          onVaiClick={onVai}
-                          />
-                          : null
-      }
+      <div ref={mapContainerRef} id="map" style={{width: props.width, height: props.height, borderRadius: props.borderRadius}}></div>
+      {displayDetInfo ? (
+        <PlaceWidget 
+          onClose={detailCloseClickHandler}
+          posto={postoSelezionato}
+        />
+      ) : null}
+      <button style={styles.button} onClick={eliminaMarkers}>elimina markers</button>
     </div>
   );
 };
 
+const styles = {
+  button: {
+    position: 'fixed',
+    top: '1rem'
+  }
+};
 
 export default MapWidget;
