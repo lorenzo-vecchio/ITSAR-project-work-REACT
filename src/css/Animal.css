@@ -63,6 +63,16 @@
     flex-direction: row;
 }
 
+#maschio
+{
+    border: 2px black solid;
+}
+
+#femmina
+{
+    border: 2px black solid;
+}
+
 #data
 {
     width: 100%;
