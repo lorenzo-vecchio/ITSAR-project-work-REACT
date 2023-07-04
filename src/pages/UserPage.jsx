@@ -45,8 +45,7 @@ const UserPage = () => {
                 email: email,
                 password: password
             }
-            const jsonData = JSON.stringify(data);
-            
+            const jsonData = JSON.stringify(data);       
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
