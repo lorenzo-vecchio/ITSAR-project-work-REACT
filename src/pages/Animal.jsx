@@ -2,12 +2,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import Title from "../components/Title";
 import Image from "../placeholders/dog.jpg";
 import FotoWidget from '../components/FotoWidget';
-import { ContextId } from '../contexts/ContextProvider';
-import "../css/Animal.css";
-import "../css/Elimina.css";
+import "../css/Animal.css"
+import { useParams } from 'react-router-dom';
 
 const Animal= () => {
-  const {id, modificaId} = useContext(ContextId)
+  const idAnimaleUrl = useParams()
   const [edit, setEdit] = useState(true)
   const [animals, setAnimals] = useState([]);
   const [risultato, setRisultato] = useState([])
@@ -75,7 +74,7 @@ const Animal= () => {
   },[])
 
   useEffect(()=>{
-    const a = animals.filter((an) => an.id === id)
+    const a = animals.filter((an) => an.id == idAnimaleUrl.id)
     setRisultato(a)
     risultato.map((a)=>{
       setNome(a.nome_animale)
@@ -97,7 +96,7 @@ const Animal= () => {
 
   const modificaAnimale = () =>{
     const json = {
-      id: id,
+      id: idAnimaleUrl.id,
       nome: nome,
       razza: razza,
       sesso: sesso,
