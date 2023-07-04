@@ -84,7 +84,7 @@ const Animal= () => {
       setDataDiNascita(a.data_di_nascita)
       setPeso(a.peso)
     })
-  },[animals])
+  },[animals, edit])
 
   const editStato = () =>{
     setEdit(!edit)
