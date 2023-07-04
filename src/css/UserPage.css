@@ -1,3 +1,11 @@
+.h3Titolo{
+    margin: 0
+}
+
+.pInformazione{
+    margin: 0;
+}
+
 .bottone {
     position: fixed;
     left: 0;
@@ -54,6 +62,8 @@
     font-size: 24px;
     width: fit-content;
     margin-top: 1rem;
+    gap: 1rem;
+    align-items: center;
 }
 
 .informazoni {

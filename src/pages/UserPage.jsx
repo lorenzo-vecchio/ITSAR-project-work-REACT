@@ -45,8 +45,7 @@ const UserPage = () => {
                 email: email,
                 password: password
             }
-            const jsonData = JSON.stringify(data);
-            
+            const jsonData = JSON.stringify(data);       
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -101,40 +100,40 @@ const UserPage = () => {
             
             <div class="centerRow">
                 <div class="testo">
-                    <h3>Nome: </h3>
+                    <h3 className="h3Titolo" >Nome: </h3>
                     {
                         editable ?
-                        <input class="input" type="text" value={nome} onChange={handleChangeNome}></input>
+                        <input className="input" type="text" value={nome} onChange={handleChangeNome}></input>
                         :
-                        <p>{nome}</p>
+                        <p className="pInformazione" >{nome}</p>
                     }
-                    <h3>Cognome: </h3>
+                    <h3 className="h3Titolo" >Cognome: </h3>
                     {
                         editable ?
-                        <input class="input" type="text" value={cognome} onChange={handleChangeCognome}></input>
+                        <input className="input" type="text" value={cognome} onChange={handleChangeCognome}></input>
                         :
-                        <p>{cognome}</p>
+                        <p className="pInformazione">{cognome}</p>
                     }
-                    <h3>Email: </h3>
+                    <h3 className="h3Titolo" >Email: </h3>
                     {
                         editable ?
-                        <input class="input" type="text" value={email} onChange={handleChangeEmail}></input>
+                        <input className="input" type="text" value={email} onChange={handleChangeEmail}></input>
                         :
-                        <p>{email}</p>
+                        <p className="pInformazione">{email}</p>
                     }
-                    <h3>Username: </h3>
+                    <h3 className="h3Titolo" >Username: </h3>
                     {
                         editable ?
-                        <input class="input" type="text" value={username} onChange={handleChangeUsername}></input>
+                        <input className="input" type="text" value={username} onChange={handleChangeUsername}></input>
                         :
-                        <p>{username}</p>
+                        <p className="pInformazione">{username}</p>
                     }
-                    <h3>Password: </h3>
+                    <h3 className="h3Titolo" >Password: </h3>
                     {
                         editable ?
-                        <input class="input" type="password" value={password} onChange={handleChangePassword}></input>
+                        <input className="input" type="password" value={password} onChange={handleChangePassword}></input>
                         :
-                        <p>*********</p>
+                        <p className="pInformazione">*********</p>
                     }
                 </div>
                 
