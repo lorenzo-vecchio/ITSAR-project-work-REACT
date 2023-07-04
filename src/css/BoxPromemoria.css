@@ -8,6 +8,7 @@
     background-color: white;
     margin-bottom: 8%;
     min-height: min-content;
+    max-height: -moz-fit-content;
     max-height: fit-content;
 }
 .spazioRiga{
@@ -49,14 +50,15 @@
 }
 #firstLine{
     font-size: 1.1rem;
-    min-height: fit-content;
     min-height: -moz-fit-content;
+    min-height: fit-content;
+    
 }
 
 #secondtLine{
     font-size: 0.9rem;
-    min-height: fit-content;
     min-height: -moz-fit-content;
+    min-height: fit-content;
     margin-top: 0%;
 }
 
