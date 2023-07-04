@@ -43,6 +43,8 @@ const styles = {
         color: "white",
         borderRadius: "25px",
         paddingBottom: "1rem",
+        overflowY: "auto",
+        height: "29vh",
     }
 }
 
