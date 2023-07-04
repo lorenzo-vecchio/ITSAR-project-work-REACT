@@ -1,6 +1,7 @@
 import mapboxgl from '!mapbox-gl';
 import React, { useEffect, useState, useRef } from "react";
 import PlaceWidget from './PlaceWidget';
+import "../css/DropDownFiltri.css";
 
 const MapWidget = (props) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -139,7 +140,8 @@ const MapWidget = (props) => {
         isFullScreen ?
         <div style={styles.filtri}>
         <p>Filtri:</p>
-        <select name="filtro" id="filtro" value={filtroCategoria} onChange={handleFiltroChange} style={styles.select}>
+        <div class="dropdown__arrow"></div>
+        <select name="filtro" id="filtro" value={filtroCategoria} onChange={handleFiltroChange} className='dropdown'>
           <option value="none">Categoria</option>
           {
             categorie.map((categoria) => {
