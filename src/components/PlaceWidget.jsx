@@ -14,7 +14,7 @@ const styles = {
     container: {
         position: 'fixed',
         left: '2rem',
-        top: '5rem',
+        top: '8rem',
         width: '20vw',
         paddingBottom: '2rem',
         color: "white",

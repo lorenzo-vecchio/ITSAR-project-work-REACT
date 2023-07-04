@@ -3,14 +3,23 @@ import React, { useEffect, useState, useRef } from "react";
 import PlaceWidget from './PlaceWidget';
 
 const MapWidget = (props) => {
+  const [isFullScreen, setIsFullScreen] = useState(false);
   const [displayDetInfo, setDisplayDetInfo] = useState(false);
   const [detInfoId, setDetInfoId] = useState();
   const [postoSelezionato, setPostoSelezionato] = useState();
   const [localizzazioneAttivata, setLocalizzazioneAttivata] = useState(false);
   const [posti, setPosti] = useState();
   const [markers, setMarkers] = useState([]);
+  const [categorie, setCategorie] = useState([]);
+  const [filtroCategoria, setFiltroCategoria] = useState("none");
   const mapContainerRef = useRef(null); // Ref to hold the map container element
   const mapRef = useRef(null); // Ref to hold the map object
+
+  useEffect(() => {
+    if (props.width === '100vw') {
+      setIsFullScreen(true)
+    }
+  }, [props.width])
 
   useEffect(() => {
     mapboxgl.accessToken =
@@ -56,7 +65,13 @@ const MapWidget = (props) => {
 
   useEffect(() => {
     if (posti && mapRef.current) {
-      const newMarkers = posti.map((luogo) => {
+      const filteredPosti = posti.filter((luogo) => {
+        return filtroCategoria === "none" || luogo.tipo === filtroCategoria;
+      });
+
+      eliminaMarkers(); // Remove existing markers before adding new ones
+
+      const newMarkers = filteredPosti.map((luogo) => {
         const marker = new mapboxgl.Marker()
           .setLngLat([luogo.longitudine, luogo.latitudine])
           .addTo(mapRef.current);
@@ -70,10 +85,13 @@ const MapWidget = (props) => {
 
       setMarkers(newMarkers);
     }
-  }, [posti]);
+    getCategoryList();
+  }, [posti, filtroCategoria]);
 
   function markerClickHandler(luogo) {
-    setDisplayDetInfo(true)
+    if (isFullScreen) {
+      setDisplayDetInfo(true)
+    }
     setPostoSelezionato(luogo)
     const targetCoordinates = [luogo.longitudine, luogo.latitudine];
     const options = {
@@ -90,9 +108,22 @@ const MapWidget = (props) => {
   }
 
   function eliminaMarkers() {
-    for (let i = markers.length - 1; i >= 0; i--) {
-      markers[i].remove();
+    markers.forEach((marker) => marker.remove());
+  }
+
+  function getCategoryList() {
+    if (posti) {
+      const categories = new Set();
+      for (let i = 0; i < posti.length; i++) {
+        const place = posti[i];
+        categories.add(place.tipo);
+      }
+      setCategorie(Array.from(categories))
     }
+  }
+
+  function handleFiltroChange(event) {
+    setFiltroCategoria(event.target.value);
   }
 
   return (
@@ -104,15 +135,47 @@ const MapWidget = (props) => {
           posto={postoSelezionato}
         />
       ) : null}
-      <button style={styles.button} onClick={eliminaMarkers}>elimina markers</button>
+      {
+        isFullScreen ?
+        <div style={styles.filtri}>
+        <p>Filtri:</p>
+        <select name="filtro" id="filtro" value={filtroCategoria} onChange={handleFiltroChange} style={styles.select}>
+          <option value="none">Categoria</option>
+          {
+            categorie.map((categoria) => {
+              return (
+                <option key={categoria} value={categoria}>{categoria}</option>
+              )
+            })
+          }
+        </select>
+        </div>
+        : null
+      }
+      
     </div>
   );
 };
 
 const styles = {
-  button: {
+  filtri: {
     position: 'fixed',
-    top: '1rem'
+    top: '2rem',
+    left: '2rem',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    color: "white",
+    backgroundColor: "rgb(0, 0, 0, 0.75)",
+    backdropFilter: "blur(5px)",
+    WebkitBackdropFilter: "blur(5px)",
+    padding: '0px 20px',
+    borderRadius: '40px'
+  },
+  select: {
+    height: '1.5rem'
   }
 };
 
