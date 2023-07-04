@@ -3,7 +3,8 @@ import Title from "../components/Title";
 import Image from "../placeholders/dog.jpg";
 import FotoWidget from '../components/FotoWidget';
 import { ContextId } from '../contexts/ContextProvider';
-import "../css/Animal.css"
+import "../css/Animal.css";
+import "../css/Elimina.css";
 
 const Animal= () => {
   const {id, modificaId} = useContext(ContextId)
@@ -150,9 +151,9 @@ const Animal= () => {
                 : 
                 <div id='Divcheckbox'>
                   <label htmlFor="maschio">M</label>
-                  <input  style={{ backgroundColor: checbox1 ? '#F7D9C4' : 'transparent' }} id="maschio" type="checkbox" className='input2' checked={checbox1} onChange={changeSessoM}/>
+                  <input  style={{ backgroundColor: checbox1 ? '#F7D9C4' : 'transparent' }} id="maschio" type="checkbox" className='inputCheck' checked={checbox1} onChange={changeSessoM}/>
                   <label htmlFor="femmina">F</label>
-                  <input  style={{ backgroundColor: checbox2 ? '#F7D9C4' : 'transparent' }} id="femmina" type="checkbox" className='input2' checked={checbox2} onChange={changeSessoF}/>
+                  <input  style={{ backgroundColor: checbox2 ? '#F7D9C4' : 'transparent' }} id="femmina" type="checkbox" className='.inputCheck' checked={checbox2} onChange={changeSessoF}/>
                 </div>
                 }
               </div>
@@ -161,8 +162,10 @@ const Animal= () => {
               <div className='dati'>
                 <span className='span'>Data di Nascita</span>
               </div>
-              <div className='dati'>
-                {edit?<strong className='strong'>{r.data_di_nascita}</strong>: <input type="date" max={today}  value={dataDiNascita} className='input2' id='data' onChange={changeDataDiNascita}/>}
+              <div className='informazioni2'>
+                <div className='dati'>
+                  {edit?<strong className='strong'>{r.data_di_nascita}</strong>: <input type="date" max={today}  value={dataDiNascita} className='inputDate' onChange={changeDataDiNascita}/>}
+                </div>
               </div>
             </div>
             <div className='informazioni'>
@@ -176,7 +179,7 @@ const Animal= () => {
           </div>
         ))
       }
-      <button className='buttonEdit' onClick={editStato}>
+      <button className='buttonEdit' id='buttonEdit' onClick={editStato}>
         {edit? "Edit": "Save"}
         </button>
     </div>
