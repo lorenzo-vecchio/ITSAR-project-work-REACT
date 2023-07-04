@@ -9,6 +9,7 @@ import "../css/ButtonDettagli.css";
 const AnimalsWidget = ({remove}) => {
     const {id, modificaId} = useContext(ContextId)
     const [animals, setAnimals] = useState([]);
+    const [loading, setLoading] = useState(false);
     const requestOptions = {
         credentials: 'include',
     }
@@ -47,7 +48,23 @@ const AnimalsWidget = ({remove}) => {
       };
     
       const memorizza = (ID) =>{
-        modificaId(ID)
+        setLoading(true)
+        const requestOptions = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id: ID,
+            }),
+            credentials: "include"
+        };
+        fetch("https://itsar-project-work-api.vercel.app/animals", requestOptions)
+            .then((response) => {
+            if (response.status === 200) {
+                // animale eliminato
+                modificaId(ID)
+                setLoading(false)
+            }
+        });
       }
 
       useEffect(()=>{

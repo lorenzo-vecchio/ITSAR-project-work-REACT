@@ -1,114 +1,182 @@
 import mapboxgl from '!mapbox-gl';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import PlaceWidget from './PlaceWidget';
-import ChooseTravelMethod from './ChooseTravelMethod';
 
 const MapWidget = (props) => {
+  const [isFullScreen, setIsFullScreen] = useState(false);
   const [displayDetInfo, setDisplayDetInfo] = useState(false);
   const [detInfoId, setDetInfoId] = useState();
   const [postoSelezionato, setPostoSelezionato] = useState();
-  const [showVaiMetodo, setShowVaiMetodo] = useState(false);
   const [localizzazioneAttivata, setLocalizzazioneAttivata] = useState(false);
-  let luoghi;
-  let map;
+  const [posti, setPosti] = useState();
+  const [markers, setMarkers] = useState([]);
+  const [categorie, setCategorie] = useState([]);
+  const [filtroCategoria, setFiltroCategoria] = useState("none");
+  const mapContainerRef = useRef(null); // Ref to hold the map container element
+  const mapRef = useRef(null); // Ref to hold the map object
+
+  useEffect(() => {
+    if (props.width === '100vw') {
+      setIsFullScreen(true)
+    }
+  }, [props.width])
+
   useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoibG9yZW56by12ZWNjaGlvIiwiYSI6ImNsaTNhb2hmMjB6OXIzcG80c3JpdXd3OWUifQ.6rCrnnxEwWoyKx7PLYqt6Q";
-    map = new mapboxgl.Map({
-      container: "map",
+    mapRef.current = new mapboxgl.Map({
+      container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v12",
       center: [12.496366, 41.902782], // long - lat
       zoom: 4
     });
-    var nav = new mapboxgl.NavigationControl();
-    map.addControl(nav, "bottom-right");
-    let geoLocateControl = new mapboxgl.GeolocateControl({
+
+    const nav = new mapboxgl.NavigationControl();
+    mapRef.current.addControl(nav, "bottom-right");
+
+    const geoLocateControl = new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true
       },
-      // When active the map will receive updates to the device's location as it changes.
       trackUserLocation: true,
-      // Draw an arrow next to the location dot to indicate which direction the device is heading.
       showUserHeading: true
-    })
-    map.addControl(geoLocateControl, "bottom-right");
-    // listens for localization activation
+    });
+    mapRef.current.addControl(geoLocateControl, "bottom-right");
+
     geoLocateControl.on('geolocate', function(event) {
-      // User has activated localization
-      // Handle the event or perform any necessary actions here
-      console.log('Localization activated:', event);
       setLocalizzazioneAttivata(true);
     });
 
     const requestOptions = {
       credentials: "include"
-    }
+    };
+
     fetch("https://itsar-project-work-api.vercel.app/servizi", requestOptions)
       .then(res => res.json())
       .then(
         (result) => {
-          luoghi = result;
-          luoghi.forEach((luogo) => {
-            console.log(luogo)
-            const marker = new mapboxgl.Marker()
-            .setLngLat([luogo.longitudine, luogo.latitudine])
-            .addTo(map);
-
-            marker.getElement().addEventListener('click', () => {
-              markerClickHandler(luogo);
-            });
-          });         
+          setPosti(result);
         },
         (error) => {
           console.log('sta un errore man')
         }
-      )
+      );
   }, []);
 
+  useEffect(() => {
+    if (posti && mapRef.current) {
+      const filteredPosti = posti.filter((luogo) => {
+        return filtroCategoria === "none" || luogo.tipo === filtroCategoria;
+      });
+
+      eliminaMarkers(); // Remove existing markers before adding new ones
+
+      const newMarkers = filteredPosti.map((luogo) => {
+        const marker = new mapboxgl.Marker()
+          .setLngLat([luogo.longitudine, luogo.latitudine])
+          .addTo(mapRef.current);
+
+        marker.getElement().addEventListener('click', () => {
+          markerClickHandler(luogo);
+        });
+
+        return marker;
+      });
+
+      setMarkers(newMarkers);
+    }
+    getCategoryList();
+  }, [posti, filtroCategoria]);
 
   function markerClickHandler(luogo) {
-    setDisplayDetInfo(true)
+    if (isFullScreen) {
+      setDisplayDetInfo(true)
+    }
     setPostoSelezionato(luogo)
-    // for mapbox to center on selected point
-    var targetCoordinates = [luogo.longitudine, luogo.latitudine];
-    var options = {
+    const targetCoordinates = [luogo.longitudine, luogo.latitudine];
+    const options = {
       center: targetCoordinates,
       zoom: 15,
       bearing: 0,
       pitch: 0
     };
-    map.flyTo(options);
+    mapRef.current.flyTo(options);
   }
 
   function detailCloseClickHandler() {
     setDisplayDetInfo(false)
   }
 
-  function onVai () {
-    setDisplayDetInfo(false);
-    setShowVaiMetodo(true);
+  function eliminaMarkers() {
+    markers.forEach((marker) => marker.remove());
+  }
+
+  function getCategoryList() {
+    if (posti) {
+      const categories = new Set();
+      for (let i = 0; i < posti.length; i++) {
+        const place = posti[i];
+        categories.add(place.tipo);
+      }
+      setCategorie(Array.from(categories))
+    }
+  }
+
+  function handleFiltroChange(event) {
+    setFiltroCategoria(event.target.value);
   }
 
   return (
     <div>
-      <div id="map" style={{width: props.width, height: props.height, borderRadius: props.borderRadius}}></div>
+      <div ref={mapContainerRef} id="map" style={{width: props.width, height: props.height, borderRadius: props.borderRadius}}></div>
+      {displayDetInfo ? (
+        <PlaceWidget 
+          onClose={detailCloseClickHandler}
+          posto={postoSelezionato}
+        />
+      ) : null}
       {
-        showVaiMetodo ?
-        <ChooseTravelMethod />
-        :
-        null
+        isFullScreen ?
+        <div style={styles.filtri}>
+        <p>Filtri:</p>
+        <select name="filtro" id="filtro" value={filtroCategoria} onChange={handleFiltroChange} style={styles.select}>
+          <option value="none">Categoria</option>
+          {
+            categorie.map((categoria) => {
+              return (
+                <option key={categoria} value={categoria}>{categoria}</option>
+              )
+            })
+          }
+        </select>
+        </div>
+        : null
       }
-      {
-        displayDetInfo ? <PlaceWidget 
-                          onClose={detailCloseClickHandler}
-                          posto={postoSelezionato}
-                          onVaiClick={onVai}
-                          />
-                          : null
-      }
+      
     </div>
   );
 };
 
+const styles = {
+  filtri: {
+    position: 'fixed',
+    top: '2rem',
+    left: '2rem',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    color: "white",
+    backgroundColor: "rgb(0, 0, 0, 0.75)",
+    backdropFilter: "blur(5px)",
+    WebkitBackdropFilter: "blur(5px)",
+    padding: '0px 20px',
+    borderRadius: '40px'
+  },
+  select: {
+    height: '1.5rem'
+  }
+};
 
 export default MapWidget;

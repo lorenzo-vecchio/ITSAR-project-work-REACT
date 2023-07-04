@@ -11,7 +11,7 @@ const Elimina = ({descrizione, img, callback}) =>{
             justifyContent: "center",
             flexDirection: "row",
             padding: 2,
-            cursor: 'pointer'
+            cursor: 'pointer',
         },
         paragrafo:{
             color: "white",

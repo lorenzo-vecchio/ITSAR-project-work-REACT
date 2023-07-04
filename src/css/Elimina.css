@@ -15,7 +15,8 @@
     border-style: none;
     justify-content: center;
     align-items: center;
-    cursor: pointer
+    cursor: pointer;
+    outline: none
   }
 
   .buttonAnimali:active{
