@@ -96,15 +96,15 @@ const Animal= () => {
 
   const modificaAnimale = () =>{
     const json = {
+      id: id,
       nome: nome,
-      specie: specie,
       razza: razza,
       sesso: sesso,
       data_di_nascita: dataDiNascita,
       peso: peso
     }
-
-    console.log(json)
+    const json2 = JSON.stringify(json)
+    console.log(json2)
   }
 
   return (
