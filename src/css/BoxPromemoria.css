@@ -25,6 +25,7 @@
     border-radius: 10px 10px 0px 0px;
     border-color: #94092e;
     padding: 0% 7% 0% 7%;
+    align-items: center;
 }
 .tdoProm{
     font-weight: bold;
