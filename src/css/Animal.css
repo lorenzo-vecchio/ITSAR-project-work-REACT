@@ -28,7 +28,8 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    margin: 1px
+    margin: 1px;
+    color: black;
 }
 
 .informazioni2{
@@ -208,7 +209,6 @@
 
 @media screen and (min-width: 750px) and (max-width: 1200px){
     .contenuto{
-        margin-top: 5em;
         width: 50%;
     }
 
