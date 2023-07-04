@@ -8,6 +8,7 @@ import { ContextId } from '../contexts/ContextProvider';
 const AnimalsWidget = ({remove}) => {
     const {id, modificaId} = useContext(ContextId)
     const [animals, setAnimals] = useState([]);
+    const [loading, setLoading] = useState(false);
     const requestOptions = {
         credentials: 'include',
     }
@@ -46,7 +47,23 @@ const AnimalsWidget = ({remove}) => {
       };
     
       const memorizza = (ID) =>{
-        modificaId(ID)
+        setLoading(true)
+        const requestOptions = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id: ID,
+            }),
+            credentials: "include"
+        };
+        fetch("https://itsar-project-work-api.vercel.app/animals", requestOptions)
+            .then((response) => {
+            if (response.status === 200) {
+                // animale eliminato
+                modificaId(ID)
+                setLoading(false)
+            }
+        });
       }
 
       useEffect(()=>{
@@ -65,7 +82,7 @@ const AnimalsWidget = ({remove}) => {
                                 <h2 style={styles.h2}>{item.nome_animale}</h2>
                                 <p style={styles.p}>{calculateTimePassed(item.data_di_nascita)}</p>
                             </div>
-                            {remove? <img src={ImmagineRemove} style={styles.remove} width={15} height={15} onClick={() => memorizza(item.id)}/> : null}
+                            {remove? loading ? <div id='loading'></div>: <img src={ImmagineRemove} style={styles.remove} width={15} height={15} onClick={() => memorizza(item.id)}/> : null}
                             {remove? null: <NavLink to={"animal"}><button style={styles.dettagli} onClick={() => memorizza(item.id)}>Dettagli  <img src={ImmagineDettagli} style={styles.img}/> </button></NavLink>}
                         </div>
                     )
