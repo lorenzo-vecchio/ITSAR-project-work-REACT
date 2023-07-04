@@ -1,7 +1,7 @@
-.buttonAnimali {
+.buttonDettagli {
     display: inline-flex;
-    min-height: 2.7rem;
-    min-width: 11rem;
+    min-height: 2rem;
+    min-width: 8rem;
     text-align: center;
     border-radius: 10rem;
     color: #fff;
@@ -9,24 +9,24 @@
     font-size: 1rem;
     letter-spacing: 0.15rem;
     transition: all 0.3s;
-    position: relative;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
     overflow: hidden;
     z-index: 1;
     border-style: none;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    outline: none;
-    padding-right: 0.5rem; 
   }
 
-  .buttonAnimali:active{
+  .buttonDettagli:active{
     transition:ease-in-out;
     border-style: groove;
     border-color: #fff;
   }
 
-  .buttonAnimali:after {
+  .buttonDettagli:after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -36,7 +36,7 @@
     border-radius: 10rem;
     z-index: -2;
   }
-  .buttonAnimali:before {
+  .buttonDettagli:before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -48,33 +48,25 @@
     z-index: -1;
   }
 
-  #buttonAggiungiAnimale:after{
-    background-color: rgb(0, 182, 228);
+  #buttonDettagli:after{
+    background-color: #59c459;
   }
 
-  #buttonAggiungiAnimale:before{
-    background-color: #008fb3;
+  #buttonDettagli:before{
+    background-color: #3b993b;
   }
 
-  #buttonElimina:after{
-    background-color: #d43b50;
-  }
-
-  #buttonElimina:before{
-    background-color: #9c2f3d;
-  }
-
-  .buttonAnimali:hover {
+  .buttonDettagli:hover {
     color: #fff;
   }
 
-  .buttonAnimali:hover:before {
+  .buttonDettagli:hover:before {
     width: 100%;
   }
 
 @media screen and (max-width: 1024px){
 
-    .buttonAnimali {
+    .buttonDettagli {
         margin-inline: 15%;
         min-width: 9rem;
       }

@@ -4,10 +4,12 @@ import ImmagineRemove from '../media/remove.svg'
 import ImmagineDettagli from "../media/dettagli.svg"
 import { NavLink } from 'react-router-dom';
 import { ContextId } from '../contexts/ContextProvider';
+import "../css/ButtonDettagli.css";
 
 const AnimalsWidget = ({remove}) => {
     const {id, modificaId} = useContext(ContextId)
     const [animals, setAnimals] = useState([]);
+    const [loading, setLoading] = useState(false);
     const requestOptions = {
         credentials: 'include',
     }
@@ -46,7 +48,23 @@ const AnimalsWidget = ({remove}) => {
       };
     
       const memorizza = (ID) =>{
-        modificaId(ID)
+        setLoading(true)
+        const requestOptions = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id: ID,
+            }),
+            credentials: "include"
+        };
+        fetch("https://itsar-project-work-api.vercel.app/animals", requestOptions)
+            .then((response) => {
+            if (response.status === 200) {
+                // animale eliminato
+                modificaId(ID)
+                setLoading(false)
+            }
+        });
       }
 
       useEffect(()=>{
@@ -66,7 +84,7 @@ const AnimalsWidget = ({remove}) => {
                                 <p style={styles.p}>{calculateTimePassed(item.data_di_nascita)}</p>
                             </div>
                             {remove? <img src={ImmagineRemove} style={styles.remove} width={15} height={15} onClick={() => memorizza(item.id)}/> : null}
-                            {remove? null: <NavLink to={"animal"}><button style={styles.dettagli} onClick={() => memorizza(item.id)}>Dettagli  <img src={ImmagineDettagli} style={styles.img}/> </button></NavLink>}
+                            {remove? null: <NavLink to={"animal"}><button className='buttonDettagli' id='buttonDettagli' onClick={() => memorizza(item.id)}>Dettagli</button></NavLink>}
                         </div>
                     )
                 })

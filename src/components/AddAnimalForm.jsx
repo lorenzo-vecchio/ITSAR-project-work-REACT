@@ -138,7 +138,7 @@ const AddAnimalForm = () => {
                         <div id="loading"></div>
                         :
                         <>
-                            <NavLink to={"/"}><ButtonReset text="Anulla" /></NavLink>
+                            <NavLink to={"/"}><ButtonReset text="Annulla" /></NavLink>
                             <ButtonSubmit text="Aggiungi" />
                         </>
                     }

@@ -12,11 +12,11 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 30%;
+    width: 40%;
     padding: 3px;
-    border: solid 3px black;
     border-radius: 20px;
-    background-color: white;
+    background-color: transparent;
+    color: white;
     margin-top: 0.3rem;
 }
 
@@ -42,9 +42,9 @@
 
 .input2
 {
-    border: solid 2px black;
+    border: solid 1px black;
     padding: 5px;
-    font-size: 1em;
+    font-size: 20px;
     text-align: center;
     border-radius: 20px;
 }
@@ -53,6 +53,17 @@
 {
     padding: 5px;
     text-align: center;
+}
+
+.span
+{
+    font-size: 20px;
+}
+
+.strong
+{
+    font-weight: 600;
+    font-size: 20px;
 }
 
 #Divcheckbox
@@ -98,15 +109,27 @@
     background-color: #f74d65;
 }
 
-@media screen and (min-width: 750px) and (max-width: 1150px){
+@media screen and (min-width: 750px) and (max-width: 1200px){
     .contenuto{
+        margin-top: 5em;
         width: 50%;
+    }
+
+    .buttonEdit
+    {
+        width: 15%;
     }
 }
 
 @media screen and (min-width:561px ) and (max-width: 749px){
     .contenuto{
+        margin-top: 5em;
         width: 70%;
+    }
+
+    .buttonEdit
+    {
+        width: 20%;
     }
 }
 
@@ -117,17 +140,78 @@
     }
 
     .buttonEdit{
-        width:20%
+        width: 20%
+    }
+
+    .input2
+    {
+        font-size: 1em;
+    }
+
+    .strong
+    {
+        font-size: 16px;
+    }
+    .span
+    {
+        font-size: 16px;
     }
 }
 
-@media screen and (max-width: 450px){
+@media screen and (min-width: 376px) and (max-width: 450px)
+{
     .contenuto{
-        width: 90%;
+        margin-top: 5em;
+        width: 92%;
     }
 
     .buttonEdit{
-        width:30%
+        width: 30%;
+        bottom: 75px;
+        font-size: 1em;
+    }
+    .input2
+    {
+        font-size: 1em;
+    }
+    .strong
+    {
+        font-size: 16px;
+    }
+    .span
+    {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 376px)
+{
+    .pagina
+    {
+        padding-bottom: 150px;
+    }
+
+    .contenuto{
+        width: 75%;
+    }
+
+    .buttonEdit{
+        width: 20%;
+        bottom: 70px;
+        font-size: 1em;
+    }
+    .input2
+    {
+        width: 100%;
+        font-size: 0.7em;
+    }
+    .strong
+    {
+        font-size: 16px;
+    }
+    .span
+    {
+        font-size: 16px;
     }
 }
 
