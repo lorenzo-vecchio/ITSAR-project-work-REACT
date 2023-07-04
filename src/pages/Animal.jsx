@@ -150,9 +150,9 @@ const Animal= () => {
                 : 
                 <div id='Divcheckbox'>
                   <label for="maschio">M</label>
-                  <input  id="maschio" type="checkbox" className='input2' checked={checbox1} onChange={changeSessoM}/>
+                  <input  style={{ backgroundColor: checbox1 ? 'cyan' : 'transparent' }} id="maschio" type="checkbox" className='input2' checked={checbox1} onChange={changeSessoM}/>
                   <label for="femmina">F</label>
-                  <input id="femmina" type="checkbox" className='input2' checked={checbox2} onChange={changeSessoF}/>
+                  <input  style={{ backgroundColor: checbox2 ? 'pink' : 'transparent' }} id="femmina" type="checkbox" className='input2' checked={checbox2} onChange={changeSessoF}/>
                 </div>
                 }
               </div>

@@ -43,6 +43,11 @@ const PromemoriaWidget = () => {
         setNum(v=> v+1)
     }
 
+    useEffect(()=>{
+        const array = promemoria.filter((p)=> p.id !== idPromemoria)
+        setPromemoria(array)
+      }, [idPromemoria])
+
     return (
         <div class='superContainerProm'>
             <div className='containerProm'>
@@ -53,10 +58,11 @@ const PromemoriaWidget = () => {
                 {
                     promemoria?.map((item) => {
                         return (
-                            <BoxPromemoria key={item.id} title={item.titolo} descrizione={item.descrizione} data={item.data_ora.split('T')[0]} animale={item.animali} ora={item.data_ora.split('T')[1]} img={ImmagineRemove} aImg={10} lImg={10} remove={elimina} id_promemoria={idPromemoria}/>
+                            <BoxPromemoria key={item.id} title={item.titolo} descrizione={item.descrizione} data={item.data_ora.split('T')[0]} animale={item.animali} ora={item.data_ora.split('T')[1]} img={ImmagineRemove} aImg={10} lImg={10} remove={elimina} id_promemoria={item.id}/>
                         )
                     })
                 }
+                {console.log(idPromemoria)}
             </div>
             <AggiungiPromemoria descrizione={"Aggiungi Promemoria"} lunghezza={"80"} colore={"green"} img={ImmagineAggiungi}/>
         </div>
