@@ -101,7 +101,7 @@ const styles = {
         overflowX: "hidden",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        alignItems: "center",
         gap: "1rem",
         minWidth: "20rem",
         
@@ -116,7 +116,7 @@ const styles = {
         position: "relative",
         backdropFilter: "blur(5px)",
         WebkitBackdropFilter: "blur(5px)",
-        minWidth: "50%",
+        width: '95%'
     },
     image: {
         height: "5rem",
