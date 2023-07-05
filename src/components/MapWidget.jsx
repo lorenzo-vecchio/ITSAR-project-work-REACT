@@ -140,9 +140,8 @@ const MapWidget = (props) => {
         isFullScreen ?
         <div style={styles.filtri}>
         <p>Filtri:</p>
-        <div class="dropdown__arrow"></div>
-        <select name="filtro" id="filtro" value={filtroCategoria} onChange={handleFiltroChange} className='dropdown'>
-          <option value="none">Categoria</option>
+        <select name="filtro" id="filtro" value={filtroCategoria} onChange={handleFiltroChange} style={styles.select}>
+          <option value="none" className='dropdown'>Categoria</option>
           {
             categorie.map((categoria) => {
               return (
@@ -177,7 +176,15 @@ const styles = {
     borderRadius: '40px'
   },
   select: {
-    height: '1.5rem'
+    height: '1.5rem',
+    backgroundColor: "#00000086",
+    backdropFilter: "blur(5px)",
+    WebkitBackdropFilter: "blur(5px)",
+    color: "#fff",
+  },
+
+  option: {
+    backgroundColor: "#00000086",
   }
 };
 
