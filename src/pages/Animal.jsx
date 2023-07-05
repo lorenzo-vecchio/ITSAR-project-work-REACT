@@ -116,64 +116,68 @@ const Animal= () => {
         risultato?.map((r)=>(
           <div className="contenuto" key={r.id}>
             <h2>DATI ANAGRAFICI</h2>
-            <div className='informazioni'>
-              <div className='dati'>
-                <span className='span'>Nome</span>
-              </div>
-              <div className='dati'>
-                {edit?<strong className='strong'>{r.nome_animale}</strong>: <input type="text" value={nome} className='input2' placeholder='inserisci nome' onChange={changeNome}/>}
-              </div>
-            </div>
-            <div className='informazioni'>
-              <div className='dati'>
-                <span className='span'>Specie</span>
-              </div>
-              <div className='dati'>
-                {edit?<strong className='strong'>{r.nome_specie}</strong>: <input type="text" value={specie} className='input2' placeholder='inserisci specie' onChange={changeSpecie}/>}
-              </div>
-            </div>
-            <div className='informazioni'>
-              <div className='dati'>
-                <span className='span'>Razza</span>
-              </div>
-              <div className='dati'>
-                {edit?<strong className='strong'>{r.nome_razza}</strong>: <input type="text" value={razza} className='input2' placeholder='inserisci razza' onChange={changeRazza}/>}
-              </div>
-            </div>
-            <div className='informazioni'>
-              <div className='dati'>
-                <span className='span'>Sesso</span>
-              </div>
-              <div className='dati'>
-                {
-                edit?<strong className='strong'>{r.sesso==="M"? "Maschio": "Femmina"}</strong>
-                : 
-                <div id='Divcheckbox'>
-                  <label htmlFor="maschio">M</label>
-                  <input  style={{ backgroundColor: checbox1 ? '#F7D9C4' : 'transparent' }} id="maschio" type="checkbox" className='inputCheck' checked={checbox1} onChange={changeSessoM}/>
-                  <label htmlFor="femmina">F</label>
-                  <input  style={{ backgroundColor: checbox2 ? '#F7D9C4' : 'transparent' }} id="femmina" type="checkbox" className='.inputCheck' checked={checbox2} onChange={changeSessoF}/>
+          
+            <div class="grigliaContenuto">
+              
+                <div className='dati1'>
+                  <span className='span'>Nome: </span>
                 </div>
-                }
-              </div>
-            </div>
-            <div className='informazioni'>
-              <div className='dati'>
-                <span className='span'>Data di Nascita</span>
-              </div>
-              <div className='informazioni2'>
                 <div className='dati'>
-                  {edit?<strong className='strong'>{r.data_di_nascita}</strong>: <input type="date" max={today}  value={dataDiNascita} className='inputDate' onChange={changeDataDiNascita}/>}
+                  {edit?<p>{r.nome_animale}</p>: <input type="text" value={nome} className='input2' placeholder='inserisci nome' onChange={changeNome}/>}
                 </div>
-              </div>
-            </div>
-            <div className='informazioni'>
-              <div className='dati'>
-                <span className='span'>Peso</span>
-              </div>
-              <div className='dati'>
-                {edit?<strong className='strong'>{r.peso!==null? r.peso: 0} kg</strong>: <input type="number" value={peso} min="0" step="0.1" className='input2' placeholder='inserisci peso' onChange={changePeso}/>}
-              </div>
+              
+              
+                <div className='dati1'>
+                  <span className='span'>Specie: </span>
+                </div>
+                <div className='dati'>
+                  {edit?<p>{r.nome_specie}</p>: <input type="text" value={specie} className='input2' placeholder='inserisci specie' onChange={changeSpecie}/>}
+                </div>
+              
+              
+                <div className='dati1'>
+                  <span className='span'>Razza: </span>
+                </div>
+                <div className='dati'>
+                  {edit?<p>{r.nome_razza}</p>: <input type="text" value={razza} className='input2' placeholder='inserisci razza' onChange={changeRazza}/>}
+                </div>
+              
+              
+                <div className='dati1'>
+                  <span className='span'>Sesso: </span>
+                </div>
+                <div className='dati'>
+                  {
+                  edit?<p>{r.sesso==="M"? "Maschio": "Femmina"}</p>
+                  : 
+                  <div id='Divcheckbox'>
+                    <label htmlFor="maschio">M</label>
+                    <input  style={{ backgroundColor: checbox1 ? '#F7D9C4' : 'transparent' }} id="maschio" type="checkbox" className='inputCheck' checked={checbox1} onChange={changeSessoM}/>
+                    <label htmlFor="femmina">F</label>
+                    <input  style={{ backgroundColor: checbox2 ? '#F7D9C4' : 'transparent' }} id="femmina" type="checkbox" className='.inputCheck' checked={checbox2} onChange={changeSessoF}/>
+                  </div>
+                  }
+                </div>
+              
+              
+              
+                <div className='dati1'>
+                  <span className='span'>Data di Nascita: </span>
+                </div>
+                
+                  <div className='dati'>
+                    {edit?<p>{r.data_di_nascita}</p>: <input type="date" max={today}  value={dataDiNascita} className='inputDate' onChange={changeDataDiNascita}/>}
+                  </div>
+                
+              
+              
+                <div className='dati1'>
+                  <span className='span'>Peso: </span>
+                </div>
+                <div className='dati'>
+                  {edit?<p>{r.peso!==null? r.peso: 0} kg</p>: <input type="number" value={peso} min="0" step="0.1" className='input2' placeholder='inserisci peso' onChange={changePeso}/>}
+                </div>
+              
             </div>
           </div>
         ))

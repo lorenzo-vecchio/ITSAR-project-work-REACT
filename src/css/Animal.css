@@ -16,8 +16,14 @@
     padding: 3px;
     border-radius: 20px;
     background-color: transparent;
-    color: white;
     margin-top: 0.3rem;
+    color: black;
+}
+
+.grigliaContenuto{
+    display: grid;
+    grid-template: "dati1 dati";
+    gap: 10px
 }
 
 .informazioni
@@ -29,7 +35,7 @@
     align-items: center;
     flex-direction: row;
     margin: 1px;
-    color: black;
+    
 }
 
 .informazioni2{
@@ -72,10 +78,18 @@
     left: 0;
 }
 
+.dati1
+{
+    max-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: bold;
+}
+
 .dati
 {
-    padding: 5px;
-    width: 50%;
+    max-height: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;

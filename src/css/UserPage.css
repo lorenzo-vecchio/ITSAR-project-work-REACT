@@ -73,6 +73,14 @@
     z-index: -1;
   }
 
+  #logoutUser:after{
+    background-color: #fff;
+  }
+
+  #logoutUser:before{
+    background-color: #b1b1b1;
+  }
+
 .body{
     position: relative;
 }

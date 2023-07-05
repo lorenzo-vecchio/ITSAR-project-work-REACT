@@ -139,7 +139,7 @@ const UserPage = () => {
             </div>
 
                 <div className="bottone">
-                    <button className="btnLogoutUser" onClick={handleLogoutClick}>
+                    <button className="btnLogoutUser" id="logoutUser" onClick={handleLogoutClick}>
                         Logout
                     </button> 
                 </div>
