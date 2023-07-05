@@ -67,6 +67,10 @@ const AnimalsWidget = ({remove}) => {
         });
       }
 
+      const memorizza2 = (ID) =>{
+        modificaId(ID)
+      }
+
       useEffect(()=>{
         const array = animals.filter((a)=> a.id !== id)
         setAnimals(array)
@@ -84,7 +88,7 @@ const AnimalsWidget = ({remove}) => {
                                 <p style={styles.p}>{calculateTimePassed(item.data_di_nascita)}</p>
                             </div>
                             {remove? <img src={ImmagineRemove} style={styles.remove} width={15} height={15} onClick={() => memorizza(item.id)}/> : null}
-                            {remove? null: <NavLink to={`animal/${item.id}`}><button className='buttonDettagli' id='buttonDettagli' onClick={() => memorizza(item.id)}>Dettagli</button></NavLink>}
+                            {remove? null: <NavLink to={`animal/${item.id}`}><button className='buttonDettagli' id='buttonDettagli' onClick={() => memorizza2(item.id)}>Dettagli</button></NavLink>}
                         </div>
                     )
                 })
