@@ -6,8 +6,8 @@ const Background = () => {
 };
 
 const style = {
-  width: "100vw",
-  height: "120vh",
+  width: "auto",
+  height: "auto",
   position: "fixed",
   left: 0,
   top: 0,
