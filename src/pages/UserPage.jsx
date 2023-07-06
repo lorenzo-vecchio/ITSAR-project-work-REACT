@@ -98,8 +98,8 @@ const UserPage = () => {
                 </div>
             </div>
             
-            <div class="centerRow">
-                <div class="testo">
+            <div className="centerRow">
+                <div className="testo">
                     <h3 className="h3Titolo" >Nome: </h3>
                     {
                         editable ?
