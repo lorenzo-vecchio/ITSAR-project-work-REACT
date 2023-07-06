@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "../css/PreferitiWidget.css";
+import { ReloadFavoritesContext } from "../contexts/ReloadFavoritesContext";
 
 const PreferitiWidget = (props) => {
     const [postiPreferiti, setPostiPreferiti] = useState([])
+    const { reloadFavorites, resetReloadFavorites } = useContext(ReloadFavoritesContext);
     const requestOptions = {
         credentials: 'include',
     }
@@ -14,6 +16,18 @@ const PreferitiWidget = (props) => {
             setPostiPreferiti(result);
         })
     }, [])
+
+    useEffect(() => {
+        if (reloadFavorites) {
+            fetch("https://itsar-project-work-api.vercel.app/preferiti", requestOptions)
+            .then(res => res.json())
+            .then(
+            (result) => {
+                setPostiPreferiti(result);
+                resetReloadFavorites();
+            })
+        }
+    }, [reloadFavorites])
     
     return (
         <div style={{...styles.container, ...props.customCss}}>
