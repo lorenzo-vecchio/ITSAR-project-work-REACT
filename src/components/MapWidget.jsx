@@ -14,7 +14,7 @@ const MapWidget = (props) => {
   const [markers, setMarkers] = useState([]);
   const [categorie, setCategorie] = useState([]);
   const [filtroCategoria, setFiltroCategoria] = useState("none");
-  const { triggerReloadFavorites } = useContext(ReloadFavoritesContext);
+  const { triggerReloadFavorites, reloadFavorites } = useContext(ReloadFavoritesContext);
   const mapContainerRef = useRef(null); // Ref to hold the map container element
   const mapRef = useRef(null); // Ref to hold the map object
 
@@ -65,6 +65,23 @@ const MapWidget = (props) => {
         }
       );
   }, []);
+
+  useEffect(() => {
+    const requestOptions = {
+      credentials: "include"
+    };
+
+    fetch("https://itsar-project-work-api.vercel.app/servizi", requestOptions)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setPosti(result);
+        },
+        (error) => {
+          console.log('sta un errore man')
+        }
+      );
+  }, [reloadFavorites])
 
   useEffect(() => {
     if (posti && mapRef.current) {
@@ -143,6 +160,7 @@ const MapWidget = (props) => {
         if (response.status === 200) {
             // posto aggiunto nei preferiti
             triggerReloadFavorites();
+            setDisplayDetInfo(false);
         }
     });
   }
@@ -160,7 +178,9 @@ const MapWidget = (props) => {
       .then((response) => {
       if (response.status === 200) {
           // rimosso dai preferiti
+          console.log(id_preferito)
           triggerReloadFavorites();
+          setDisplayDetInfo(false);
       }
   });
   }
