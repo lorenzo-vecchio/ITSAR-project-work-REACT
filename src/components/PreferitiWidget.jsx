@@ -61,7 +61,7 @@ const styles = {
         height: "29vh",
         minWidth: "13rem",
         minHeight: "10rem",
-        height: "40vh"
+        height: "30vh"
     }
 }
 
