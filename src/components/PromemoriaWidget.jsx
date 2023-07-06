@@ -2,6 +2,7 @@ import React from 'react';
 import BoxPromemoria from './BoxPromemoria';
 import {AggiungiPromemoria} from './Aggiungi';
 import ImmagineAggiungi from "../media/add.svg"
+import ImmagineRemove from "../media/remove.svg"
 import ImmagineTornaIndietro from "../media/torna_indietro.svg"
 import { useState, useEffect, useContext } from 'react';
 import "../css/PromemoriaWidget.css"
