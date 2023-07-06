@@ -54,12 +54,13 @@
     border-radius: 1.5rem;
     border: 0;
     font-size: 20px;
-    min-width: 15.2vw;
+    min-width: 25vw;
     max-width: 77%;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     padding: 0;
     margin: 0;
+    margin: auto;
 }
 
 .inputCheck[type=checkbox] {
