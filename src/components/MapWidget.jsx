@@ -1,7 +1,8 @@
 import mapboxgl from '!mapbox-gl';
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import PlaceWidget from './PlaceWidget';
 import "../css/DropDownFiltri.css";
+import { ReloadFavoritesContext } from '../contexts/ReloadFavoritesContext';
 
 const MapWidget = (props) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -13,6 +14,7 @@ const MapWidget = (props) => {
   const [markers, setMarkers] = useState([]);
   const [categorie, setCategorie] = useState([]);
   const [filtroCategoria, setFiltroCategoria] = useState("none");
+  const { triggerReloadFavorites, reloadFavorites } = useContext(ReloadFavoritesContext);
   const mapContainerRef = useRef(null); // Ref to hold the map container element
   const mapRef = useRef(null); // Ref to hold the map object
 
@@ -28,8 +30,8 @@ const MapWidget = (props) => {
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v12",
-      center: [12.496366, 41.902782], // long - lat
-      zoom: 4
+      center: [9.191926, 45.464098], // long - lat
+      zoom: 11.5
     });
 
     const nav = new mapboxgl.NavigationControl();
@@ -63,6 +65,23 @@ const MapWidget = (props) => {
         }
       );
   }, []);
+
+  useEffect(() => {
+    const requestOptions = {
+      credentials: "include"
+    };
+
+    fetch("https://itsar-project-work-api.vercel.app/servizi", requestOptions)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setPosti(result);
+        },
+        (error) => {
+          console.log('sta un errore man')
+        }
+      );
+  }, [reloadFavorites])
 
   useEffect(() => {
     if (posti && mapRef.current) {
@@ -127,6 +146,45 @@ const MapWidget = (props) => {
     setFiltroCategoria(event.target.value);
   }
 
+  function addToPreferiti(id_to_add) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: id_to_add
+        }),
+        credentials: "include"
+    };
+    fetch("https://itsar-project-work-api.vercel.app/preferiti", requestOptions)
+        .then((response) => {
+        if (response.status === 200) {
+            // posto aggiunto nei preferiti
+            triggerReloadFavorites();
+            setDisplayDetInfo(false);
+        }
+    });
+  }
+
+  function removeFromPreferiti(id_preferito) {
+    const requestOptions = {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: id_preferito
+      }),
+      credentials: "include"
+  };
+  fetch("https://itsar-project-work-api.vercel.app/preferiti", requestOptions)
+      .then((response) => {
+      if (response.status === 200) {
+          // rimosso dai preferiti
+          console.log(id_preferito)
+          triggerReloadFavorites();
+          setDisplayDetInfo(false);
+      }
+  });
+  }
+
   return (
     <div>
       <div ref={mapContainerRef} id="map" style={{width: props.width, height: props.height, borderRadius: props.borderRadius}}></div>
@@ -134,6 +192,8 @@ const MapWidget = (props) => {
         <PlaceWidget 
           onClose={detailCloseClickHandler}
           posto={postoSelezionato}
+          onAddToFav={() => {addToPreferiti(postoSelezionato.id)}}
+          onRemoveFromFav={() => {removeFromPreferiti(postoSelezionato.favorite_id)}}
         />
       ) : null}
       {
