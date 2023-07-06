@@ -30,7 +30,7 @@ const PreferitiWidget = (props) => {
     }, [reloadFavorites])
     
     return (
-        <div style={{...styles.container, ...props.customCss}}>
+        <div style={{...styles.container, ...props.customCss}} className="boxSalvati">
             <h2 className="titoloPreferitiWidget">Luoghi Salvati</h2>
             <ul>
                 {
@@ -59,6 +59,9 @@ const styles = {
         paddingBottom: "1rem",
         overflowY: "auto",
         height: "29vh",
+        minWidth: "13rem",
+        minHeight: "10rem",
+        height: "30vh"
     }
 }
 
