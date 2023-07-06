@@ -117,7 +117,7 @@ const Animal= () => {
           <div className="contenuto" key={r.id}>
             <h2>DATI ANAGRAFICI</h2>
           
-            <div class="grigliaContenuto">
+            <div className="grigliaContenuto">
               
                 <div className='dati1'>
                   <span className='span'>Nome: </span>
