@@ -2,7 +2,6 @@ import React from 'react';
 import BoxPromemoria from './BoxPromemoria';
 import {AggiungiPromemoria} from './Aggiungi';
 import ImmagineAggiungi from "../media/add.svg"
-import ImmagineRemove from "../media/remove.svg"
 import ImmagineTornaIndietro from "../media/torna_indietro.svg"
 import { useState, useEffect, useContext } from 'react';
 import "../css/PromemoriaWidget.css"
@@ -27,18 +26,15 @@ const PromemoriaWidget = () => {
 
     const [num, setNum] = useState(1)
     const [elimina, setElimina] = useState()
-    const [src, setSrc] = useState(ImmagineRemove)
 
     const action = () =>{
         if(num%2==1)
         {
             setElimina(true)
-            setSrc(ImmagineTornaIndietro)
         }
         else
         {
             setElimina(false)
-            setSrc(ImmagineRemove)
         }
         setNum(v=> v+1)
     }
@@ -51,10 +47,28 @@ const PromemoriaWidget = () => {
     return (
         <div className='superContainerProm'>
             <div className='containerProm'>
-                <div className='titoloProm'>
+                {num%2==1?<div className='titoloProm'>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width={24}
+                        height={24}
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        className="lucide lucide-trash-2"
+                        id="cancella"
+                        onClick={action}
+                    >
+                        <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2M10 11v6M14 11v6" />
+                    </svg>
                     <h2 id='titoloPromTesto'>Promemoria</h2> 
-                    <img src={src} onClick={action} width={13} height={13} id="cancella"/>
-                </div>
+                </div>:
+                <div className='titoloProm'>
+                    <img src={ImmagineTornaIndietro} width={13} height={13} onClick={action}/>
+                    <h2 id='titoloPromTesto'>Promemoria</h2> 
+                </div>}
                 {
                     promemoria?.map((item) => {
                         return (
