@@ -60,6 +60,7 @@
     height: 100%;
     border-radius: 10rem;
     z-index: -2;
+    background-color: #fff;
   }
   .btnLogoutUser:before {
     content: "";
@@ -71,13 +72,6 @@
     transition: all 0.3s;
     border-radius: 10rem;
     z-index: -1;
-  }
-
-  #logoutUser:after{
-    background-color: #fff;
-  }
-
-  #logoutUser:before{
     background-color: #b1b1b1;
   }
 
@@ -120,6 +114,7 @@
     display: grid;
     grid-template: "Testo informazioni";
     font-size: 24px;
+    width: -moz-fit-content;
     width: fit-content;
     margin-top: 1rem;
     gap: 1rem;

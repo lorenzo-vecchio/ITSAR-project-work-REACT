@@ -95,6 +95,7 @@ const FormAddPromemoria = () => {
           fetch("https://itsar-project-work-api.vercel.app/promemoria", requestOptions)
           .then((response) => {
             if (response.status === 200) {
+                alert("Promemoria aggiunto!")
               // metti spunta di successo
             }
           });
