@@ -105,7 +105,7 @@ const Animal= () => {
     }
     const json2 = JSON.stringify(json)
     console.log(json2)
-    /*const requestOptions = {
+    const requestOptions = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: json2,
@@ -116,7 +116,7 @@ const Animal= () => {
         if (response.status === 200) {
             //animale modificato
         }
-    });*/
+    });
   }
 
   return (
