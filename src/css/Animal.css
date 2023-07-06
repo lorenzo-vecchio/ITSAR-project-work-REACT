@@ -23,7 +23,8 @@
 .grigliaContenuto{
     display: grid;
     grid-template: "dati1 dati";
-    gap: 10px
+    gap: 10px;
+    padding-right: 4rem ; 
 }
 
 .informazioni
