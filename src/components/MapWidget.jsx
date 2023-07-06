@@ -140,12 +140,12 @@ const MapWidget = (props) => {
         isFullScreen ?
         <div style={styles.filtri}>
         <p>Filtri:</p>
-        <select name="filtro" id="filtro" value={filtroCategoria} onChange={handleFiltroChange} style={styles.select}>
+        <select name="filtro" id="filtro" value={filtroCategoria} onChange={handleFiltroChange} style={styles.select} className='select'>
           <option value="none" className='dropdown'>Categoria</option>
           {
             categorie.map((categoria) => {
               return (
-                <option key={categoria} value={categoria}>{categoria}</option>
+                <option key={categoria} value={categoria} className='dropdown'>{categoria}</option>
               )
             })
           }
@@ -173,19 +173,24 @@ const styles = {
     backdropFilter: "blur(5px)",
     WebkitBackdropFilter: "blur(5px)",
     padding: '0px 20px',
-    borderRadius: '40px'
+    borderRadius: '40px',
+    borderColor: "white",
+    height: "7vh",
+    cursor: "pointer",
   },
   select: {
-    height: '1.5rem',
-    backgroundColor: "#00000086",
-    backdropFilter: "blur(5px)",
-    WebkitBackdropFilter: "blur(5px)",
+    height: '2rem',
     color: "#fff",
+    borderRadius: '2rem',
+    backgroundColor: "transparent",
+    paddingLeft: "0.3rem",
+    textAlign: "center",
+    color: "white",
+    borderWidth: "medium",
+    tranistion: "0.3s ease-in-out",
+    width: "8vw",
+    fontSize: "0.90rem",
   },
-
-  option: {
-    backgroundColor: "#00000086",
-  }
 };
 
 export default MapWidget;
