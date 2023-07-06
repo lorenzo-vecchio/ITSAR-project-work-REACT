@@ -237,6 +237,7 @@ const styles = {
     borderColor: "white",
     height: "7vh",
     cursor: "pointer",
+    
   },
   select: {
     height: '2rem',
@@ -250,6 +251,7 @@ const styles = {
     tranistion: "0.3s ease-in-out",
     width: "8vw",
     fontSize: "0.90rem",
+    minWidth: "6rem",
   },
 };
 
