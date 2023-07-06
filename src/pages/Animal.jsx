@@ -66,7 +66,7 @@ const Animal= () => {
     (result) => {
         setAnimals(result);
     })
-  }, [])
+  }, [edit])
 
   useEffect(()=>{
     const currentDate = new Date().toISOString().split("T")[0];
@@ -104,7 +104,18 @@ const Animal= () => {
       peso: peso
     }
     const json2 = JSON.stringify(json)
-    console.log(json2)
+    const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: json2,
+        credentials: "include"
+    };
+    fetch("https://itsar-project-work-api.vercel.app/animals", requestOptions)
+        .then((response) => {
+        if (response.status === 200) {
+            //animale modificato
+        }
+    });
   }
 
   return (
@@ -112,9 +123,8 @@ const Animal= () => {
       <Title title="Il tuo animale"/>
       <div style={{ margin: "1rem"}}></div>
       <FotoWidget image={Image} />
-      {
-        risultato?.map((r)=>(
-          <div className="contenuto" key={r.id}>
+
+          <div className="contenuto">
             <h2>DATI ANAGRAFICI</h2>
           
             <div class="grigliaContenuto">
@@ -123,15 +133,15 @@ const Animal= () => {
                   <span className='span'>Nome: </span>
                 </div>
                 <div className='dati'>
-                  {edit?<p>{r.nome_animale}</p>: <input type="text" value={nome} className='input2' placeholder='inserisci nome' onChange={changeNome}/>}
+                  {edit? <p>{nome}</p> : <input type="text" value={nome} className='input2' placeholder='inserisci nome' onChange={changeNome}/>}
                 </div>
-              
+               
               
                 <div className='dati1'>
                   <span className='span'>Specie: </span>
                 </div>
                 <div className='dati'>
-                  {edit?<p>{r.nome_specie}</p>: <input type="text" value={specie} className='input2' placeholder='inserisci specie' onChange={changeSpecie}/>}
+                  {edit?<p>{specie}</p>: <input type="text" value={specie} className='input2' placeholder='inserisci specie' onChange={changeSpecie}/>}
                 </div>
               
               
@@ -139,7 +149,7 @@ const Animal= () => {
                   <span className='span'>Razza: </span>
                 </div>
                 <div className='dati'>
-                  {edit?<p>{r.nome_razza}</p>: <input type="text" value={razza} className='input2' placeholder='inserisci razza' onChange={changeRazza}/>}
+                  {edit?<p>{razza}</p>: <input type="text" value={razza} className='input2' placeholder='inserisci razza' onChange={changeRazza}/>}
                 </div>
               
               
@@ -148,7 +158,7 @@ const Animal= () => {
                 </div>
                 <div className='dati'>
                   {
-                  edit?<p>{r.sesso==="M"? "Maschio": "Femmina"}</p>
+                  edit?<p>{sesso==="M"? "Maschio": "Femmina"}</p>
                   : 
                   <div id='Divcheckbox'>
                     <label htmlFor="maschio">M</label>
@@ -166,7 +176,7 @@ const Animal= () => {
                 </div>
                 
                   <div className='dati'>
-                    {edit?<p>{r.data_di_nascita}</p>: <input type="date" max={today}  value={dataDiNascita} className='inputDate' onChange={changeDataDiNascita}/>}
+                    {edit?<p>{dataDiNascita}</p>: <input type="date" max={today}  value={dataDiNascita} className='inputDate' onChange={changeDataDiNascita}/>}
                   </div>
                 
               
@@ -175,13 +185,11 @@ const Animal= () => {
                   <span className='span'>Peso: </span>
                 </div>
                 <div className='dati'>
-                  {edit?<p>{r.peso!==null? r.peso: 0} kg</p>: <input type="number" value={peso} min="0" step="0.1" className='input2' placeholder='inserisci peso' onChange={changePeso}/>}
+                  {edit?<p>{peso!==null? peso: 0} kg</p>: <input type="number" value={peso} min="0" step="0.1" className='input2' placeholder='inserisci peso' onChange={changePeso}/>}
                 </div>
               
             </div>
           </div>
-        ))
-      }
       <button className='buttonEdit' id='buttonEdit' onClick={editStato}>
         {edit? "Edit": "Save"}
         </button>
