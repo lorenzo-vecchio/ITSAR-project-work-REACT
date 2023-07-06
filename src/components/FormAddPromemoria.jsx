@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { ButtonSubmit, ButtonReset } from './Button';
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, Link } from "react-router-dom";
 import "../css/AddPromemoriaForm.css"
 
 const FormAddPromemoria = () => {
@@ -78,6 +78,8 @@ const FormAddPromemoria = () => {
         setSelectedCheckboxes(selectedCheckboxes.filter((id) => id !== idToRemove));
       };
       
+    const navigate = useNavigate()
+    
     function handleSubmit (e) {
         e.preventDefault();
         const promemoria = {
@@ -97,6 +99,7 @@ const FormAddPromemoria = () => {
             if (response.status === 200) {
                 alert("Promemoria aggiunto!")
               // metti spunta di successo
+              navigate("/");
             }
           });
     }

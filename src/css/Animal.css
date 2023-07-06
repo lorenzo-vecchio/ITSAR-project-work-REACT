@@ -23,7 +23,8 @@
 .grigliaContenuto{
     display: grid;
     grid-template: "dati1 dati";
-    gap: 10px
+    gap: 10px;
+    padding-right: 4rem ; 
 }
 
 .informazioni
@@ -53,12 +54,13 @@
     border-radius: 1.5rem;
     border: 0;
     font-size: 20px;
-    min-width: 15.2vw;
+    min-width: 17.4rem;
     max-width: 77%;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     padding: 0;
     margin: 0;
+    margin: auto;
 }
 
 .inputCheck[type=checkbox] {
